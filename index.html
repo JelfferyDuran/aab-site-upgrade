@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="All Aspects at the Barn — Antique & Gift Mercantile in a Restored 1890s Barn, Mount Bethel PA. Shop local artisan finds, coffee bar, petting farm, pavilion parties, workshops & First Fridays.">
+<title>All Aspects at the Barn — Restored 1890s Barn • Café • Marketplace • Events</title>
+<style>
+:root {
+  --bg: #0d0d0d; --surface: #1a1a1a; --card: #222222; --border: #333;
+  --text: #f0e6d3; --text-dim: #9a8e7c; --accent: #c49a6c;
+  --accent2: #d4a574; --green: #7c9a6b; --warm: #8b6f4e;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: Georgia,'Times New Roman',serif; background:var(--bg); color:var(--text); line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { color:var(--accent2); }
+img { width:100%; display:block; border-radius:8px; }
+.container { max-width:1200px; margin:0 auto; padding:0 20px; }
+section { padding:80px 0; }
+.section-title { text-align:center; font-size:2.4rem; color:var(--accent); margin-bottom:12px; }
+.section-sub { text-align:center; color:var(--text-dim); font-size:1.05rem; margin-bottom:50px; font-style:italic; }
+
+/* NAV */
+nav { position:fixed; top:0; width:100%; background:rgba(13,13,13,.96); z-index:1000; padding:16px 0; border-bottom:1px solid var(--border); }
+nav .container { display:flex; justify-content:space-between; align-items:center; }
+nav h1 a { color:var(--accent); font-size:1.3rem; }
+nav ul { display:flex; list-style:none; gap:24px; }
+nav a { color:var(--text-dim); font-size:.9rem; text-transform:uppercase; letter-spacing:1px; transition:.3s; }
+nav a:hover { color:var(--accent); }
+
+/* HERO - FULL SCREEN */
+.hero { min-height:100vh; position:relative; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+.hero-bg { position:absolute; top:0; left:0; width:100vw; height:100vh; object-fit:cover; min-height:100vh; object-position:center center; z-index:0; filter:brightness(0.6) saturate(1.1); }
+.hero::after { content:''; position:absolute; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,.5); z-index:1; }
+.hero-content { position:relative; z-index:2; max-width:800px; padding:0 20px; }
+.hero-content h1 { font-size:3.2rem; color:#fff; margin-bottom:12px; text-shadow:2px 2px 8px rgba(0,0,0,.6); }
+.hero-content .tagline { font-size:1.4rem; color:var(--accent2); margin-bottom:20px; font-style:italic; }
+.hero-content p { font-size:1.1rem; color:var(--text); margin-bottom:30px; max-width:600px; margin-left:auto; margin-right:auto; }
+.hero-content .cta-group { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.cta-btn { display:inline-block; padding:14px 32px; border-radius:4px; font-weight:bold; font-size:1rem; transition:.3s; text-transform:uppercase; letter-spacing:1px; }
+.cta-primary { background:var(--accent); color:#0d0d0d; }
+.cta-primary:hover { background:var(--accent2); transform:translateY(-2px); box-shadow:0 6px 20px rgba(196,154,108,.3); }
+.cta-secondary { border:2px solid var(--accent); color:var(--accent); }
+.cta-secondary:hover { background:var(--accent); color:#0d0d0d; }
+
+/* PILLARS */
+.pillars { background:var(--surface); }
+.pillars-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px; }
+.pillar-card { background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:.3s; }
+.pillar-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,.4); }
+.pillar-card img { height:220px; object-fit:cover; }
+.pillar-body { padding:24px; }
+.pillar-body h3 { color:var(--accent); font-size:1.3rem; margin-bottom:8px; }
+.pillar-body p { color:var(--text-dim); font-size:.95rem; }
+.pillar-body .price { color:var(--green); font-weight:bold; margin-top:10px; font-size:1.1rem; }
+
+/* SPLIT SECTIONS */
+.split { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+.split-reverse { direction:rtl; }
+.split-reverse > div { direction:ltr; }
+.split-text h2 { color:var(--accent); font-size:2rem; margin-bottom:16px; }
+.split-text p { color:var(--text-dim); margin-bottom:16px; }
+.split-text .detail-list { list-style:none; padding:0; }
+.split-text .detail-list li { padding:6px 0; color:var(--text); }
+.split-text .detail-list li::before { content:'✦ '; color:var(--accent); }
+
+/* WHY VISIT */
+.why { background:var(--surface); }
+.why-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
+.why-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:30px; text-align:center; }
+.why-card img { height:200px; object-fit:cover; margin-bottom:16px; border-radius:8px; }
+.why-card h3 { color:var(--accent); margin-bottom:8px; font-size:1.2rem; }
+.why-card p { color:var(--text-dim); font-size:.95rem; }
+.why-card .icon { font-size:2.5rem; margin-bottom:12px; }
+
+/* GALLERY */
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; }
+.gallery-grid img { height:180px; object-fit:cover; border-radius:6px; transition:.3s; cursor:pointer; }
+.gallery-grid img:hover { transform:scale(1.03); box-shadow:0 4px 15px rgba(0,0,0,.3); }
+
+/* FAQ */
+.faq-item { background:var(--card); border:1px solid var(--border); border-radius:8px; margin-bottom:12px; overflow:hidden; }
+.faq-question { padding:20px 24px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-weight:bold; color:var(--accent); font-size:1.05rem; }
+.faq-question::after { content:'+'; font-size:1.5rem; color:var(--accent2); transition:.3s; }
+.faq-question.active::after { content:'−'; }
+.faq-answer { max-height:0; overflow:hidden; transition:max-height .3s; padding:0 24px; color:var(--text-dim); }
+.faq-answer.open { max-height:200px; padding:0 24px 20px; }
+
+/* EVENTS */
+.events-card { background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:30px; }
+.events-card img { height:260px; object-fit:cover; }
+.events-card-body { padding:24px; }
+.events-card-body h3 { color:var(--accent); font-size:1.3rem; margin-bottom:8px; }
+.events-card-body .event-meta { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:12px; }
+.event-meta span { color:var(--text-dim); font-size:.9rem; }
+.event-meta span::before { margin-right:6px; }
+.event-meta .date::before { content:'📅'; }
+.event-meta .time::before { content:'🕐'; }
+.event-meta .loc::before { content:'📍'; }
+.events-card-body p { color:var(--text-dim); font-size:.95rem; margin-bottom:16px; }
+
+/* CONTACT */
+.contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+.contact-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; }
+.contact-card h3 { color:var(--accent); margin-bottom:16px; font-size:1.2rem; }
+.contact-card p, .contact-card a { color:var(--text-dim); font-size:.95rem; display:block; margin-bottom:6px; }
+.contact-card a:hover { color:var(--accent2); }
+.contact-form { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:28px; }
+.contact-form h3 { color:var(--accent); margin-bottom:20px; }
+.form-group { margin-bottom:16px; }
+.form-group label { display:block; color:var(--text-dim); font-size:.85rem; margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px; }
+.form-group input, .form-group textarea, .form-group select { width:100%; padding:12px; background:var(--bg); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:inherit; font-size:.95rem; }
+.form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--accent); }
+.form-group textarea { height:120px; resize:vertical; }
+.submit-btn { background:var(--accent); color:#0d0d0d; border:none; padding:14px 32px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem; text-transform:uppercase; letter-spacing:1px; transition:.3s; }
+.submit-btn:hover { background:var(--accent2); transform:translateY(-2px); }
+
+/* FOOTER */
+footer { background:#080808; border-top:1px solid var(--border); padding:40px 0 20px; }
+footer .container { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:30px; }
+footer h4 { color:var(--accent); margin-bottom:16px; font-size:1rem; }
+footer p, footer a { color:var(--text-dim); font-size:.9rem; display:block; margin-bottom:6px; }
+footer a:hover { color:var(--accent2); }
+footer .social-links { display:flex; gap:12px; margin-top:10px; }
+footer .social-links a { display:inline-block; padding:8px 14px; background:var(--card); border:1px solid var(--border); border-radius:6px; color:var(--accent); font-size:.8rem; transition:.3s; }
+footer .social-links a:hover { background:var(--accent); color:#0d0d0d; }
+.copyright { text-align:center; color:var(--text-dim); font-size:.8rem; margin-top:30px; padding-top:20px; border-top:1px solid var(--border); }
+
+/* WHATSAPP */
+.whatsapp-fab { position:fixed; bottom:24px; right:24px; z-index:999; width:56px; height:56px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(37,211,102,.4); transition:.3s; }
+.whatsapp-fab:hover { transform:scale(1.1); }
+.whatsapp-fab svg { width:28px; height:28px; fill:#fff; }
+
+/* HOURS TABLE */
+.hours-table { width:100%; border-collapse:collapse; margin-top:16px; }
+.hours-table td { padding:8px 12px; border-bottom:1px solid var(--border); font-size:.95rem; }
+.hours-table td:first-child { color:var(--accent); font-weight:bold; width:120px; }
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .split { grid-template-columns:1fr; }
+  .split-reverse { direction:ltr; }
+  .hero-content h1 { font-size:2rem; }
+  .hero-content .tagline { font-size:1.1rem; }
+  section { padding:50px 0; }
+  nav ul { gap:12px; }
+  nav a { font-size:.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <h1><a href="#home">All Aspects at the Barn</a></h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#weddings">Weddings</a></li>
+      <li><a href="#farm">Petting Farm</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <img src="images/IMG_1415.jpg" alt="All Aspects Barn — Gifts, Decor & Vintage Antiques" class="hero-bg">
+  <div class="hero-content">
+    <h1>All Aspects at the Barn</h1>
+    <p class="tagline">Est. 2018 — A Restored 1890s Barn in the Heart of the Lehigh Valley</p>
+    <p>Antique & Gift Mercantile · Coffee Bar · Petting Farm · Pavilion Events · Workshops & First Fridays<br>Mount Bethel, Pennsylvania · 3,000 sq ft of local & artisan treasures</p>
+    <div class="cta-group">
+      <a href="#shop" class="cta-btn cta-primary">Shop Local</a>
+      <a href="#events" class="cta-btn cta-secondary">Events & Parties</a>
+      <a href="https://www.allaspectsbarn.com" class="cta-btn cta-secondary" target="_blank">Barn Brew Coffee</a>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS: WHAT WE OFFER -->
+<section class="pillars" id="shop">
+  <div class="container">
+    <h2 class="section-title">What We Offer</h2>
+    <p class="section-sub">Four experiences under one roof — a restored 1890s barn full of character</p>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <img src="images/IMG_1295.jpg" alt="Barn Brew Coffee & Espresso Bar">
+        <div class="pillar-body">
+          <h3>Barn Brew ☕</h3>
+          <p>Coffee bar & espresso inside the barn. Order online for pickup. Local roasts, cold brew, lattes & seasonal drinks.</p>
+          <div class="price">☕ Order Online →</div>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <img src="images/IMG_1296.jpg" alt="Mercantile Marketplace">
+        <div class="pillar-body">
+          <h3>Mercantile Marketplace</h3>
+          <p>3,000 sq ft of antiques, gifts & home decor. Local artisans, vintage finds, candy counter, and repurposed treasures.</p>
+          <div class="price">🛍️ Shop the Barn</div>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <img src="images/IMG_1297.jpg" alt="Weddings & Events">
+        <div class="pillar-body">
+          <h3>Weddings & Events</h3>
+          <p>Pavilion rentals, birthday parties & private events. Host your celebration in a beautifully restored historic barn.</p>
+          <div class="price">💍 Event Inquiries</div>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <img src="images/IMG_1298.jpg" alt="Petting Farm Pavilion">
+        <div class="pillar-body">
+          <h3>Petting Farm Pavilion</h3>
+          <p>Meet our goats, chicks & farm animals. Kids' feeding area, family fun & educational farm experiences.</p>
+          <div class="price">🐐 Visit the Animals</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT: THE MERCHANTILE STORY -->
+<section>
+  <div class="container">
+    <div class="split">
+      <div class="split-text">
+        <h2>The Mercantile</h2>
+        <p>All Aspects at the Barn is a <strong>local family-owned business</strong> combining old, new and repurposed items inside a beautifully restored late-1890s barn.</p>
+        <ul class="detail-list">
+          <li>🛍️ 3,000 sq ft of antiques, gifts & home decor</li>
+          <li>🎨 Local & artisan-made finds</li>
+          <li>🍬 Candy counter & DIY stations</li>
+          <li>📦 Ships via UPS/USPS within 2–3 business days</li>
+          <li>💳 Square Checkout — CashApp, Apple/Google Pay, all major cards</li>
+          <li>⭐ 5.0 rating (7 reviews) on TripAdvisor · 4.3 on Yelp</li>
+        </ul>
+        <a href="https://www.allaspectsbarn.com" class="cta-btn cta-primary" target="_blank" style="margin-top:20px;">Full Online Store</a>
+      </div>
+      <div><img src="images/IMG_1283.jpg" alt="Marketplace & Merchandise"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY VISIT US -->
+<section class="why" id="farm">
+  <div class="container">
+    <h2 class="section-title">Why Visit Us</h2>
+    <p class="section-sub">Three reasons our guests keep coming back to the barn</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <img src="images/IMG_1292.jpg" alt="Goats at the Petting Farm">
+        <div class="icon">🐐</div>
+        <h3>Authentic Farm Experience</h3>
+        <p>Meet our goats, chicks, and petting farm animals. A hands-on experience for kids and adults alike in a beautiful historic setting.</p>
+      </div>
+      <div class="why-card">
+        <img src="images/IMG_1293.jpg" alt="Chicks at the Petting Farm">
+        <div class="icon">🐣</div>
+        <h3>Experienced Hosts</h3>
+        <p>Local family-owned since 2018. Our team knows the barn inside and out — from event planning to finding the perfect vintage treasure.</p>
+      </div>
+      <div class="why-card">
+        <img src="images/IMG_1294.jpg" alt="Kids at the Farm">
+        <div class="icon">💚</div>
+        <h3>Trusted by the Lehigh Valley</h3>
+        <p>Featured by Discover Lehigh Valley, Macaroni KID Easton, and TripAdvisor. 5-star rated for family fun, artisan finds, and the best barn in the Poconos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <div class="container">
+    <h2 class="section-title">The Barn</h2>
+    <p class="section-sub">A glimpse inside our 1890s restored treasure</p>
+    <div class="gallery-grid">
+      <img src="images/IMG_1281.jpg" alt="Barn Interior Gallery">
+      <img src="images/IMG_1284.jpg" alt="Farm Day at the Barn">
+      <img src="images/IMG_1289.jpg" alt="Wedding Ceremony Space">
+      <img src="images/IMG_1290.jpg" alt="Barn Interior">
+      <img src="images/IMG_1291.jpg" alt="Barn Grounds & Fields">
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT: EVENTS & FIRST FRIDAYS -->
+<section id="events" style="background:var(--surface);">
+  <div class="container">
+    <div class="split split-reverse">
+      <div class="split-text">
+        <h2>Events & First Fridays</h2>
+        <p>All Aspects at the Barn hosts <strong>monthly First Fridays</strong> — live music, local vendors, and community vibes.</p>
+        <ul class="detail-list">
+          <li>🎶 Live music & local performers</li>
+          <li>🍷 <strong>Clever Girl Winery</strong> tastings, sangria & craft beer</li>
+          <li>🛍️ Local artisan vendors & makers</li>
+          <li>🍹 Social Still canned beverages</li>
+          <li>🎉 Monthly events: 5:30–8:30 PM</li>
+          <li>🎄 Annual Christmas Market & Holiday Festival</li>
+          <li>🎊 <strong>Lucky Seven</strong> — 7th Anniversary Celebration</li>
+        </ul>
+        <p style="margin-top:16px;">Private events: message us for pavilion rental info!</p>
+      </div>
+      <div><img src="images/IMG_1282.jpg" alt="Party Pavilion"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS CARDS -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Upcoming Events</h2>
+    <p class="section-sub">Mark your calendar — the barn is always buzzing</p>
+    <div class="events-card">
+      <img src="images/IMG_1282.jpg" alt="First Fridays at the Barn">
+      <div class="events-card-body">
+        <h3>🎵 First Fridays at the Barn</h3>
+        <div class="event-meta">
+          <span class="date">July 3, 2026</span>
+          <span class="time">5:30 PM – 8:30 PM</span>
+          <span class="loc">📍 1584 S Delaware Dr, Mount Bethel, PA</span>
+        </div>
+        <p>Live music, Clever Girl Winery tastings, sangria, craft beer & family fun. Our signature monthly event — come join the community!</p>
+        <a href="https://www.allaspectsbarn.com" class="cta-btn cta-primary" target="_blank">Learn More</a>
+      </div>
+    </div>
+    <div class="events-card">
+      <img src="images/IMG_1297.jpg" alt="Christmas Market">
+      <div class="events-card-body">
+        <h3>🎄 Christmas Market & Holiday Festival</h3>
+        <div class="event-meta">
+          <span class="time">Annual Event</span>
+          <span class="loc">📍 All Aspects at the Barn</span>
+        </div>
+        <p>5th Annual Holiday Festival — artisan vendors, holiday shopping, seasonal treats & festive barn decorations. A Lehigh Valley tradition.</p>
+        <a href="https://www.instagram.com/allaspectsbarnevents" class="cta-btn cta-secondary" target="_blank">Follow on Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section style="background:var(--surface);">
+  <div class="container">
+    <h2 class="section-title">Workshops & Private Events</h2>
+    <p class="section-sub">Hands-on experiences and private gatherings at the barn</p>
+    <div class="split">
+      <div><img src="images/IMG_1283.jpg" alt="Workshop Area"></div>
+      <div class="split-text">
+        <h2>Schedule a Workshop</h2>
+        <p>Private events, workshops & gatherings. Whether it's a birthday party, corporate retreat, or artisan workshop — the barn is your venue.</p>
+        <ul class="detail-list">
+          <li>🏠 Pavilion rental for private events</li>
+          <li>🎨 DIY & artisan workshops</li>
+          <li>🎂 Birthday parties for all ages</li>
+          <li>💍 Rehearsal dinners & bridal showers</li>
+          <li>📚 Educational farm experiences</li>
+          <li>📞 Message us for scheduling: (570) 583-2305</li>
+        </ul>
+        <p style="margin-top:16px; color:var(--text-dim); font-style:italic;">All events are hosted at 1584 S Delaware Drive, Mount Bethel, PA 18343</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEDDINGS -->
+<section id="weddings">
+  <div class="container">
+    <h2 class="section-title">Weddings & Celebrations</h2>
+    <p class="section-sub">Your big day in a beautifully restored 1890s barn</p>
+    <div class="split">
+      <div class="split-text">
+        <h2>The Perfect Venue</h2>
+        <p>All Aspects at the Barn offers a <strong>stunning backdrop</strong> for your special day — rustic charm meets historic character.</p>
+        <ul class="detail-list">
+          <li>💒 Ceremony space in the barn</li>
+          <li>🎊 Indoor & outdoor grounds</li>
+          <li>🐐 Petting farm for photos & guest entertainment</li>
+          <li>🍹 Full catering available (Clever Girl Winery partnership)</li>
+          <li>🅿️ Parking available on-site</li>
+          <li>📍 1584 S Delaware Dr, Mount Bethel, PA 18343</li>
+        </ul>
+        <a href="#contact" class="cta-btn cta-primary" style="margin-top:20px;">Book a Tour</a>
+      </div>
+      <div>
+        <img src="images/IMG_1289.jpg" alt="Wedding Ceremony Space">
+        <div style="margin-top:12px;"><img src="images/IMG_1291.jpg" alt="Barn Grounds"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PETTING FARM -->
+<section style="background:var(--surface);" id="farm">
+  <div class="container">
+    <h2 class="section-title">Petting Farm & Animals</h2>
+    <p class="section-sub">Meet the residents — goats, chicks & friendly farm animals</p>
+    <div class="split">
+      <div><img src="images/IMG_1292.jpg" alt="Goats"></div>
+      <div class="split-text">
+        <h2>Barnyard Friends</h2>
+        <p>Our petting farm pavilion is a hit with kids and adults. Come feed, pet, and learn about our farm animals!</p>
+        <ul class="detail-list">
+          <li>🐐 Goats — the undisputed barn stars</li>
+          <li>🐣 Chicks & poultry</li>
+          <li>🍼 Kids' feeding area</li>
+          <li>📸 Photo ops with the animals</li>
+          <li>🎓 Educational farm experiences</li>
+          <li>🆓 Included with barn admission (Free!)</li>
+        </ul>
+        <p style="margin-top:16px;">Open Tues–Sun, 8am–5pm. No animals harmed, just loved.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">FAQ</h2>
+    <p class="section-sub">Quick answers about visiting the barn</p>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">Is the barn wheelchair accessible?</div>
+      <div class="faq-answer">Yes! Our barn is fully accessible with paved pathways throughout the grounds. The main barn floor is flat and wide for easy navigation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">Can I book a wedding or private party?</div>
+      <div class="faq-answer">Absolutely! Our pavilion is available for birthday parties, bridal showers, rehearsal dinners, and corporate events. Message us at (570) 583-2305 or fill out the contact form below.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">Do you have the petting farm and café at the same location?</div>
+      <div class="faq-answer">Yes! All Experiences are under one roof at 1584 S Delaware Drive. Barn Brew Coffee, the mercantile, petting farm, and pavilion are all inside our restored 1890s barn.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">How do I pay at the barn?</div>
+      <div class="faq-answer">We accept Square, CashApp, Apple Pay, Google Pay, Visa, Mastercard, American Express, Discover & JCB. All online orders are processed securely through Square.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">Are online orders returnable?</div>
+      <div class="faq-answer">All sales are final — no returns or refunds. If your order arrives damaged, contact us within 3 days at allaspectsrecycled@gmail.com and we'll work with the carrier to resolve it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Visit Us</h2>
+    <p class="section-sub">We'd love to see you at the barn</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📍 Location</h3>
+        <p><strong>All Aspects at the Barn</strong><br>1584 S Delaware Drive<br>Mount Bethel, PA 18343<br><br>Phone: (570) 583-2305<br>Email: allaspectsrecycled@gmail.com</p>
+        <p style="margin-top:12px;">Open Tues–Sun, 8am–5pm</p>
+      </div>
+      <div class="contact-card">
+        <h3>🕐 Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>Closed</td></tr>
+          <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Saturday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Sunday</td><td>8:00 AM – 5:00 PM</td></tr>
+        </table>
+      </div>
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <form action="https://formsubmit.co/allaspectsrecycled@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Message from All Aspects Website">
+          <input type="hidden" name="_next" value="https://www.allaspectsbarn.com/thank-you">
+          <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+          <div class="form-group"><label>Subject</label><select name="subject"><option value="">Select...</option><option value="Event Inquiry">Event Inquiry</option><option value="Wedding/Barn Rental">Wedding/Barn Rental</option><option value="Workshop">Workshop</option><option value="General">General</option></select></div>
+          <div class="form-group"><label>Message</label><textarea name="message" required></textarea></div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF / NEWSLETTER -->
+<section style="background:var(--surface);">
+  <div class="container" style="text-align:center;">
+    <h2 class="section-title">Stay Connected</h2>
+    <p class="section-sub">Follow us on social media for event updates & new finds</p>
+    <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:30px;">
+      <a href="https://www.instagram.com/allaspectsbarn" target="_blank" style="padding:10px 20px; background:#E1306C; color:#fff; border-radius:6px; font-weight:bold; text-decoration:none;">📷 Instagram</a>
+      <a href="https://www.tiktok.com/@allaspectsbarn" target="_blank" style="padding:10px 20px; background:#000; color:#fff; border-radius:6px; font-weight:bold; text-decoration:none;">🎵 TikTok</a>
+      <a href="https://www.facebook.com/allspectsrepurposed" target="_blank" style="padding:10px 20px; background:#1877F2; color:#fff; border-radius:6px; font-weight:bold; text-decoration:none;">📘 Facebook</a>
+      <a href="https://www.instagram.com/allaspectsbarnevents" target="_blank" style="padding:10px 20px; background:#E1306C; color:#fff; border-radius:6px; font-weight:bold; text-decoration:none;">📷 Events IG</a>
+    </div>
+    <div style="max-width:400px; margin:0 auto;">
+      <form action="https://www.allaspectsbarn.com" style="display:flex; gap:8px;">
+        <input type="email" placeholder="Your email for newsletter" style="flex:1; padding:12px; background:#222; border:1px solid #333; border-radius:6px; color:#f0e6d3; font-size:.95rem;">
+        <button type="submit" style="padding:12px 24px; background:var(--accent); color:#0d0d0d; border:none; border-radius:6px; font-weight:bold; cursor:pointer; text-transform:uppercase; font-size:.85rem;">Subscribe</button>
+      </form>
+      <p style="margin-top:8px; color:var(--text-dim); font-size:.8rem;">Get exclusive offers and event alerts delivered to your inbox</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div>
+      <h4>All Aspects at the Barn</h4>
+      <p>Antique, Gift & Home Decor Mercantile</p>
+      <p>Est. 2018 — Mount Bethel, PA</p>
+      <p>1584 S Delaware Drive<br>Mount Bethel, PA 18343</p>
+      <p>📞 (570) 583-2305</p>
+      <p>📧 allaspectsrecycled@gmail.com</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#shop">Shop Online</a>
+      <a href="#events">Events</a>
+      <a href="#weddings">Weddings</a>
+      <a href="#farm">Petting Farm</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <div class="social-links">
+        <a href="https://www.instagram.com/allaspectsbarn" target="_blank">@allaspectsbarn</a>
+        <a href="https://www.tiktok.com/@allaspectsbarn" target="_blank">@allaspectsbarn</a>
+        <a href="https://www.facebook.com/allspectsrepurposed" target="_blank">@allspectsrepurposed</a>
+        <a href="https://www.instagram.com/allaspectsbarnevents" target="_blank">@allaspectsbarnevents</a>
+      </div>
+      <p style="margin-top:12px;">Linktree: <a href="https://linktr.ee/AllAspectsAtThebarn" target="_blank">linktr.ee/AllAspectsAtThebarn</a></p>
+    </div>
+  </div>
+  <div class="container" style="margin-top:30px;">
+    <div class="copyright">
+      &copy; 2026 All Aspects at the Barn. All rights reserved. • Built for Jayto at KFS • Powered by Hermès
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/12019897108?text=Hi%20All%20Aspects%20at%20the%20Barn!%20I%20found%20you%20online.%20I%20have%20a%20question." class="whatsapp-fab" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+function toggleFaq(el) {
+  el.classList.toggle('active');
+  const ans = el.nextElementSibling;
+  ans.classList.toggle('open');
+}
+// Image error fallback
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', function() {
+    this.src = '';
+    this.style.background = '#222';
+    this.style.minHeight = '150px';
+  });
+});
+</script>
+</body>
+</html>
