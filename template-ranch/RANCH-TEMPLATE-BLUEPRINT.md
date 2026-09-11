@@ -1,0 +1,540 @@
+# Ranch Template Blueprint — Lone Mustang Ranch (Framer)
+
+**Source:** https://www.framer.com/marketplace/templates/lone-mustang-ranch/
+**Creator:** Paulina Pixi | **Price:** $49 | **Preview:** https://drab-humor-103231.framer.app/
+**Local scrape:** `template-ranch/` (12 pages html+md, 66 media, 18.2 MB)
+
+## Why this template
+Western/barn/ranch theme — matches All Aspects at the Barn exactly: barn, animals, family-run, rustic warm palette, slab-serif display type.
+
+## Page tree (12 pages)
+- `/` — 366,830 B, 23 img
+- `/ouroffer` — 408,749 B, 24 img
+- `/about` — 374,486 B, 30 img
+- `/blog` — 302,769 B, 16 img
+- `/contact` — 260,647 B, 9 img
+- `/pricing` — 320,868 B, 13 img
+- `/blog/getting-started-with-western-riding-a-beginner-s-guide` — 246,764 B, 10 img
+- `/blog/why-horseback-riding-is-good-for-body-and-mind` — 248,484 B, 11 img
+- `/blog/ranch-update-trails-training-and-new-additions` — 248,646 B, 11 img
+- `/blog/western-vs.-english-riding-what-s-the-difference` — 249,342 B, 11 img
+- `/blog/this-season-s-ranch-news-new-arrivals-and-what-s-ahead` — 249,582 B, 11 img
+- `/blog/the-western-saddle-gear-craft-and-tradition` — 245,117 B, 10 img
+
+## Design system (extracted from live preview)
+**Fonts:** 'Alfa Slab One', 'Fragment Mono', 'Rye', 'Satisfy', Inter,Inter Placeholder,sans-serif, sans-serif
+
+**Palette:**
+- Dark: #0b0b0c, #1a1a1a, #221e1a
+- Earth browns: #332622, #4c3833, #664b44, #997e77, #b29e99
+- Rust/ember accent: #b1502a
+- Deep red: #b41d1a / #b51d1a
+- Cream/tan bg: #DDD1C5
+- Greys: #434343, #767676
+
+## Section anatomy
+**Global:** Navi-wrapper (logo left, links right, label+arrow CTA button) → Main → Footer (Contact / Links / Find us)
+
+### /
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Scroll down
+- Fill1
+- Background photo
+- Text wrapper
+- Address
+- decor1
+- Title
+- Ranch name
+- Lone
+- Ranch
+- Services
+- Section / Ticker
+- Wrapper
+- BEGINNER TRAINING
+- TRAIL RIDE
+- ADVANCED TRAINING
+- FULL-CARE STALL
+- HORSE BOARDING
+- Section / About the stable
+- Photo
+- Text container
+- A Barn to call Home
+
+### /ouroffer
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Wrapper
+- decor1
+- Text wrapper
+- Title
+- Offering
+- Buttons container
+- Fill1
+- Bg photo
+- Section / Ticker
+- BEGINNER TRAINING
+- TRAIL RIDE
+- ADVANCED TRAINING
+- FULL-CARE STALL
+- Section / Lessons and rides
+- A Barn to call Home
+- Offers container
+- Price wrapper
+- Price
+- Text
+- Line 2
+- Gradient
+- bg photo
+
+### /about
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Wrapper
+- decor1
+- Text wrapper
+- Title
+- Offering
+- Fill1
+- Bg photo
+- Section / How it started
+- Sticky section
+- Photos
+- Photo1
+- text wrapper
+- Photo2
+- Photo3
+- Text container
+- From the ground up
+- Bio
+- text1
+- text2
+- text3
+- Trigger 1
+- Trigger 2
+
+### /blog
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Wrapper
+- decor1
+- Text wrapper
+- Title
+- Offering
+- Bg photo
+- Fill1
+- Section / Latest post
+- Blog wrapper
+- Blog card
+- Photo container
+- Text
+- Author + Date
+- Author
+- Post
+- Read more
+- Classes
+- Section / Blog
+- Price wrapper
+- Date
+- Short note
+- Gradient
+
+### /contact
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Hero
+- Wrapper
+- decor1
+- Text wrapper
+- Title
+- Offering
+- Fill1
+- Bg photo
+- Section / Contact Desk
+- Ranch Details
+- Text container
+- COME ON BY
+- Information
+- Address
+- Address Text
+- Phone
+- Phone Text
+- Email
+- Email Text
+- Social media icons
+- Social Links
+- Facebook
+- Instagram
+- TikTok
+
+### /pricing
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Hero
+- Wrapper
+- decor1
+- Text wrapper
+- Title
+- Offering
+- Fill1
+- Bg photo
+- Section / Lessons and rides
+- Ride With Us
+- Pricing 1
+- Spacer
+- Line
+- Rides pricing container
+- Description
+- Form Title
+- Price
+- Pricing 2
+- Button
+- Section / Boarding
+- Text container
+- A Good Home for Your Horse
+- Columns
+- Column 2
+
+### /blog/getting-started-with-western-riding-a-beginner-s-guide
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Wrapper
+- Title container
+- decor1
+- Title
+- Photo
+- Post 
+- Date + Author
+- Date
+- Author
+- Post
+- Previous / Next wrapper
+- Previous 
+- Next
+- Next container
+- Next post + arrow
+- Image + Title
+- Next post title
+- Section / FAQ
+- FAQ wrapper
+- Text wrapper
+- Text
+- Questions
+
+### /blog/why-horseback-riding-is-good-for-body-and-mind
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Wrapper
+- Title container
+- decor1
+- Title
+- Photo
+- Post 
+- Date + Author
+- Date
+- Author
+- Post
+- Previous / Next wrapper
+- Previous 
+- Previous container
+- Next post + arrow
+- Image + Title
+- Previous
+- Next
+- Next container
+- Next post title
+- Section / FAQ
+- FAQ wrapper
+- Text wrapper
+
+### /blog/ranch-update-trails-training-and-new-additions
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Wrapper
+- Title container
+- decor1
+- Title
+- Photo
+- Post 
+- Date + Author
+- Date
+- Author
+- Post
+- Previous / Next wrapper
+- Previous 
+- Previous container
+- Next post + arrow
+- Image + Title
+- Previous
+- Next
+- Next container
+- Next post title
+- Section / FAQ
+- FAQ wrapper
+- Text wrapper
+
+### /blog/western-vs.-english-riding-what-s-the-difference
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Wrapper
+- Title container
+- decor1
+- Title
+- Photo
+- Post 
+- Date + Author
+- Date
+- Author
+- Post
+- Previous / Next wrapper
+- Previous 
+- Previous container
+- Next post + arrow
+- Image + Title
+- Previous
+- Next
+- Next container
+- Next post title
+- Section / FAQ
+- FAQ wrapper
+- Text wrapper
+
+### /blog/this-season-s-ranch-news-new-arrivals-and-what-s-ahead
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Wrapper
+- Title container
+- decor1
+- Title
+- Photo
+- Post 
+- Date + Author
+- Date
+- Author
+- Post
+- Previous / Next wrapper
+- Previous 
+- Previous container
+- Next post + arrow
+- Image + Title
+- Previous
+- Next
+- Next container
+- Next post title
+- Section / FAQ
+- FAQ wrapper
+- Text wrapper
+
+### /blog/the-western-saddle-gear-craft-and-tradition
+- Desktop
+- Navi-wrapper
+- Navi-Left
+- Logo container
+- Logo
+- Navi-right
+- Navi-Links
+- Variant 1
+- Nowości
+- Label container
+- Label
+- Arrow
+- Background
+- Hover background
+- Tablet-closed-black
+- Closed
+- Main
+- Hero
+- Wrapper
+- Title container
+- decor1
+- Title
+- Photo
+- Post 
+- Date + Author
+- Date
+- Author
+- Post
+- Previous / Next wrapper
+- Previous 
+- Previous container
+- Next post + arrow
+- Image + Title
+- Previous
+- Next
+- Section / FAQ
+- FAQ wrapper
+- Text wrapper
+- Text
+- Questions

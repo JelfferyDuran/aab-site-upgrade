@@ -1,0 +1,420 @@
+{
+ "name": "Home",
+ "route": "home",
+ "title": "Home",
+ "ogTitle": "Home | All Aspects at the Barn",
+ "ogUrl": "https://www.allaspectsbarn.com",
+ "themeColor": "#435298",
+ "description": "",
+ "hidden": false,
+ "seo": {
+  "page": {
+   "f907e220-abe7-11f1-a526-6f02e94f8502": {
+    "title": "Barn Brew Coffee Bar ",
+    "description": "Barn Brew is a specialty coffee & espresso bar serving local coffee, lattes, espresso, cold brew, teas & local baked goods.  "
+   },
+   "f90a7920-abe7-11f1-b331-8170d44760a7": {
+    "title": "Photo Gallery",
+    "description": "View our gallery of before and after furniture pieces to see what you can do with Wise Owl Chalk Synthesis Paint! "
+   },
+   "f90abeb0-abe7-11f1-a6a6-9f3cf2dadd8d": {
+    "title": "Home",
+    "description": "Antique Store, Gift Store, Home Decor Store, Birthday Parties, Venue, Event Venue, Petting Farm, Pavilion Rental"
+   },
+   "f90b36e0-abe7-11f1-ba65-6faa5611d39c": {
+    "title": "Birthday Parties",
+    "description": ""
+   },
+   "f90bba10-abe7-11f1-a815-afbee9f38ac8": {
+    "title": "Shop",
+    "description": "Shop Wise Owl Paint Company, Dixie Belle Paint Company and ClingOn brushes while being inspired by tutorial videos & gallery. "
+   }
+  }
+ },
+ "logo": "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/AllAspectsFinalStraightThick(JPG)SmallSize (2)_1635203285.jpg",
+ "social": [
+  {
+   "icon": "email",
+   "user": "allaspectsrecycled@gmail.com",
+   "selected": true
+  },
+  {
+   "icon": "facebook",
+   "user": "allaspectsrepurposed/",
+   "selected": true
+  },
+  {
+   "icon": "google-plus",
+   "user": "",
+   "selected": false
+  },
+  {
+   "icon": "instagram",
+   "user": "allaspectsrestoredrecycled/",
+   "selected": true
+  },
+  {
+   "icon": "linkedin",
+   "user": "in/",
+   "selected": false
+  },
+  {
+   "icon": "pinterest",
+   "user": "",
+   "selected": false
+  },
+  {
+   "icon": "snapchat",
+   "user": "",
+   "selected": false
+  },
+  {
+   "icon": "twitter",
+   "user": "",
+   "selected": false
+  },
+  {
+   "icon": "vimeo",
+   "user": "",
+   "selected": false
+  },
+  {
+   "icon": "youtube",
+   "user": "user/",
+   "selected": false
+  }
+ ],
+ "color": {
+  "primaryColor": "#435298",
+  "colorProfiles": [
+   {
+    "id": "primary-muted-bold",
+    "link": "--primary-color",
+    "name": "Muted bold",
+    "label": "--primary-bright-dark",
+    "title": "--primary-bright-dark",
+    "paragraph": "--primary-bright-dark",
+    "background": "--primary-subtle-light",
+    "buttonOutline": "--primary-color",
+    "buttonFilledBg": "--primary-color",
+    "buttonFilledText": "--primary-contrast-color"
+   },
+   {
+    "id": "custom-profile",
+    "link": "--primary-color",
+    "name": "Custom",
+    "label": "--primary-color",
+    "title": "--primary-color",
+    "paragraph": "--primary-color",
+    "background": "--color-white",
+    "buttonOutline": "--primary-color",
+    "buttonFilledBg": "--color-secondary-VHIwge",
+    "buttonFilledText": "--primary-contrast-color"
+   },
+   {
+    "id": "primary-light-bold"
+   }
+  ],
+  "secondaryColors": [
+   {
+    "id": "--color-secondary-minimal-black-iojGVX",
+    "value": "#141414"
+   },
+   {
+    "id": "--color-secondary-VHIwge",
+    "value": "#efefef"
+   }
+  ],
+  "siteColorProfile": "primary-light-neutral"
+ },
+ "fontset": {
+  "name": "karla",
+  "version": "0.1.0",
+  "overrides": {
+   "fonts": {
+    "--ui-font": {
+     "name": "Cardo",
+     "weights": [
+      "500"
+     ],
+     "provider": "google"
+    },
+    "--primary-font": {
+     "url": null,
+     "name": "Dancing Script",
+     "title": "Dancing Script ",
+     "weight": "400",
+     "weights": [
+      "400"
+     ],
+     "provider": "google",
+     "fontFormat": null
+    },
+    "--secondary-font": {
+     "url": null,
+     "name": "Cardo",
+     "title": "Cardo light",
+     "weight": "200",
+     "weights": [
+      "200"
+     ],
+     "provider": "google",
+     "fontFormat": null
+    }
+   },
+   "fontDefinitions": {
+    "--body-font": "Cardo",
+    "--title-font": "Dancing Script",
+    "--body-font-weight": "200",
+    "--title-font-weight": "400",
+    "--primary-font-weight": "400",
+    "--secondary-font-weight": "200"
+   }
+  }
+ },
+ "fonts": {
+  "fontSize": {
+   "scale": 1.25,
+   "baseSize": 20
+  }
+ },
+ "icons": {
+  "preset": "thin-outline"
+ },
+ "siteTitle": "All Aspects at the Barn",
+ "autoNavLinks": [
+  {
+   "link": {
+    "page": {
+     "pageID": "f90abeb0-abe7-11f1-a6a6-9f3cf2dadd8d"
+    }
+   },
+   "type": "page",
+   "children": []
+  },
+  {
+   "link": {
+    "page": {
+     "pageID": "f90b36e0-abe7-11f1-ba65-6faa5611d39c"
+    }
+   },
+   "type": "page",
+   "title": "Parties & Pavilion",
+   "children": [],
+   "expanded": true
+  },
+  {
+   "link": {
+    "page": {
+     "pageID": "f9085530-abe7-11f1-87e5-cf675b227e42"
+    }
+   },
+   "type": "page"
+  },
+  {
+   "link": {
+    "page": {
+     "pageID": "f90beed0-abe7-11f1-b616-1ffad6759834"
+    }
+   },
+   "type": "page",
+   "title": "Workshops & Events",
+   "children": [],
+   "expanded": false
+  },
+  {
+   "link": {
+    "page": {
+     "pageID": "f907e220-abe7-11f1-a526-6f02e94f8502"
+    }
+   },
+   "type": "page"
+  },
+  {
+   "link": {
+    "page": {
+     "pageID": "f908be20-abe7-11f1-bc76-85f7aa051152"
+    }
+   },
+   "type": "page",
+   "expanded": false
+  },
+  {
+   "link": {
+    "page": {
+     "pageID": "f909ec30-abe7-11f1-bd80-27f2f5edc369"
+    }
+   },
+   "type": "page",
+   "title": "About Us",
+   "children": []
+  },
+  {
+   "link": {
+    "page": {
+     "pageID": "f90a2580-abe7-11f1-9ccb-f90a7871d51c"
+    }
+   },
+   "type": "page",
+   "title": "Contact Us",
+   "children": []
+  }
+ ],
+ "pagesMeta": [
+  {
+   "id": "f909ec30-abe7-11f1-bd80-27f2f5edc369",
+   "name": "About",
+   "route": "about",
+   "title": "About",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  },
+  {
+   "id": "f907e220-abe7-11f1-a526-6f02e94f8502",
+   "name": "Barn Brew Coffee Bar ",
+   "route": "barn-brew-coffee-bar",
+   "title": "Barn Brew Coffee Bar ",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  },
+  {
+   "id": "f90a2580-abe7-11f1-9ccb-f90a7871d51c",
+   "name": "Contact",
+   "route": "contact",
+   "title": "Contact",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  },
+  {
+   "id": "f90a7920-abe7-11f1-b331-8170d44760a7",
+   "name": "Gallery",
+   "route": "gallery",
+   "title": "Photo Gallery",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  },
+  {
+   "id": "f90abeb0-abe7-11f1-a6a6-9f3cf2dadd8d",
+   "name": "Home",
+   "route": "home",
+   "title": "Home",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  },
+  {
+   "id": "f90b36e0-abe7-11f1-ba65-6faa5611d39c",
+   "name": "Pavilion Rentals & Birthday Parties ",
+   "route": "pavilion-party-rental",
+   "title": "Birthday Parties",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  },
+  {
+   "id": "f908be20-abe7-11f1-bc76-85f7aa051152",
+   "name": "Petting Farm ",
+   "route": "petting-farm",
+   "title": "Petting Farm ",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  },
+  {
+   "id": "f90bba10-abe7-11f1-a815-afbee9f38ac8",
+   "name": "Shop",
+   "route": "shop",
+   "title": "Shop",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  },
+  {
+   "id": "f9085530-abe7-11f1-87e5-cf675b227e42",
+   "name": "Wedding Venue ",
+   "route": "wedding-venue",
+   "title": "Wedding Venue ",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  },
+  {
+   "id": "f90beed0-abe7-11f1-b616-1ffad6759834",
+   "name": "Workshops",
+   "route": "workshops",
+   "title": "Workshops",
+   "featureType": null,
+   "description": "",
+   "hidden": false
+  }
+ ],
+ "storeInfo": {
+  "merchant_id": "ASNY1QEVJW91Z",
+  "buyer_customer_accounts_enabled": true,
+  "currency": "USD",
+  "locale": "en_US",
+  "language": "en",
+  "syncing_disabled": true,
+  "return_policy": "<p>No returns or refunds. All Sales Final.\u00a0</p><p>Please contact us via email at allaspectsrecycled&#64;gmail.com within 3 days of receiving your order if your order has arrived damaged or with missing items.</p>",
+  "shipping_policy": "<p>Orders are shipped via UPS or USPS within 2-3 business days. Orders are not shipped or delivered on holidays or weekends.</p><p>If we are experiencing a high volume of orders, shipments may be delayed a few days. Please allow additional days in transit for delivery. If there will be a significant delay in shipment of your order, we will contact you via email or telephone.</p><p>All Aspects Restored &amp; Recycled is not liable for any products damaged or lost during shipping. If you received your order damaged, please contact the shipment carrier to file a claim.</p><p>Shipping charges for your order will be calculated at checkout.</p>",
+  "max_donation_amount": 5000,
+  "store_mode": "cart",
+  "payment_method_support": {
+   "visa": true,
+   "mastercard": true,
+   "amex": true,
+   "discover": true,
+   "jcb": true,
+   "interac": false,
+   "paypal": false,
+   "apple_pay": true,
+   "google_pay": true,
+   "cash_app": true,
+   "square_pay": true
+  },
+  "show_pdp_buy_now_button": true,
+  "allowed_to_sell": true,
+  "accepting_orders": true,
+  "has_payment_processor": true,
+  "can_process_payments": true,
+  "is_group_ordering_enabled": false,
+  "product_reviews_enabled": false,
+  "show_on_sale_section": true,
+  "show_low_stock_section": false,
+  "show_out_of_stock_section": true,
+  "shipping_location_ids": [
+   "DEV821K56MBKQ"
+  ],
+  "fulfillment_support": {
+   "delivery": false,
+   "pickup": true,
+   "shipping": true,
+   "dine_in": false,
+   "manual": false,
+   "digital": false
+  },
+  "seller_preferred_fulfillment": "delivery",
+  "locations_counts": {
+   "pickup": 1,
+   "delivery": 0,
+   "dine_in": 0,
+   "pickup_or_delivery": 1,
+   "brick_and_mortar_fulfillment": 1,
+   "shipping": 1,
+   "total": 1
+  },
+  "has_subscribable_items": false,
+  "has_shippable_product": true,
+  "has_time_based_categories": false,
+  "product_setting_low_stock_threshold": 5,
+  "category_hierarchy_root_ids": {
+   "site_category_id": null,
+   "id": null
+  }
+ },
+ "blogPostLinks": {}
+}

@@ -1,0 +1,19 @@
+# ---------------------------------------------------------------
+# Large scraped artifacts — kept local, regenerable via scraper.py
+# ---------------------------------------------------------------
+# site-scrape/media/   561 MB of images (SHA-1 deduped)
+# site-scrape/manifest.json  15 MB
+# site-scrape/html/    2,828 raw Square Online pages (~220 MB, JS shells)
+#   The ANALYZED layer lives in site-scrape/content-clean/ (committed).
+site-scrape/media/
+site-scrape/manifest.json
+site-scrape/html/
+site-scrape/content/
+
+# ---------------------------------------------------------------
+# Tooling
+# ---------------------------------------------------------------
+node_modules/
+.vercel/
+.DS_Store
+Thumbs.db
