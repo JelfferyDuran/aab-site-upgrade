@@ -1,0 +1,567 @@
+{
+  "source": "Lone Mustang Ranch (Framer) - https://drab-humor-103231.framer.app/",
+  "extractor": "extract_tokens.py (analyzed output, template code NOT redistributed)",
+  "pages_scanned": 12,
+  "distinct_custom_properties": 120,
+  "colors": {
+    "rgb(0, 153, 255)": 346,
+    "#09f": 108,
+    "rgba(0, 0, 0, 0)": 53,
+    "#000": 48,
+    "#fff": 36,
+    "#fec202": 24,
+    "#f9f9f9": 24,
+    "#0b0b0c": 24,
+    "#c3c3c3": 24,
+    "#1a1a1a": 24,
+    "#eefe45": 24,
+    "#d99a23": 13,
+    "#fbf9f8": 12,
+    "#eee8e2": 12,
+    "#ddd1c5": 12,
+    "#d5c5b6": 12,
+    "#221e1a": 12,
+    "#b51d1a": 12,
+    "#f2efee": 12,
+    "#e5dfdd": 12,
+    "#d9cfcc": 12,
+    "#b29e99": 12,
+    "#997e77": 12,
+    "#664b44": 12,
+    "#4c3833": 12,
+    "#332622": 12,
+    "#efe5d2": 12,
+    "#b1502a": 12,
+    "#434343": 12,
+    "#767676": 12,
+    "#8883": 2,
+    "rgb(0, 0, 0)": 2
+  },
+  "hex_palette": [
+    "#000",
+    "#09f",
+    "#0b0b0c",
+    "#1a1a1a",
+    "#221e1a",
+    "#332622",
+    "#434343",
+    "#4c3833",
+    "#664b44",
+    "#767676",
+    "#8883",
+    "#997e77",
+    "#b1502a",
+    "#b29e99",
+    "#b51d1a",
+    "#c3c3c3",
+    "#d5c5b6",
+    "#d99a23",
+    "#d9cfcc",
+    "#ddd1c5",
+    "#e5dfdd",
+    "#eee8e2",
+    "#eefe45",
+    "#efe5d2",
+    "#f2efee",
+    "#f9f9f9",
+    "#fbf9f8",
+    "#fec202",
+    "#fff"
+  ],
+  "font_families_ranked": {
+    "sans": 934,
+    "archivo": 688,
+    "archivo placeholder": 484,
+    "alfa slab one": 163,
+    "framer": 120,
+    "font": 120,
+    "family": 120,
+    "link": 60,
+    "quot": 60,
+    "alfa slab one placeholder": 54,
+    "rye": 36,
+    "rye placeholder": 36,
+    "r0y7qwxmysbtbgfiie9uzs1yzwd1bgfy": 32,
+    "inter placeholder": 24,
+    "satisfy": 23
+  },
+  "typography": [
+    [
+      "font-size",
+      "var(--framer-font-size)"
+    ],
+    [
+      "font-size",
+      "var(--framer-link-current-font-size,var(--framer-link-font-size,var(--framer-font-size)))"
+    ],
+    [
+      "font-size",
+      "var(--framer-link-font-size,var(--framer-font-size))"
+    ],
+    [
+      "font-size",
+      "var(--framer-link-hover-font-size,var(--framer-link-font-size,var(--framer-font-size)))"
+    ],
+    [
+      "framer-font-size",
+      "144px"
+    ],
+    [
+      "framer-font-size",
+      "14px"
+    ],
+    [
+      "framer-font-size",
+      "16px"
+    ],
+    [
+      "framer-font-size",
+      "17px"
+    ],
+    [
+      "framer-font-size",
+      "18px"
+    ],
+    [
+      "framer-font-size",
+      "20px"
+    ],
+    [
+      "framer-font-size",
+      "24px"
+    ],
+    [
+      "framer-font-size",
+      "26px"
+    ],
+    [
+      "framer-font-size",
+      "32px"
+    ],
+    [
+      "framer-font-size",
+      "40px"
+    ],
+    [
+      "framer-font-size",
+      "48px"
+    ],
+    [
+      "framer-font-size",
+      "64px"
+    ],
+    [
+      "framer-font-size",
+      "88px"
+    ],
+    [
+      "framer-font-size-scale",
+      "1"
+    ],
+    [
+      "framer-input-font-letter-spacing",
+      "0em"
+    ],
+    [
+      "framer-input-font-line-height",
+      "1.2em"
+    ],
+    [
+      "framer-input-font-size",
+      "16px"
+    ],
+    [
+      "framer-letter-spacing",
+      ".02em"
+    ],
+    [
+      "framer-letter-spacing",
+      ".5px"
+    ],
+    [
+      "framer-letter-spacing",
+      ".8px"
+    ],
+    [
+      "framer-letter-spacing",
+      ".9px"
+    ],
+    [
+      "framer-letter-spacing",
+      "0"
+    ],
+    [
+      "framer-letter-spacing",
+      "0em"
+    ],
+    [
+      "framer-letter-spacing",
+      "0px"
+    ],
+    [
+      "framer-letter-spacing",
+      "2px"
+    ],
+    [
+      "framer-line-height",
+      "1.1em"
+    ],
+    [
+      "framer-line-height",
+      "1.2em"
+    ],
+    [
+      "framer-line-height",
+      "1.4em"
+    ],
+    [
+      "framer-line-height",
+      "16px"
+    ],
+    [
+      "framer-line-height",
+      "18px"
+    ],
+    [
+      "framer-line-height",
+      "20px"
+    ],
+    [
+      "framer-line-height",
+      "21px"
+    ],
+    [
+      "framer-line-height",
+      "24px"
+    ],
+    [
+      "framer-line-height",
+      "30px"
+    ],
+    [
+      "framer-line-height",
+      "31px"
+    ],
+    [
+      "framer-line-height",
+      "32px"
+    ],
+    [
+      "framer-line-height",
+      "34px"
+    ],
+    [
+      "framer-line-height",
+      "36px"
+    ],
+    [
+      "framer-line-height",
+      "42px"
+    ],
+    [
+      "framer-line-height",
+      "48px"
+    ],
+    [
+      "framer-line-height",
+      "50px"
+    ],
+    [
+      "framer-line-height",
+      "64px"
+    ],
+    [
+      "framer-line-height",
+      "83px"
+    ],
+    [
+      "framer-line-height",
+      "88px"
+    ],
+    [
+      "framer-text-transform",
+      "none"
+    ],
+    [
+      "letter-spacing",
+      "var(--framer-letter-spacing)"
+    ],
+    [
+      "text-transform",
+      "var(--framer-link-current-text-transform,var(--framer-link-text-transform,var(--framer-text-transform)))"
+    ],
+    [
+      "text-transform",
+      "var(--framer-link-hover-text-transform,var(--framer-link-text-transform,var(--framer-text-transform)))"
+    ],
+    [
+      "text-transform",
+      "var(--framer-link-text-transform,var(--framer-text-transform))"
+    ],
+    [
+      "text-transform",
+      "var(--framer-text-transform)"
+    ]
+  ],
+  "weights": [
+    [
+      "font-style",
+      "var(--framer-font-style)"
+    ],
+    [
+      "font-style",
+      "var(--framer-link-current-font-style,var(--framer-link-font-style,var(--framer-font-style)))"
+    ],
+    [
+      "font-style",
+      "var(--framer-link-font-style,var(--framer-font-style))"
+    ],
+    [
+      "font-style",
+      "var(--framer-link-hover-font-style,var(--framer-link-font-style,var(--framer-font-style)))"
+    ],
+    [
+      "font-weight",
+      "var(--framer-font-weight)"
+    ],
+    [
+      "font-weight",
+      "var(--framer-link-current-font-weight,var(--framer-link-font-weight,var(--framer-font-weight)))"
+    ],
+    [
+      "font-weight",
+      "var(--framer-link-font-weight,var(--framer-font-weight))"
+    ],
+    [
+      "font-weight",
+      "var(--framer-link-hover-font-weight,var(--framer-link-font-weight,var(--framer-font-weight)))"
+    ],
+    [
+      "framer-code-font-style",
+      "normal"
+    ],
+    [
+      "framer-code-font-weight",
+      "400"
+    ],
+    [
+      "framer-font-style",
+      "normal"
+    ],
+    [
+      "framer-font-style-bold",
+      "normal"
+    ],
+    [
+      "framer-font-style-bold-italic",
+      "italic"
+    ],
+    [
+      "framer-font-style-italic",
+      "italic"
+    ],
+    [
+      "framer-font-variation-axes",
+      "normal"
+    ],
+    [
+      "framer-font-weight",
+      "400"
+    ],
+    [
+      "framer-font-weight",
+      "500"
+    ],
+    [
+      "framer-font-weight",
+      "600"
+    ],
+    [
+      "framer-font-weight",
+      "700"
+    ],
+    [
+      "framer-font-weight",
+      "800"
+    ],
+    [
+      "framer-font-weight-bold",
+      "700"
+    ],
+    [
+      "framer-font-weight-bold",
+      "900"
+    ],
+    [
+      "framer-font-weight-bold-italic",
+      "700"
+    ],
+    [
+      "framer-font-weight-bold-italic",
+      "900"
+    ],
+    [
+      "framer-font-weight-italic",
+      "400"
+    ],
+    [
+      "framer-font-weight-italic",
+      "600"
+    ],
+    [
+      "framer-font-weight-italic",
+      "700"
+    ],
+    [
+      "framer-font-weight-italic",
+      "800"
+    ],
+    [
+      "framer-input-font-weight",
+      "400"
+    ]
+  ],
+  "radius": [
+    [
+      "framer-text-background-radius",
+      "initial"
+    ]
+  ],
+  "shadows": [],
+  "spacing": [
+    [
+      "framer-input-padding",
+      "12px 14px 12px 14px"
+    ],
+    [
+      "framer-paragraph-spacing",
+      "0px"
+    ],
+    [
+      "framer-paragraph-spacing",
+      "19px"
+    ],
+    [
+      "framer-paragraph-spacing",
+      "20px"
+    ],
+    [
+      "framer-paragraph-spacing",
+      "40px"
+    ]
+  ],
+  "dimensions": [
+    [
+      "border-bottom-width",
+      "0px"
+    ],
+    [
+      "border-bottom-width",
+      "1px"
+    ],
+    [
+      "border-bottom-width",
+      "2px"
+    ],
+    [
+      "border-bottom-width",
+      "3px"
+    ],
+    [
+      "border-bottom-width",
+      "4px"
+    ],
+    [
+      "border-left-width",
+      "0px"
+    ],
+    [
+      "border-left-width",
+      "1px"
+    ],
+    [
+      "border-left-width",
+      "2px"
+    ],
+    [
+      "border-left-width",
+      "3px"
+    ],
+    [
+      "border-left-width",
+      "4px"
+    ],
+    [
+      "border-right-width",
+      "0px"
+    ],
+    [
+      "border-right-width",
+      "1px"
+    ],
+    [
+      "border-right-width",
+      "2px"
+    ],
+    [
+      "border-right-width",
+      "3px"
+    ],
+    [
+      "border-right-width",
+      "4px"
+    ],
+    [
+      "border-top-width",
+      "0px"
+    ],
+    [
+      "border-top-width",
+      "1px"
+    ],
+    [
+      "border-top-width",
+      "2px"
+    ],
+    [
+      "border-top-width",
+      "3px"
+    ],
+    [
+      "border-top-width",
+      "3px\"></div><div class=\"framer-15xnhvw\" style=\"transform:none\"><div style=\"position:absolute"
+    ],
+    [
+      "border-top-width",
+      "4px"
+    ],
+    [
+      "framer-input-border-bottom-width",
+      "1px"
+    ],
+    [
+      "framer-input-border-left-width",
+      "1px"
+    ],
+    [
+      "framer-input-border-right-width",
+      "1px"
+    ],
+    [
+      "framer-input-border-top-width",
+      "1px"
+    ],
+    [
+      "framer-input-focused-border-width",
+      "1px"
+    ],
+    [
+      "framer-text-stroke-width",
+      "initial"
+    ],
+    [
+      "framer-textarea-resize",
+      "vertical"
+    ]
+  ]
+}
