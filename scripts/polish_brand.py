@@ -1,379 +1,139 @@
-/* 
- * styles.css - AAB Site Styles
- * Implements the visual design using tokens.css
- */
+"""Phase 2.6b - Polish v2: AAB BRAND COLORS instead of ranch gold/rust.
 
-/* Base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+Brand evidence (scraped from allaspectsbarn.com itself):
+  #435298 indigo -> 31,108 occurrences   <-- their brand color
+  #ffffff 8,484 | #efefef 5,656 | #141414 2,828 | #000000 2,828 (neutrals only)
+No yellow/orange exists in their brand, so every gold/rust accent is remapped to
+the indigo family. Warm ranch neutrals (espresso / cream / tan) stay as structure.
+
+1. tokens.css -> brand palette + template font stack (kept)
+2. index.html -> (unchanged fonts, theme-color -> #435298)
+3. styles.css -> polish layer v2 (brand accents)
+Idempotent.
+"""
+import re, hashlib, os
+
+BASE = r"C:\Users\Jayto\aab-port\build"
+TOK = os.path.join(BASE, "tokens.css")
+IDX = os.path.join(BASE, "index.html")
+CSS = os.path.join(BASE, "styles.css")
+MARK = "/* ==== RANCH POLISH LAYER (phase 2.6b - AAB brand) ==== */"
+
+TOKENS = """:root {
+  /* ===== AAB BRAND PALETTE (from their own site: #435298 x31,108) ===== */
+  --color-brand: #435298;         /* AAB indigo - THE brand color */
+  --color-brand-dark: #35417a;    /* pressed / hover */
+  --color-brand-light: #5a69b2;   /* mid tint - rules, borders on light */
+  --color-brand-soft: #9aa6dc;    /* light indigo - readable ON dark bands */
+  --color-brand-tint: #e9ebf5;    /* 8% indigo wash - badges, table heads */
+  --color-brand-tint-2: #d3d8ec;  /* 15% wash - chips, tags */
+
+  /* ===== Warm ranch neutrals (structure - kept from the Lone Mustang pass) ===== */
+  --color-ink: #221e1a;           /* espresso ink - dark bands + body text */
+  --color-brown-900: #221e1a;
+  --color-brown-800: #332622;
+  --color-brown-700: #4c3833;
+  --color-brown-600: #664b44;
+  --color-tan: #d5c5b6;           /* hairline borders */
+  --color-cream-50: #fbf9f8;      /* cards / off white */
+  --color-cream-100: #f5efe7;
+  --color-cream-200: #eee8e2;     /* light band */
+  --color-cream-300: #efe5d2;     /* warmer cream - callouts, on-dark text */
+
+  /* ---- semantic mapping (existing core selectors keep working) ---- */
+  --color-primary: var(--color-brand);
+  --color-primary-darker: var(--color-brand-dark);
+  --color-primary-lighter: var(--color-brand-light);
+
+  --color-surface: var(--color-cream-200);
+  --color-surface-dark: var(--color-tan);
+  --color-card: var(--color-cream-50);
+  --color-border: var(--color-tan);
+
+  --color-text: var(--color-ink);
+  --color-text-light: var(--color-brown-700);
+  --color-text-dim: #6b5b54;
+
+  --color-accent: var(--color-brand-light);
+  --color-accent-light: var(--color-brand-soft);
+  --color-accent-darker: var(--color-brand-dark);
+
+  /* dark-surface helpers */
+  --color-on-dark: var(--color-cream-300);
+  --color-on-dark-dim: #cbbfae;
+  --color-band-dark: var(--color-ink);
+  --color-band-cream: var(--color-cream-200);
+  --color-band-light: var(--color-cream-50);
+
+  /* Status colors */
+  --color-success: #2f7d4f;
+  --color-warning: #b07d15;
+  --color-error: #b3261e;
+
+  /* ===== Typography - Lone Mustang template stack ===== */
+  --font-display: 'Alfa Slab One', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Rye', Georgia, serif;
+  --font-script: 'Satisfy', 'Segoe Script', cursive;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Cardo', Georgia, serif;
+
+  /* Type scale - base 20px, scale 1.25 */
+  --font-size-xxs: 0.8rem;
+  --font-size-xs: 0.9rem;
+  --font-size-sm: 1rem;
+  --font-size-md: 1.25rem;
+  --font-size-lg: 1.5625rem;
+  --font-size-xl: 1.953125rem;
+  --font-size-xxl: 2.44140625rem;
+  --font-size-xxxl: 3.0517578125rem;
+
+  /* Line heights */
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.6;
+  --line-height-loose: 1.8;
+
+  /* Spacing scale */
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+  --space-xxxl: 4rem;
+
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  /* Border radius - rustic = tight radii */
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-full: 50%;
+
+  /* Shadows - warm, brown-tinted */
+  --shadow-sm: 0 2px 4px rgba(34,30,26,0.07);
+  --shadow-md: 0 6px 16px rgba(34,30,26,0.12);
+  --shadow-lg: 0 14px 34px rgba(34,30,26,0.18);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.4s ease;
+
+  /* Z-index */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal: 1050;
 }
+"""
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-body);
-  background: var(--color-surface);
-  color: var(--color-text);
-  line-height: var(--line-height-normal);
-}
-
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--color-primary-darker);
-}
-
-img {
-  width: 100%;
-  display: block;
-  border-radius: var(--radius-sm);
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-md);
-}
-
-section {
-  padding: var(--space-xxl) 0;
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-md);
-  font-weight: bold;
-  font-size: var(--font-size-sm);
-  transition: var(--transition-normal);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: var(--color-primary-darker);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-secondary {
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  background: transparent;
-}
-
-.btn-secondary:hover {
-  background: var(--color-primary);
-  color: white;
-}
-
-/* Navigation */
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.96);
-  z-index: var(--z-index-sticky);
-  padding: var(--space-sm) 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.nav .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-logo a {
-  color: var(--color-primary);
-  font-family: var(--font-display);
-  font-size: var(--font-size-xl);
-  font-weight: bold;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: var(--space-lg);
-}
-
-.nav-links a {
-  color: var(--color-text-light);
-  font-size: var(--font-size-sm);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: var(--transition-normal);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-sm);
-}
-
-.nav-links a:hover {
-  color: var(--color-primary);
-  background: var(--color-surface-dark);
-}
-
-/* Hero Section */
-.hero {
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  padding-top: 80px;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/IMG_1415.jpg');
-  background-size: cover;
-  background-position: center center;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 820px;
-  padding: 0 var(--space-md);
-}
-
-.hero-text .eyebrow {
-  font-size: var(--font-size-xs);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--color-accent-light);
-  margin-bottom: var(--space-sm);
-}
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: var(--font-size-xxxl);
-  color: white;
-  margin-bottom: var(--space-sm);
-  text-shadow: 2px 2px 8px rgba(0,0,0,.6);
-}
-
-.hero-subtitle {
-  font-size: var(--font-size-lg);
-  color: var(--color-accent-light);
-  margin-bottom: var(--space-md);
-  font-style: italic;
-}
-
-.hero-description {
-  font-size: var(--font-size-md);
-  color: var(--color-text);
-  margin-bottom: var(--space-lg);
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: var(--space-md);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* Services Ticker */
-.ticker {
-  background: var(--color-accent);
-  color: white;
-  padding: var(--space-xs) 0;
-  overflow: hidden;
-}
-
-.ticker p {
-  white-space: nowrap;
-  display: inline-block;
-  padding-left: 100%;
-  animation: tick 30s linear infinite;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: var(--font-size-sm);
-  text-transform: uppercase;
-}
-
-@keyframes tick {
-  to { transform: translateX(-100%); }
-}
-
-/* Pillars/What We Offer */
-.pillars {
-  background: var(--color-surface);
-}
-
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-lg);
-}
-
-.pillar-card {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: var(--transition-normal);
-  box-shadow: var(--shadow-sm);
-}
-
-.pillar-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.pillar-image {
-  height: 220px;
-  overflow: hidden;
-}
-
-.pillar-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.pillar-body {
-  padding: var(--space-lg);
-}
-
-.pillar-body h3 {
-  color: var(--color-primary);
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-sm);
-}
-
-.pillar-body p {
-  color: var(--color-text-light);
-  font-size: var(--font-size-sm);
-}
-
-.pillar-body .price {
-  color: var(--color-success);
-  font-weight: bold;
-  margin-top: var(--space-md);
-  font-size: var(--font-size-md);
-}
-
-/* Section Titles */
-.section-title {
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: var(--font-size-xl);
-  color: var(--color-primary);
-  margin-bottom: var(--space-sm);
-}
-
-.section-sub {
-  text-align: center;
-  color: var(--color-text-light);
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--space-xl);
-  font-style: italic;
-}
-
-/* Footer */
-.footer {
-  background: var(--color-text);
-  color: white;
-  padding: var(--space-xxl) 0 0;
-  border-top: 1px solid var(--color-border);
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-xl);
-  margin-bottom: var(--space-xl);
-}
-
-.footer-info h4,
-.footer-links h4,
-.footer-social h4 {
-  color: var(--color-accent-light);
-  margin-bottom: var(--space-md);
-  font-size: var(--font-size-md);
-}
-
-.footer-info p,
-.footer-links a,
-.footer-social a {
-  color: var(--color-text-light);
-  font-size: var(--font-size-sm);
-  display: block;
-  margin-bottom: var(--space-xs);
-}
-
-.footer-links a:hover {
-  color: var(--color-accent-light);
-}
-
-.footer-social .social-links {
-  display: flex;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-md);
-  flex-wrap: wrap;
-}
-
-.footer-social .social-links a {
-  display: inline-block;
-  padding: var(--space-xs) var(--space-sm);
-  background: var(--color-surface-dark);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  color: var(--color-primary);
-  font-size: var(--font-size-xs);
-  transition: var(--transition-normal);
-}
-
-.footer-social .social-links a:hover {
-  background: var(--color-primary);
-  color: white;
-}
-
-.footer-bottom {
-  text-align: center;
-  color: var(--color-text-light);
-  font-size: var(--font-size-xs);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--color-border);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: var(--font-size-xxl);
-  }
-  
-  .nav-links {
-    gap: var(--space-md);
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .pillars-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ==== RANCH POLISH LAYER (phase 2.6b - AAB brand) ==== */
+POLISH = MARK + """
 /* Warm base + brand selection */
 body { background-color: var(--color-band-cream); color: var(--color-text); }
 ::selection { background: var(--color-brand); color: var(--color-cream-50); }
@@ -496,3 +256,27 @@ body { background-color: var(--color-band-cream); color: var(--color-text); }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
+"""
+
+def md5(p):
+    return hashlib.md5(open(p, "rb").read()).hexdigest()[:10]
+
+open(TOK, "w", encoding="utf-8", newline="\n").write(TOKENS)
+
+html = open(IDX, encoding="utf-8").read()
+html, n_theme = re.subn(r'(<meta name="theme-color" content=")[^"]*(")', r'\g<1>#435298\g<2>', html)
+if n_theme == 0:
+    html = html.replace("</head>", '<meta name="theme-color" content="#435298">\n</head>', 1)
+open(IDX, "w", encoding="utf-8", newline="\n").write(html)
+
+css = open(CSS, encoding="utf-8").read()
+# drop BOTH polish layers (v1 gold + v2) if present, then append v2
+for m in ("/* ==== RANCH POLISH LAYER (phase 2.6) ==== */", MARK):
+    if m in css:
+        css = css.split(m)[0].rstrip() + "\n\n"
+css = (css.rstrip() + "\n\n" + POLISH)
+open(CSS, "w", encoding="utf-8", newline="\n").write(css)
+
+print("tokens.css ->", os.path.getsize(TOK), "B  md5", md5(TOK))
+print("index.html ->", os.path.getsize(IDX), "B  md5", md5(IDX))
+print("styles.css ->", os.path.getsize(CSS), "B  md5", md5(CSS))
