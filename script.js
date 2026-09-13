@@ -86,3 +86,49 @@ document.addEventListener("DOMContentLoaded", function() {
     if (!e.target.closest('.nav')) setOpen(false);
   });
 })();
+
+/* ===== Depth system (Phase 5) — pointer-tracked tilt + travelling lamp sheen =====
+   Answers the visitor's own cursor rather than animating on its own. Writes --rx/--ry
+   (rotation) and --mx/--my (sheen position) as CSS custom properties; the CSS layer does
+   the rendering. Skipped entirely for reduced-motion users and coarse pointers. */
+(function () {
+  const FAMILY = '.pillar-card, .why-card, .events-card, .video-card, .contact-card, .festival';
+  const cards = document.querySelectorAll(FAMILY);
+  if (!cards.length) return;
+
+  const REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const FINE = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const MAX = 6; // degrees — matches --tilt-max
+
+  function point(card, e) {
+    const r = card.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    const px = (e.clientX - r.left) / r.width;   // 0..1 across the card
+    const py = (e.clientY - r.top) / r.height;   // 0..1 down the card
+    card.style.setProperty('--rx', ((0.5 - py) * 2 * MAX).toFixed(2) + 'deg');
+    card.style.setProperty('--ry', ((px - 0.5) * 2 * MAX).toFixed(2) + 'deg');
+    card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+    card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+  }
+
+  function rest(card) {
+    card.style.setProperty('--rx', '0deg');
+    card.style.setProperty('--ry', '0deg');
+    card.style.setProperty('--mx', '50%');
+    card.style.setProperty('--my', '18%');
+  }
+
+  cards.forEach(function (card) {
+    let raf = 0;
+    card.addEventListener('pointermove', function (e) {
+      if (REDUCE.matches || !FINE.matches) return;
+      if (raf) return; // one frame at a time
+      raf = requestAnimationFrame(function () { raf = 0; point(card, e); });
+    }, { passive: true });
+
+    card.addEventListener('pointerleave', function () {
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
+      if (!REDUCE.matches) rest(card);
+    }, { passive: true });
+  });
+})();
