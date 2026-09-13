@@ -127,4 +127,14 @@
   --z-index-sticky: 1020;
   --z-index-fixed: 1030;
   --z-index-modal: 1050;
+
+  /* --- Timber frame system (Phase 6): every card is edged in real wood --- */
+  --wood-w: 10px;              /* default frame thickness */
+  --wood-w-thin: 6px;          /* plaques, FAQ rows, gallery prints, footer cards */
+  --wood-w-heavy: 14px;        /* hero panel + section signs */
+  --wood-rail: #6b4423;        /* planed oak - mid grain */
+  --wood-rail-dark: #3b2412;   /* shadowed grain + mitred corners */
+  --wood-rail-light: #8f5c31;  /* lamplit grain, top rail */
+  --wood-face: var(--color-cream-50);          /* interior face of a light card */
+  --wood-face-dark: rgba(30, 25, 21, 0.62);    /* interior face of an on-dark card */
 }

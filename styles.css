@@ -819,3 +819,235 @@ body.nav-open { overflow: hidden; }
   .pillar-card::after, .why-card::after, .events-card::after, .video-card::after,
   .contact-card::after, .festival::after { opacity: 0 !important; }
 }
+
+/* ===================== PHASE 6 — Timber frames + floating text cards =====================
+   Two jobs, one idea: every text-bearing block becomes a physical object standing on the barn
+   floor, and every one of those objects is edged in timber.
+
+   1) FLOATING CARDS — bare static text (section titles, subtitles, split-text bodies, callouts,
+      the hero panel, footer columns, stray intro paragraphs) is promoted to a raised card, so no
+      line of copy sits naked on the background any more.
+   2) WOOD FRAME — a card's border is *shaped* like wood: a planed-timber ring with grain, mitred
+      corners, side falloff and lamplight on the top rail, instead of a 1px hairline. Built from
+      layered background gradients clipped to the border box, so the frame follows each card's own
+      radius and wraps it rather than sitting on top of it.
+
+   Pseudo-element-free on purpose: Phase 5's travelling sheen owns ::after on the card family and
+   .why-card's badge owns ::before. The frame never touches either. */
+
+:root {
+  --wood-face: var(--color-cream-50);
+  --wood-face-dark: rgba(30, 25, 21, 0.62);
+}
+
+/* ---- The timber ring: one recipe shared by every card, sign, plaque and panel ---- */
+.hero-content,
+.section-title,
+.section-sub,
+.split-text,
+.callout,
+.pillar-card,
+.why-card,
+.events-card,
+.video-card,
+.contact-card,
+.festival,
+.faq-item,
+.gallery-item,
+.footer-info,
+.footer-links,
+.footer-social,
+.book-band {
+  border: var(--wood-w) solid transparent;
+  border-radius: var(--radius-md);
+  background-color: transparent;
+  background-image:
+    /* 1 · interior face — drawn on top, clipped to the padding box so nothing bleeds onto it */
+    linear-gradient(var(--wood-face, var(--color-cream-50)), var(--wood-face, var(--color-cream-50))),
+    /* 2 · lamplight warming the timber on hover */
+    linear-gradient(180deg,
+      rgba(254, 194, 2, calc(0.34 * var(--wood-lamp, 0))),
+      rgba(254, 194, 2, calc(0.12 * var(--wood-lamp, 0)))),
+    /* 3 · the lamp rakes across the top rail, the bottom rail falls into shade */
+    linear-gradient(180deg, rgba(255, 244, 222, 0.20) 0%, rgba(34, 30, 26, 0.30) 100%),
+    /* 4 · the frame turns away from the light at both ends */
+    linear-gradient(90deg, rgba(34, 30, 26, 0.42) 0%, rgba(34, 30, 26, 0) 22%,
+                    rgba(34, 30, 26, 0) 78%, rgba(34, 30, 26, 0.42) 100%),
+    /* 5-8 · mitred corners: four shadowed wedges, like a real frame's joinery */
+    radial-gradient(circle at 0 0, rgba(59, 36, 18, 0.9), rgba(59, 36, 18, 0) 16px),
+    radial-gradient(circle at 100% 0, rgba(59, 36, 18, 0.9), rgba(59, 36, 18, 0) 16px),
+    radial-gradient(circle at 0 100%, rgba(59, 36, 18, 0.9), rgba(59, 36, 18, 0) 16px),
+    radial-gradient(circle at 100% 100%, rgba(59, 36, 18, 0.9), rgba(59, 36, 18, 0) 16px),
+    /* 9 · grain: the figure runs along the rail */
+    repeating-linear-gradient(90deg,
+      rgba(34, 30, 26, 0.32) 0 1px, rgba(255, 240, 214, 0.05) 1px 2px,
+      rgba(34, 30, 26, 0) 2px 6px, rgba(34, 30, 26, 0.15) 6px 7px,
+      rgba(255, 240, 214, 0.035) 7px 8px, rgba(34, 30, 26, 0) 8px 12px),
+    /* 10 · the plank itself */
+    linear-gradient(180deg, var(--wood-rail-light) 0%, var(--wood-rail) 42%, var(--wood-rail-dark) 100%);
+  background-clip:
+    padding-box,
+    border-box, border-box, border-box,
+    border-box, border-box, border-box, border-box, border-box,
+    border-box;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  box-shadow: var(--bevel-top), var(--bevel-bottom),
+              var(--shadow-stack-rest, var(--shadow-md)),
+              inset 0 0 0 1px rgba(34, 30, 26, 0.16);
+}
+
+/* Card hover keeps its lift shadow AND the frame seam (Phase 5's hover would drop the seam) */
+.pillar-card:hover, .why-card:hover, .events-card:hover, .video-card:hover,
+.contact-card:hover, .festival:hover,
+.pillar-card:focus-within, .why-card:focus-within, .events-card:focus-within,
+.video-card:focus-within, .contact-card:focus-within, .festival:focus-within {
+  --wood-lamp: 1;
+  box-shadow: var(--bevel-top), var(--bevel-bottom),
+              var(--shadow-stack-lift),
+              inset 0 0 0 1px rgba(34, 30, 26, 0.16);
+}
+
+/* 1 · Section signs — the headline becomes a hanging timber sign */
+.section-title {
+  --wood-w: var(--wood-w-heavy);
+  width: fit-content;
+  max-width: min(100%, 48rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.15rem 2rem 1.25rem;
+  border-radius: var(--radius-lg);
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+/* 2 · Under-notes — the subtitle becomes a smaller, thinner plaque */
+.section-sub {
+  --wood-w: var(--wood-w-thin);
+  width: fit-content;
+  max-width: min(100%, 42rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.7rem 1.4rem;
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+/* 3 · Body copy columns become timber-backed cards */
+.split-text {
+  padding: 1.6rem 1.8rem;
+  border-radius: var(--radius-lg);
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+/* 4 · The callout keeps its brand rule, now carved into the timber */
+.callout {
+  --wood-face: var(--color-brand-tint);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--bevel-top), var(--bevel-bottom), var(--shadow-stack-rest, var(--shadow-md)),
+              inset 5px 0 0 var(--color-brand), inset 0 0 0 1px rgba(34, 30, 26, 0.16);
+}
+
+/* 5 · Thinner rails where cards stack densely */
+.faq-item, .gallery-item {
+  --wood-w: var(--wood-w-thin);
+  border-radius: var(--radius-sm);
+}
+
+/* 5b · The CTA band wears thin rails so it frames without shouting */
+.book-band {
+  --wood-w: var(--wood-w-thin);
+}
+
+/* 6 · Footer columns become framed panels on the dark band */
+.footer-info, .footer-links, .footer-social {
+  --wood-w: var(--wood-w-thin);
+  --wood-face: var(--wood-face-dark);
+  padding: 1.4rem 1.5rem;
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+/* Any leftover intro paragraph still gets a surface to sit on (no timber — it's a paper note) */
+.container > p:not(.section-sub) {
+  background: var(--color-cream-50);
+  border: 1px solid var(--color-tan);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 1.1rem 1.45rem;
+  max-width: min(100%, 46rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The cards that float: signs, plaques and copy columns rise toward the lamp */
+@media (hover: hover) and (pointer: fine) {
+  .section-title:hover, .section-sub:hover, .split-text:hover,
+  .footer-info:hover, .footer-links:hover, .footer-social:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--bevel-top), var(--bevel-bottom), var(--shadow-stack-lift),
+                inset 0 0 0 1px rgba(34, 30, 26, 0.16);
+  }
+}
+
+/* ---- Hero: ember layer, drifting photo, timber-framed parchment panel ---- */
+.hero-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  opacity: 0.72;
+  will-change: transform;
+}
+
+.hero-bg { will-change: transform; }
+
+.hero-content {
+  --wood-w: var(--wood-w-heavy);
+  --wood-face: var(--wood-face-dark);
+  padding: 2.2rem 2.4rem 2rem;
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(3px) saturate(1.05);
+  -webkit-backdrop-filter: blur(3px) saturate(1.05);
+  transform-style: preserve-3d;
+  transform: perspective(var(--depth-perspective))
+             rotateX(calc(var(--rx, 0deg) * 0.5)) rotateY(calc(var(--ry, 0deg) * 0.5));
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+/* Same travelling lamp sheen as the card family, one degree softer */
+.hero-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 18%),
+              rgba(254, 194, 2, 0.16), rgba(254, 194, 2, 0.04) 45%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  pointer-events: none;
+}
+
+.hero-content:hover::after { opacity: 1; }
+
+/* Phones: thinner rails and tighter padding so the timber never eats the copy */
+@media (max-width: 640px) {
+  :root {
+    --wood-w: 7px;
+    --wood-w-thin: 5px;
+    --wood-w-heavy: 9px;
+  }
+  .section-title { padding: 0.9rem 1.15rem 1rem; }
+  .section-sub { padding: 0.6rem 1rem; }
+  .split-text { padding: 1.2rem 1.15rem; }
+  .hero-content { padding: 1.5rem 1.25rem; }
+  .footer-info, .footer-links, .footer-social { padding: 1.1rem 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-title:hover, .section-sub:hover, .split-text:hover,
+  .footer-info:hover, .footer-links:hover, .footer-social:hover { transform: none !important; }
+  .hero-content { transform: none !important; transition: none !important; }
+  .hero-content::after { opacity: 0 !important; }
+  .hero-fx { display: none !important; }
+}
