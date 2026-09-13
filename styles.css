@@ -1051,3 +1051,94 @@ body.nav-open { overflow: hidden; }
   .hero-content::after { opacity: 0 !important; }
   .hero-fx { display: none !important; }
 }
+
+/* ============================================================
+   PHASE 7 — Image scale & rhythm
+   Every photo band gets compact, cropped-in grid cells.
+   Quality untouched: object-fit cover, never upscaled, never stretched.
+   ============================================================ */
+
+/* Pillar cards — slightly shorter photo band */
+.pillar-image { height: 200px; }
+
+/* Barn gallery — uniform 4:3 tiles */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: var(--space-md);
+}
+.gallery-item { aspect-ratio: 4 / 3; }
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Split sections — photo beside text, image column kept modest */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+.split-reverse > .split-image { order: -1; }
+.split-image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 18px -10px rgba(34, 30, 26, 0.35);
+}
+.split-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Events cards — compact 16:9 photo left, info right */
+.events-card {
+  display: grid;
+  grid-template-columns: minmax(280px, 400px) 1fr;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+}
+.events-image {
+  aspect-ratio: 16 / 9;
+  border-radius: calc(var(--radius-md) - 2px);
+}
+.events-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* TikTok wall — square thumbnails, even rhythm */
+.video-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+  align-items: start;
+}
+.video-image { aspect-ratio: 1 / 1; }
+.video-image img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.vc-caption {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .split > .split-image, .split > div:has(> .split-image) { order: -1; }
+  .events-card { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+  .video-wall { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .video-wall { grid-template-columns: repeat(2, 1fr); }
+  .pillar-image { height: 180px; }
+}
