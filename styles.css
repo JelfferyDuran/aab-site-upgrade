@@ -387,7 +387,7 @@ body { background-color: var(--color-band-cream); color: var(--color-text); }
 .nav-links a:hover { color: var(--color-brand-soft); }
 
 /* --- Hero: size + wash the barn photo (original CSS never sized .hero-bg -> collapsed) --- */
-.hero { background: var(--color-espresso); }
+.hero { background: var(--color-ink); }
 .hero-bg { position: absolute; inset: 0; z-index: 0; background-size: cover;
   background-position: center; opacity: 1; }
 .hero-bg::after { content: ''; position: absolute; inset: 0;
@@ -450,7 +450,7 @@ body { background-color: var(--color-band-cream); color: var(--color-text); }
 
 /* --- Video wall --- */
 .vc-caption { font-family: var(--font-ui); color: var(--color-brand-dark); text-align: center; }
-.vc-play { color: var(--color-cream-50); background: rgba(67,82,152,.92); }
+.vc-play { color: var(--color-cream-50); background: rgba(177,80,42,.92); }
 .vc-stats { font-family: var(--font-body); font-weight: 600; color: var(--color-brand); }
 
 /* --- FAQ --- */
@@ -470,7 +470,7 @@ body { background-color: var(--color-band-cream); color: var(--color-text); }
   background: var(--color-cream-50); border: 1px solid var(--color-tan);
   border-radius: var(--radius-sm); color: var(--color-ink); font-family: var(--font-body); }
 .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-  border-color: var(--color-brand); box-shadow: 0 0 0 3px rgba(67,82,152,.20); outline: none; }
+  border-color: var(--color-brand); box-shadow: 0 0 0 3px rgba(177,80,42,.25); outline: none; }
 .submit-btn { background: var(--color-brand); color: var(--color-cream-50); border: 2px solid var(--color-brand);
   font-family: var(--font-body); font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
 .submit-btn:hover { background: var(--color-brand-dark); border-color: var(--color-brand-dark); }
@@ -489,10 +489,90 @@ body { background-color: var(--color-band-cream); color: var(--color-text); }
 .footer-bottom { border-top: 1px solid rgba(239,229,210,.2); color: var(--color-on-dark-dim); }
 
 /* --- Floating WhatsApp --- */
-.whatsapp-fab { background: var(--color-brand); color: var(--color-cream-50); box-shadow: var(--shadow-md); }
-.whatsapp-fab:hover { background: var(--color-brand-dark); }
+.whatsapp-fab {
+  position: fixed; right: 24px; bottom: 24px; z-index: 90;
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--color-brand); color: var(--color-cream-50);
+  box-shadow: var(--shadow-md);
+  transition: transform .2s ease, background .2s ease;
+}
+.whatsapp-fab svg { width: 28px; height: 28px; display: block; fill: currentColor; }
+.whatsapp-fab:hover { background: var(--color-brand-dark); transform: translateY(-2px) scale(1.04); }
+@media (max-width: 600px) {
+  .whatsapp-fab { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+  .whatsapp-fab svg { width: 26px; height: 26px; }
+}
 
 /* --- Accessibility --- */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+/* ============================================================
+   LONE MUSTANG SYSTEM — Phase 3 (burnt orange + gold, expensive feel)
+   ============================================================ */
+
+/* Pill CTAs — the reference's signature shape */
+.btn { border-radius: 100px; padding: .95rem 2.15rem; }
+.btn-primary { box-shadow: 0 6px 18px rgba(177,80,42,.32); }
+.btn-primary:hover { box-shadow: 0 10px 26px rgba(177,80,42,.45); }
+.btn-secondary { border: 2px solid var(--color-gold); color: var(--color-gold); }
+.btn-secondary:hover { background: var(--color-gold); color: var(--color-ink); border-color: var(--color-gold); }
+
+/* Hero anchors the cue */
+.hero { position: relative; }
+
+/* Hero: heritage chip (EST. 2018 · MOUNT BETHEL, PA) */
+.hero .eyebrow { display: inline-block; border: 1px solid rgba(233,180,76,.55); border-radius: 100px;
+  padding: .45rem 1.15rem; background: rgba(34,30,26,.35); backdrop-filter: blur(2px);
+  letter-spacing: .22em; text-transform: uppercase; font-size: .78rem; }
+
+/* Hero scroll cue */
+.hero-scroll { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 3;
+  color: var(--color-cream-300); font-family: var(--font-ui); font-size: .66rem; letter-spacing: .3em;
+  text-transform: uppercase; text-decoration: none; animation: heroDrip 2.4s ease-in-out infinite; }
+.hero-scroll .chev { display: block; width: 22px; height: 22px; margin: .5rem auto 0;
+  border-right: 2px solid var(--color-gold); border-bottom: 2px solid var(--color-gold); transform: rotate(45deg); }
+@keyframes heroDrip { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,9px); } }
+
+/* Nav: gold underline sweep on hover */
+.nav-links a { position: relative; }
+.nav-links a::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 2px;
+  background: var(--color-brand-soft); transform: scaleX(0); transform-origin: left; transition: transform var(--transition-normal); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* Why cards: numbered REASON badges (reference's REASON 01/02) */
+.why-grid { counter-reset: reason; }
+.why-card { counter-increment: reason; position: relative; }
+.why-card::before { content: "REASON 0" counter(reason); position: absolute; top: .8rem; right: .9rem;
+  font-family: var(--font-ui); font-size: .62rem; letter-spacing: .16em; color: var(--color-brand-dark);
+  background: var(--color-brand-tint); border: 1px solid var(--color-brand-light); border-radius: 100px; padding: .2rem .6rem; }
+
+/* FAQ: real accordion with gold +/− icons */
+.faq-item { background: var(--color-cream-50); border: 1px solid var(--color-tan); border-radius: var(--radius-sm); overflow: hidden; }
+.faq-question { position: relative; padding: 1.05rem 3.4rem 1.05rem 1.15rem; cursor: pointer; user-select: none; }
+.faq-question::after { content: '+'; position: absolute; right: 1.1rem; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-display); font-size: 1.3rem; line-height: 1; color: var(--color-brand); transition: color var(--transition-fast), transform var(--transition-fast); }
+.faq-question.active::after { content: '−'; color: var(--color-gold); transform: translateY(-50%) scale(1.2); }
+.faq-answer { display: none; padding: 0 1.15rem 1.15rem; }
+.faq-answer.open { display: block; }
+
+/* Section title rule in the new accent */
+.section-title::after { background: linear-gradient(90deg, var(--color-brand), var(--color-brand-light)); }
+
+/* Booking band hairline */
+.book-band { border-top: 1px solid var(--color-tan); }
+
+/* Footer: gold hairline + ochre headings */
+.footer-bottom { border-top-color: rgba(254,194,2,.28); }
+
+/* Selection + focus in brand */
+::selection { background: var(--color-brand); color: var(--color-cream-50); }
+:focus-visible { outline-color: var(--color-brand-soft); }
+
+@media (max-width: 768px) {
+  .hero-scroll { bottom: 14px; }
+  .hero-scroll .chev { width: 16px; height: 16px; }
+  .btn { padding: .9rem 1.6rem; }
 }

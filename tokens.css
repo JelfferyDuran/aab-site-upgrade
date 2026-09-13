@@ -1,11 +1,12 @@
 :root {
-  /* ===== AAB BRAND PALETTE (from their own site: #435298 x31,108) ===== */
-  --color-brand: #435298;         /* AAB indigo - THE brand color */
-  --color-brand-dark: #35417a;    /* pressed / hover */
-  --color-brand-light: #5a69b2;   /* mid tint - rules, borders on light */
-  --color-brand-soft: #9aa6dc;    /* light indigo - readable ON dark bands */
-  --color-brand-tint: #e9ebf5;    /* 8% indigo wash - badges, table heads */
-  --color-brand-tint-2: #d3d8ec;  /* 15% wash - chips, tags */
+  /* ===== AAB BRAND PALETTE (Lone Mustang System — burnt orange + gold) ===== */
+  --color-brand: #b1502a;         /* burnt orange - Lone Mustang primary accent */
+  --color-brand-dark: #8f3f1f;    /* pressed / hover */
+  --color-brand-light: #d99a23;   /* golden ochre - rules, borders on light */
+  --color-brand-soft: #e9b44c;    /* soft gold - readable ON dark bands */
+  --color-brand-tint: #f5e7d8;    /* 6% orange wash - badges, table heads */
+  --color-brand-tint-2: #eccfae;  /* 14% wash - chips, tags */
+  --color-gold: #fec202;          /* bright gold - highlights, small accents */
 
   /* ===== Warm ranch neutrals (structure - kept from the Lone Mustang pass) ===== */
   --color-ink: #221e1a;           /* espresso ink - dark bands + body text */
