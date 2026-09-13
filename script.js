@@ -52,16 +52,37 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      window.scrollTo({
-        top: target.offsetTop - 80,
-        behavior: 'smooth'
-      });
-    }
+// ===== Mobile nav toggle (Phase 4) =====
+(function () {
+  const toggle = document.getElementById('navToggle');
+  const navList = document.getElementById('primaryNav');
+  if (!toggle || !navList) return;
+
+  function setOpen(open) {
+    navList.classList.toggle('is-open', open);
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('nav-open', open);
+  }
+
+  toggle.addEventListener('click', function () {
+    setOpen(!navList.classList.contains('is-open'));
   });
-});
+
+  // Close when a link is chosen (capture phase: unlock scroll BEFORE the
+  // anchor's own smooth-scroll handler runs, so the scroll actually works)
+  navList.addEventListener('click', function (e) {
+    if (e.target.closest('a')) setOpen(false);
+  }, true);
+
+  // Close on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  // Close when tapping outside the nav
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav')) setOpen(false);
+  });
+})();

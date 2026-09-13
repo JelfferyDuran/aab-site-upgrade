@@ -576,3 +576,160 @@ body { background-color: var(--color-band-cream); color: var(--color-text); }
   .hero-scroll .chev { width: 16px; height: 16px; }
   .btn { padding: .9rem 1.6rem; }
 }
+
+/* ===================== PHASE 4 — Nav & logo: proportionate wordmark + modern mobile dropdown ===================== */
+
+/* Nav sits above page content so the dropdown panel overlays properly */
+.nav { z-index: var(--z-index-sticky); }
+
+/* --- Logo wordmark: viewport-scaled instead of fixed XL (was too big) --- */
+.nav-logo { margin: 0; flex: 0 1 auto; min-width: 0; }
+.nav-logo a {
+  font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  display: block;
+}
+
+/* Hamburger toggle — hidden on desktop */
+.nav-toggle { display: none; }
+
+/* Tablet (769-1100px): compress the link row so logo + 8 links fit one line */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .nav-links { gap: 14px; }
+  .nav-links a { padding: var(--space-xs) 8px; font-size: 0.68rem; letter-spacing: 0.14em; }
+}
+
+/* Wide screens: tighten the link gap so the wordmark keeps its natural width */
+@media (min-width: 1101px) {
+  .nav-links { gap: 20px; }
+}
+
+/* Mobile (<=768px): stacked 2-line wordmark + slide-down menu panel */
+@media (max-width: 768px) {
+  .nav { padding: var(--space-xs) 0; }
+
+  /* Intentional 2-line wrap, tight leading */
+  .nav-logo { flex: 1 1 auto; }
+  .nav-logo a {
+    font-size: 1.05rem;
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+    white-space: normal;
+    max-width: 16ch;
+  }
+  .logo-break { display: block; }
+
+  /* Hamburger button */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 auto;
+    margin-left: var(--space-sm);
+    padding: 0;
+    background: rgba(233,180,76,0.10);
+    border: 1px solid rgba(233,180,76,0.35);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  }
+  .nav-toggle:hover { background: rgba(233,180,76,0.22); border-color: rgba(233,180,76,0.6); }
+  .nav-toggle:active { transform: scale(0.96); }
+  .nav-toggle-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-brand-soft);
+    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Menu panel: full-width slide-down under the bar */
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0.4rem 0 0.7rem;
+    background: rgba(28,24,21,0.98);
+    backdrop-filter: blur(14px) saturate(1.3);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    border-top: 1px solid rgba(233,180,76,0.25);
+    border-bottom: 1px solid rgba(233,180,76,0.18);
+    box-shadow: var(--shadow-lg);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: max-height 0.42s cubic-bezier(0.22,1,0.36,1), opacity 0.28s ease, transform 0.42s cubic-bezier(0.22,1,0.36,1), visibility 0.42s;
+  }
+  .nav-links.is-open {
+    max-height: calc(100vh - 90px);
+    max-height: calc(100dvh - 90px);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.95rem 1.35rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(233,180,76,0.10);
+    transition: background var(--transition-fast), color var(--transition-fast), padding-left var(--transition-fast);
+  }
+  .nav-links li:last-child a { border-bottom: none; }
+  .nav-links a:hover, .nav-links a:focus-visible { background: rgba(177,80,42,0.16); color: var(--color-brand-soft); padding-left: 1.6rem; }
+
+  /* Swap the desktop underline sweep for a right-side chevron */
+  .nav-links a::after {
+    content: "›";
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    height: auto;
+    transform: none;
+    background: none;
+    font-size: 1.15rem;
+    color: var(--color-brand-light);
+    transition: transform var(--transition-fast);
+  }
+  .nav-links a:hover::after { transform: translateX(3px); }
+}
+
+/* Close: lock background scroll while the panel is open */
+body.nav-open { overflow: hidden; }
+
+/* --- Form controls: branded dropdown instead of native select chrome --- */
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23b1502a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding: 0.85rem 2.6rem 0.85rem 1rem;
+  cursor: pointer;
+}
+.form-group input, .form-group textarea { padding: 0.85rem 1rem; }

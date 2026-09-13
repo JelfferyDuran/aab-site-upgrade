@@ -75,9 +75,14 @@
   <nav class="nav">
     <div class="container">
       <h1 class="nav-logo">
-        <a href="#home">All Aspects at the Barn</a>
+        <a href="#home">All Aspects <span class="logo-break">at the Barn</span></a>
       </h1>
-      <ul class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-links" id="primaryNav">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#shop">Shop</a></li>
