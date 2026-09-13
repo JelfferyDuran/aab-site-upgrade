@@ -372,17 +372,3 @@ section {
     grid-template-columns: 1fr;
   }
 }
-
-/* Reveal on scroll (Framer-style) */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-}

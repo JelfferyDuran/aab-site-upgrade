@@ -1,0 +1,369 @@
+{
+ "template_pages": {
+  "about.html": {
+   "bytes": 374486,
+   "framer_names": 304,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / How it started",
+    "Section / Crew",
+    "Section /  Gallery",
+    "Section / Quote",
+    "Section / What we stand for",
+    "Section / Ready to ride?",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "blog-getting-started-with-western-riding-a-beginner-s-guide.html": {
+   "bytes": 246764,
+   "framer_names": 134,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "blog-ranch-update-trails-training-and-new-additions.html": {
+   "bytes": 248646,
+   "framer_names": 142,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "blog-the-western-saddle-gear-craft-and-tradition.html": {
+   "bytes": 245117,
+   "framer_names": 134,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "blog-this-season-s-ranch-news-new-arrivals-and-what-s-ahead.html": {
+   "bytes": 249582,
+   "framer_names": 142,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "blog-western-vs-english-riding-what-s-the-difference.html": {
+   "bytes": 249342,
+   "framer_names": 142,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "blog-why-horseback-riding-is-good-for-body-and-mind.html": {
+   "bytes": 248484,
+   "framer_names": 142,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "blog.html": {
+   "bytes": 302769,
+   "framer_names": 238,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / Latest post",
+    "Section / Blog",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "contact.html": {
+   "bytes": 260647,
+   "framer_names": 169,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / Contact Desk",
+    "Section / Map",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "home.html": {
+   "bytes": 366830,
+   "framer_names": 339,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / Ticker",
+    "Section / About the stable",
+    "Section / Our offer",
+    "Section / Text",
+    "Section / Offers",
+    "Section About / Reasons",
+    "Section / Ready to ride?",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "ouroffer.html": {
+   "bytes": 408749,
+   "framer_names": 410,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / Ticker",
+    "Section / Lessons and rides",
+    "Section / Boarding",
+    "Section /  Gallery",
+    "Section / Bring your horse",
+    "Section / List",
+    "Section / Quote",
+    "Section / Ready to ride?",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  },
+  "pricing.html": {
+   "bytes": 320868,
+   "framer_names": 281,
+   "sections": [
+    "Navi-wrapper",
+    "Navi-Left",
+    "Navi-right",
+    "Navi-Links",
+    "Hero",
+    "Section / Lessons and rides",
+    "Section / Boarding",
+    "Section / Bring your horse to train",
+    "Section / Ready to ride?",
+    "Section / FAQ",
+    "Footer",
+    "Footer wrapper"
+   ]
+  }
+ },
+ "build_home": {
+  "bytes": 31266,
+  "sections": [
+   {
+    "id": "home",
+    "heading": "All Aspects at the Barn",
+    "imgs": 0
+   },
+   {
+    "id": "shop",
+    "heading": "What We Offer",
+    "imgs": 4
+   },
+   {
+    "id": null,
+    "heading": "Why Visit Us",
+    "imgs": 0
+   },
+   {
+    "id": null,
+    "heading": "The Barn",
+    "imgs": 10
+   },
+   {
+    "id": "brew",
+    "heading": "Barn Brew Coffee & Espresso Bar",
+    "imgs": 1
+   },
+   {
+    "id": "farm",
+    "heading": "Petting Farm & Animals",
+    "imgs": 1
+   },
+   {
+    "id": "pavilion",
+    "heading": "Pavilion & Party Rentals",
+    "imgs": 1
+   },
+   {
+    "id": "events",
+    "heading": "Events & First Fridays",
+    "imgs": 2
+   },
+   {
+    "id": "weddings",
+    "heading": "Weddings & Celebrations",
+    "imgs": 2
+   },
+   {
+    "id": null,
+    "heading": "As Seen on TikTok",
+    "imgs": 5
+   },
+   {
+    "id": null,
+    "heading": "FAQ",
+    "imgs": 0
+   },
+   {
+    "id": "contact",
+    "heading": "Visit Us",
+    "imgs": 0
+   },
+   {
+    "id": null,
+    "heading": "Stay Connected",
+    "imgs": 0
+   },
+   {
+    "id": "booking",
+    "heading": "Book Your Event",
+    "imgs": 1
+   }
+  ],
+  "section_count": 14,
+  "words": 1615
+ },
+ "aab_pages_total": 2828,
+ "aab_nonproduct_pages": [
+  "/",
+  "/about",
+  "/barn-brew-coffee-bar",
+  "/contact",
+  "/gallery",
+  "/pavilion-party-rental",
+  "/petting-farm",
+  "/s/shop",
+  "/shop",
+  "/shop/a-branch-and-cord/KHUULXAQCOOXFESVESY2O2V7",
+  "/shop/acacia-creations/DZ7J3AOZFTH545SPINSZ3BXG",
+  "/shop/alyssa-kerr-bakery/ATSJJ77MA6GNA6WIRKL4TBZJ",
+  "/shop/amy-duque/YWZAURWWHWZRCR6JBXLDBVBF",
+  "/shop/andaluca/CNQ7L4B6D4NDWUFFY53VET4T",
+  "/shop/apartment-2-cards/JC4YFVE3TUT3IBUX4K5UFT3R",
+  "/shop/apartment-2-cards/MURUCLZMLSI6GJVFYN4D6PKN",
+  "/shop/ariston-specialties/EKSN4PFLPKIJKBCP5YR64B2R",
+  "/shop/august-specialty-drinks/G77DS3GUWLYLAVDBYOGALRLW",
+  "/shop/b-and-b-farmco/KLAQHMOI57OPF4PAPL3RVV6P",
+  "/shop/barn-brews/U3NDHOY5IVQSWHMV4KBWTODN",
+  "/shop/bee-silky-soaps/PMCIZQWR346CJEGRRXQPQCYC",
+  "/shop/beyond-the-kerf/FMBTT54JGAWIBU2DGULJQ6QX",
+  "/shop/big-moods-cards/WJMXBESQOA35DGQGUFHIML2N",
+  "/shop/blue-studio-creative/N7HPQJJT3J3R43YRCDHWNRKG",
+  "/shop/brushes/6",
+  "/shop/bumbleberry-farms/CHM7W2JRSWFT7QG2H57FPG45",
+  "/shop/candy-club/SDEZ63NPYINCTHZWANW2CMQC",
+  "/shop/charmed-harvest/TYZGWKLWIIF6RU7FXMO2LTLQ",
+  "/shop/chickarelli-farms/2M22FQ42B2VHMSLZYDKL3PQA",
+  "/shop/clay-in-motion-other-pottery/ETODZE5KIVTSWATT7HKVWHIC",
+  "/shop/easton-candle-company/24",
+  "/shop/espresso-bar/7M77MKIWNQXQSIIPBLETF24B",
+  "/shop/fall-menu/GUOG63EK43JIU3O6M5DBJI6A",
+  "/shop/fennco-styles/WB4KNI4AUJKXZCUYOYLM6JO4",
+  "/shop/foreside-home-garden/GLRCPBCLY34UBZGETUSXN73D",
+  "/shop/grandpa-joes-candy/4KO3EYRUIAFDFQWUROTB3PNB",
+  "/shop/hanys-harvest/5Q4IZJH2JTE6EAY25CP43KEI",
+  "/shop/harper-collins-publishers/GTIQCURCXDSHQTGX45DWPL7C",
+  "/shop/heavy-metals-metallic-gilding-paint/23",
+  "/shop/herbs-oil-things/RAKZV75UEQLKOFNGIBRHXI2Q",
+  "/shop/july-specialty-drinks/K2L6EAFOREHKXX3K5MNQ4AYN",
+  "/shop/kids-drinks/4WMY2NK3O264YHQK5SWVOEJ4",
+  "/shop/lexi-home/F3QG5GH4XO7TRDJIPAMB4OEC",
+  "/shop/linsar-tea-pots/HJL4NO5PW3S5Y5KEU4AGOMFA",
+  "/shop/lissi-designs/7Z62NGDQYPYMWYBD6XACXNFM",
+  "/shop/love-letters/6SS6ZTY6UBPJCYH5XKDRITUB",
+  "/shop/lr-home/KANZAAUMXL7IKOAJJJI76TB5",
+  "/shop/lucky-jack/B5LX6WQXKNVGJVGRGRBRCM2P",
+  "/shop/microcosm-publishing/KRBFJXR4GWAXGBLPIP7LJHOC",
+  "/shop/mud-maker/KE5UYTTGCVHHCDA5OJ2QUWMA",
+  "/shop/nats-nuts/P5D7PXMIN4EH4J37XVGN2PXF",
+  "/shop/nested-little-hearts/Z5IJCHRXWTECPTZ2JGF64CCZ",
+  "/shop/one-hour-ceramic-luxury-interior-paint/28",
+  "/shop/one-hour-enamel-paint/8",
+  "/shop/outsiders-kitchen/JQCCQ4NENR4FIXPEQUDWWWKB",
+  "/shop/petra-toys/HPSUGHVKHAAKCBQ2AXCZWTQF",
+  "/shop/petting-farm-at-all-aspects-recreation-area/SJ32PXB4KAKX32OJT3PAVEWK",
+  "/shop/pocono-print-t-shirts/YVZRISGT6FWYOS2VTT7UXDVB",
+  "/shop/popinsanity/IYF7QNQJMFL3CVSIZVFR3FTJ",
+  "/shop/prairie-chicken-shop/F4TSFRIAG2C763MFUBYFIVX6",
+  "/shop/raine-humble/QAYQJJZEHHN4UJHFVA2XAW5K",
+  "/shop/retail-baked-goods-farm-store/FGKJQTGUHMIRT3MFZZ6BDX57",
+  "/shop/saratoga-olive-oil-co/LBJHW76J5MOCEZP2XAWZJ6JK",
+  "/shop/silk-all-in-one-mineral-paint/35",
+  "/shop/simon-schuster/V75G5YQVZZRIYNVB4LV3MBZA",
+  "/shop/sweet-thyme-design/KW5YXFBZBZV65TZGAHKPBIA4",
+  "/shop/the-beekeepers-daughter/UO7UYTVV5DMHD7WQQB7KYRO4",
+  "/shop/the-farm-store-millers-egg-ranch/HBNSFEVAILQ5BX4YHIOHHMR5",
+  "/shop/the-goat-project/FEKALZPRXJRFCXEXZWVGXHG6",
+  "/shop/the-pour-gypsy-soaps/D7AZGQCI4LMAEBOOJXMC633W",
+  "/shop/toasted-roasted-coffee/ZSIEDTHUYU7QGFZSZ4AFMYZU",
+  "/shop/wedding-venue/YA7KSTRRTAM3UDK4ULXZ7D7T",
+  "/shop/wise-owl/16",
+  "/shop/wise-owl-chalk-synthesis-paint/2",
+  "/shop/wise-owl-glaze/18",
+  "/shop/wise-owl-waxes-salves-varish/19",
+  "/shop/workshops/37",
+  "/wedding-venue",
+  "/workshops"
+ ],
+ "aab_product_pages": 2749,
+ "template_media": {
+  "files": 66,
+  "mb": 18.2
+ },
+ "scrape_media": {
+  "files": 1077,
+  "mb": 534.8
+ }
+}
