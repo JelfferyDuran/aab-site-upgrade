@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getPageByRoute } from "@/lib/data";
-import { Reveal, Stagger, StaggerItem, Parallax } from "@/components/motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
 export default function HomePage() {
   const home = getPageByRoute("home");
@@ -46,20 +46,19 @@ export default function HomePage() {
           }} />
         </div>
 
-        {/* Hero Image Slideshow */}
+        {/* Hero Background Image — no parallax to prevent flash */}
         {heroImages.length > 0 && (
           <div className="absolute inset-0">
-            {heroImages.slice(0, 3).map((img, i) => (
-              <Parallax key={i} speed={0.1 + i * 0.1} className="absolute inset-0">
-                <Image
-                  src={img.startsWith("http") ? img : `https://images.editor.website${img}`}
-                  alt={`Venue ${i + 1}`}
-                  fill
-                  className="object-cover opacity-20"
-                  sizes="100vw"
-                />
-              </Parallax>
-            ))}
+            <Image
+              src={heroImages[0].startsWith("http") ? heroImages[0] : `https://images.editor.website${heroImages[0]}`}
+              alt="All Aspects Barn venue"
+              fill
+              priority
+              loading="eager"
+              className="object-cover opacity-30"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-indigo-800/70 to-indigo-950/80" />
           </div>
         )}
 
