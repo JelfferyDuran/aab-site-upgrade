@@ -1,0 +1,132 @@
+/* ═══════════════════════════════════════════════════════════
+   AAB Design Tokens — Indigo Design System
+   Brand: All Aspects Barn
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Brand Colors ── */
+  --color-primary: #435298;
+  --color-primary-light: #5a6bb8;
+  --color-primary-dark: #2f3d78;
+  --color-primary-50: #eef0f9;
+  --color-primary-100: #dce0f3;
+  --color-primary-200: #b9c1e7;
+  --color-primary-300: #96a2db;
+  --color-primary-400: #7383cf;
+  --color-primary-500: #435298;
+  --color-primary-600: #364280;
+  --color-primary-700: #293268;
+  --color-primary-800: #1c2250;
+  --color-primary-900: #0f1238;
+
+  /* ── Neutrals ── */
+  --color-white: #ffffff;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-black: #000000;
+
+  /* ── Semantic Colors ── */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* ── Typography ── */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --font-display: var(--font-abril);
+
+  /* Type Scale (Major Third — 1.25) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  /* ── Spacing ── */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* ── Border Radius ── */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ── Transitions ── */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* ── Z-Index ── */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-fab: 600;
+}
+
+/* ── Dark Mode Overrides ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary-50: #0f1238;
+    --color-primary-100: #1c2250;
+    --color-primary-200: #293268;
+    --color-primary-300: #364280;
+    --color-primary-400: #435298;
+    --color-primary-500: #5a6bb8;
+    --color-primary-600: #7383cf;
+    --color-primary-700: #96a2db;
+    --color-primary-800: #b9c1e7;
+    --color-primary-900: #dce0f3;
+  }
+}
