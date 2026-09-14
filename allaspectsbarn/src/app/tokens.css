@@ -40,9 +40,9 @@
   --color-info: #3b82f6;
 
   /* ── Typography ── */
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-cardo);
   --font-serif: var(--font-playfair);
-  --font-display: var(--font-abril);
+  --font-display: var(--font-dancing);
 
   /* Type Scale (Major Third — 1.25) */
   --text-xs: 0.75rem;

@@ -36,9 +36,9 @@
   --color-info: var(--color-info);
 
   /* Fonts */
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-cardo);
   --font-serif: var(--font-playfair);
-  --font-display: var(--font-abril);
+  --font-display: var(--font-dancing);
 
   /* Spacing */
   --spacing-0: var(--space-0);

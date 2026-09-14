@@ -74,7 +74,7 @@ export default function HomePage() {
 
           <Reveal direction="up" delay={0.2} duration={0.8}>
             <p className="text-xl sm:text-2xl text-indigo-100 max-w-3xl mx-auto mb-8"
-               style={{ fontFamily: "var(--font-inter)" }}>
+               style={{ fontFamily: "var(--font-cardo)" }}>
               {home?.og_description || "Antique Store, Gift Store, Home Decor Store, Birthday Parties, Venue, Event Venue, Petting Farm, Pavilion Rental"}
             </p>
           </Reveal>

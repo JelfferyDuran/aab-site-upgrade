@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Abril_Fatface } from "next/font/google";
+import { Cardo, Playfair_Display, Dancing_Script } from "next/font/google";
 import "./tokens.css";
 import "./globals.css";
 import SiteLayout from "@/components/SiteLayout";
 
-const inter = Inter({
-  variable: "--font-inter",
+const cardo = Cardo({
+  variable: "--font-cardo",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "700"],
 });
 
 const playfair = Playfair_Display({
@@ -18,11 +18,11 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const abril = Abril_Fatface({
-  variable: "--font-abril",
+const dancing = Dancing_Script({
+  variable: "--font-dancing",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -64,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${abril.variable} h-full antialiased`}
+      className={`${cardo.variable} ${playfair.variable} ${dancing.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SiteLayout>{children}</SiteLayout>
