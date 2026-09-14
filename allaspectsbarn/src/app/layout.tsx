@@ -26,12 +26,41 @@ const abril = Abril_Fatface({
 });
 
 export const metadata: Metadata = {
-  title: "All Aspects Barn — Premium Event Venue",
+  title: {
+    default: "All Aspects Barn — Events, Classes & Unique Finds",
+    template: "%s | All Aspects Barn",
+  },
   description:
-    "A premium barn event venue for weddings, celebrations, and gatherings. Elegance meets rustic charm.",
+    "All Aspects Barn — premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds. Located on Route 611, Upper Mount Bethel, PA.",
+  keywords: [
+    "barn events",
+    "wedding venue",
+    "chalk paint classes",
+    "vintage furniture",
+    "repurposed goods",
+    "All Aspects Barn",
+  ],
+  openGraph: {
+    title: "All Aspects Barn — Events, Classes & Unique Finds",
+    description:
+      "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds.",
+    url: "https://allaspectsbarn.vercel.app",
+    siteName: "All Aspects Barn",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "All Aspects Barn — Events, Classes & Unique Finds",
+    description:
+      "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
