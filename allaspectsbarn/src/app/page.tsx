@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getPageByRoute } from "@/lib/data";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import ScrollSlide from "@/components/scroll";
+import SwivelSection from "@/components/SwivelSection";
 
 export default function HomePage() {
   const home = getPageByRoute("home");
@@ -106,7 +107,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 bg-white">
+      <SwivelSection intensity={1} className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollSlide direction="left" className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -134,11 +135,11 @@ export default function HomePage() {
             ))}
           </Stagger>
         </div>
-      </section>
+      </SwivelSection>
 
       {/* Image Gallery Preview */}
       {heroImages.length > 0 && (
-        <section className="py-20 bg-gray-50">
+        <SwivelSection intensity={-1} className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollSlide direction="right" className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -175,11 +176,11 @@ export default function HomePage() {
               </Link>
             </ScrollSlide>
           </div>
-        </section>
+        </SwivelSection>
       )}
 
       {/* CTA Section */}
-      <section className="py-20 bg-indigo-900 text-white">
+      <SwivelSection intensity={1} className="py-20 bg-indigo-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollSlide direction="left">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -210,7 +211,7 @@ export default function HomePage() {
             </div>
           </ScrollSlide>
         </div>
-      </section>
+      </SwivelSection>
     </div>
   );
 }
