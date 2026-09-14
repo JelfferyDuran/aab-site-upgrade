@@ -46,21 +46,19 @@ export default function HomePage() {
           }} />
         </div>
 
-        {/* Hero Background Image — no parallax to prevent flash */}
-        {heroImages.length > 0 && (
-          <div className="absolute inset-0">
-            <Image
-              src={heroImages[0].startsWith("http") ? heroImages[0] : `https://images.editor.website${heroImages[0]}`}
-              alt="All Aspects Barn venue"
-              fill
-              priority
-              loading="eager"
-              className="object-cover opacity-30"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-indigo-800/70 to-indigo-950/80" />
-          </div>
-        )}
+        {/* Hero Background Image — main venue photo */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/tt_A_7683509113602542861_720.jpg"
+            alt="All Aspects Barn venue"
+            fill
+            priority
+            loading="eager"
+            className="object-cover opacity-40"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-indigo-800/70 to-indigo-950/80" />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal direction="up" duration={0.8}>
