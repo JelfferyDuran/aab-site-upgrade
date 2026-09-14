@@ -1,12 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 
 export default function DragCarousel({ children }: { children: React.ReactNode }) {
   const ref = useRef(null);
   const { scrollXProgress } = useScroll({ container: ref });
-  const x = useTransform(scrollXProgress, [0, 1], ["0%", "-100%"]);
 
   return (
     <div className="relative overflow-hidden">
