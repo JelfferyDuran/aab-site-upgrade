@@ -1,0 +1,946 @@
+[
+  {
+    "title": "Home",
+    "route": "home",
+    "og_title": "Home | All Aspects at the Barn",
+    "og_description": "Antique Store, Gift Store, Home Decor Store, Birthday Parties, Venue, Event Venue, Petting Farm, Pavilion Rental",
+    "body": "",
+    "images": [
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Pavilion%20and%20Wine%20Bar%20_1755178422.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Pavilion%20%26%20Bounce%20House%20_1755178459.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Inside%20Pavilion%20_1755178432.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_4133_1742347286.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Old%20Truck%20_1755178449.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_8577_1742349629.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_8625_1742350718.jpeg"
+    ],
+    "sections": [
+      "Image alt text",
+      "Images",
+      "Section types"
+    ]
+  },
+  {
+    "title": "About",
+    "route": "about",
+    "og_title": "",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Headings",
+      "Our Story",
+      "All Aspects Restored & Recycled is a family-owned, unique shop on Route 611 in the Village of Stone Church in Upper Mount Bethel, PA. Our vintage store has a growing and forever changing inventory of unusual finds, antiques, reclaimed items, refinished furniture, home decor, primitives and cool old stuff! We are a Premier Retailer for Dixie Belle Mineral Chalk Paint as well as a Retailer for Wise Owl Chalk Synthesis Paint for the DIY-ers!",
+      "We are open Thursday, Friday and Saturday from 10-5, as well as open by appointment, Sunday-Wednesday.",
+      "Section types"
+    ]
+  },
+  {
+    "title": "Barn Brew Coffee Bar",
+    "route": "barn-brew-coffee-bar",
+    "og_title": "Barn Brew Coffee Bar  | All Aspects at the Barn",
+    "og_description": "Barn Brew is a specialty coffee & espresso bar serving local coffee, lattes, espresso, cold brew, teas & local baked goods.",
+    "body": "",
+    "images": [
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Barn%20Brew%20Latte%20Heart%20and%20Menu_1777227634.JPG",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Barn%20Brew%20Wall%20Menu_1777227648.JPG",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Barn%20Brew%20HOt%20Drink%20Cups%20_1777227634.JPG",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Barn%20Brew%20Menu%20%20%2814%29_1777228230.png",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Cold%20Brew%20Barn%20Brew%20_1777227646.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Barn%20Brew%20Counter%20_1777228127.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_3247_1777227790.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Our%20Barn%20Brew%20Coffee%20Bar%20_1777228162.jpg"
+    ],
+    "sections": [
+      "Images",
+      "Section types"
+    ]
+  },
+  {
+    "title": "Contact",
+    "route": "contact",
+    "og_title": "",
+    "og_description": "",
+    "body": "And receive info about sales and classes we are offering!",
+    "images": [],
+    "sections": [
+      "Copy",
+      "Section types"
+    ]
+  },
+  {
+    "title": "Photo Gallery",
+    "route": "gallery",
+    "og_title": "Photo Gallery | All Aspects at the Barn",
+    "og_description": "View our gallery of before and after furniture pieces to see what you can do with Wise Owl Chalk Synthesis Paint!",
+    "body": "",
+    "images": [
+      "https://images.editor.website/uploads/b/095131f0-1610-11e9-95e7-d12cd35aed62/Buffet before-after.jpg",
+      "https://images.editor.website/uploads/b/095131f0-1610-11e9-95e7-d12cd35aed62/Table before -after.jpg",
+      "https://images.editor.website/uploads/b/095131f0-1610-11e9-95e7-d12cd35aed62/Cabinet before-after.jpg",
+      "https://images.editor.website/uploads/b/095131f0-1610-11e9-95e7-d12cd35aed62/Tall Dresser Before -After.jpg",
+      "https://images.editor.website/uploads/b/095131f0-1610-11e9-95e7-d12cd35aed62/washstand before-after.jpg",
+      "https://images.editor.website/uploads/b/095131f0-1610-11e9-95e7-d12cd35aed62/NathansRedBuffet.jpg"
+    ],
+    "sections": [
+      "Images",
+      "Section types"
+    ]
+  },
+  {
+    "title": "Birthday Parties",
+    "route": "pavilion-party-rental",
+    "og_title": "Birthday Parties | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Petting Farm",
+    "route": "petting-farm",
+    "og_title": "",
+    "og_description": "",
+    "body": "Chase, Highpark Steered Male Cow (Highland/ White Park, Black Tipped) Born 9/19/2024\nCowgirl, Highpark Female Cow (Highland/ White Park, Orange Tipped) Born 11/26/2024)\nTeddy, Male Mediterranean Mini Donkey, Born 5/30/2022\nPeaches, Female Mini Mediterranean Donkey, Born 3/21/2024\nLuna the Lamb, female, loves being brushed! Born April 2022\nMr. Wiggles, our little ram. He is gentle, sweet and loves little kids! Born February 2025.\nMia Female Nubian Goat, Born May 2023\nSprout, Male Nigerian Dwarf Goat, Born July 2021\nBean, Male Nigerian Dwarf Goat, Born July 2021. Sprouts brother.\nBethel, Mini Pygmy/ Nigerian Dwarf Female Goat. Born March 2023. Slater's Sister.\nOlaf, a beautiful goat. His mom is Blue Rowan, father Nubian/Alpine mix, Wether Male, Born 3/27/26\nAmy, all personality and a guest favorite. She is a Pygmy, borrn 3/29/25\nTucker, Turbo's twin brother, Alpine wether male Born 6/4/25\nTurbo, Tuckers twin, Alpine wether male goat, Born 6/4/25\nSheldon, Born March 27, 2025, Pygmy/ Nigerian Mix; In tact Billy goat\nRenegade, Born June 2025, Intact Male Boer Goat, Stud often kept at our home.\nWe have 30+ chickens who love visitors!\nRIP Slater, Male Mini Pygmy/ Nigerian Goat. Born with a crooked jaw. 3/23-2/26. Passed of cancer.",
+    "images": [
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/2025-03-18_21-14-18_1742346875.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_4440_1742346834.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/2025-03-18_21-32-01_1742347937.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_3996_1742347788.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_9517_1742347897.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_4140_1742347674.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_3811_1742348050.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Wiggles%208%20weeks%20_1745099337.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/2025-03-18_21-49-38_1742348996.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_9520_1742348931.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_5929_1742349714.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_8625_1742350718.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_3938_1742350227.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_2330_1779557634.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_8770_1779558166.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/2026-05-23_13-49-19_1779558595.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_3287_1779558545.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_8772_1779558809.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_8119_1779559337.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_7410_1779559492.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_4454_1742351234.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_4215_1742349516.jpeg"
+    ],
+    "sections": [
+      "Copy",
+      "Image alt text",
+      "Images",
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Shop",
+    "route": "shop",
+    "og_title": "Shop | All Aspects at the Barn",
+    "og_description": "Shop Wise Owl Paint Company, Dixie Belle Paint Company and ClingOn brushes while being inspired by tutorial videos & gallery.",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "A Branch and Cord | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Acacia Creations | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Alyssa Kerr Bakery | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Amy Duque | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Andaluca | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Apartment 2 Cards | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Apartment 2 Cards | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Ariston Specialties | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "August Specialty Drinks | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "B and B Farmco | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Bee Silky Soaps | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Beyond the Kerf | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Big Moods Cards | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Blue Studio Creative | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Brushes | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Bumbleberry Farms | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Candy Club | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Charmed Harvest | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Chickarelli Farms | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Clay in Motion- Other Pottery | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Candles | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Fall Menu | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Fennco Styles | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Foreside Home & Garden | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Hany's Harvest | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Harper Collins Publishers | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Heavy Metals Metallic Gilding Paint | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Herbs Oil & Things | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Kids Drinks | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Lexi Home | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Linsar Tea Pots | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Lissi Designs | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Love Letters | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "LR Home | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Lucky Jack | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Microcosm Publishing | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Mud & Maker | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Nat's Nuts | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Nested Little Hearts | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "One Hour Ceramic Luxury Interior Paint | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "One Hour Enamel Paint | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Outsiders Kitchen | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Petra Toys | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Pocono Print T-Shirts | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Popinsanity | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Prairie Chicken Shop | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Raine & Humble | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Retail- Baked Goods Farm Store | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Saratoga Olive Oil Co. | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Silk All-in-One Mineral Paint | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Simon & Schuster | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Sweet Thyme Design | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "The Beekeeper's Daughter | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "The Farm Store- Millers Egg Ranch | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "The Goat Project | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "The Pour Gypsy Soaps | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Toasted & Roasted Coffee | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Wedding Venue | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Wise Owl | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Wise Owl Chalk Synthesis Paint | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Wise Owl Glaze | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Wise Owl Waxes, Salves & Varish | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Category",
+    "route": "095e9730-1610-11e9-acc0-bd5bc95c530d",
+    "og_title": "Workshops | All Aspects at the Barn",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  },
+  {
+    "title": "Wedding Venue",
+    "route": "wedding-venue",
+    "og_title": "",
+    "og_description": "",
+    "body": "",
+    "images": [
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Rustic%20Wedding%20Back%20Venue%20_1755194609.jpeg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Brad%20andd%20Kendra%20Wedding%20_1755194605.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Grassy%20Wedding%20Venue%20_1755194605.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Wedding%20at%20Pavilon%20_1755194605.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Brad%20%26%20Kendra%20_1755194601.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_2887%20%281%29_1757184790.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Wedding%20Venue%20Seating%20_1755196716.JPG",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/IMG_9665_1757184526.JPG",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Kendra%20and%20Brad%20_1757185984.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Swing%20at%20Venue_1757185601.JPG",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Stage_1757186592.JPG",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Photo%20Bridge_1757186776.JPG",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Evening%20venue%20_1761511444.jpg",
+      "/uploads/b/46ed91e742ed97008434cdfd6babd1a95915539fb0b005c6d7fae78466607f3d/Cottage%20and%20Pavioion%20NIght%20_1761511444.jpg"
+    ],
+    "sections": [
+      "Images",
+      "Section types"
+    ]
+  },
+  {
+    "title": "Workshops",
+    "route": "workshops",
+    "og_title": "",
+    "og_description": "",
+    "body": "",
+    "images": [],
+    "sections": [
+      "Section types"
+    ]
+  }
+]
