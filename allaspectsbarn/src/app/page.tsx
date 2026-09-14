@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getPageByRoute } from "@/lib/data";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+import ScrollSlide from "@/components/scroll";
 
 export default function HomePage() {
   const home = getPageByRoute("home");
@@ -46,15 +47,15 @@ export default function HomePage() {
           }} />
         </div>
 
-        {/* Hero Background Image — main venue photo */}
+        {/* Hero Background Image — main storefront photo */}
         <div className="absolute inset-0">
           <Image
-            src="/images/tt_A_7683509113602542861_720.jpg"
-            alt="All Aspects Barn venue"
+            src="/images/storefront-hero.jpg"
+            alt="All Aspects Barn storefront"
             fill
             priority
             loading="eager"
-            className="object-cover opacity-40"
+            className="object-cover opacity-50"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-indigo-800/70 to-indigo-950/80" />
@@ -107,14 +108,14 @@ export default function HomePage() {
       {/* Features Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal direction="up" className="text-center mb-16">
+          <ScrollSlide direction="left" className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
               What We Offer
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               From vintage treasures to unforgettable events, discover everything All Aspects Barn has to offer.
             </p>
-          </Reveal>
+          </ScrollSlide>
 
           <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, i) => (
@@ -139,14 +140,14 @@ export default function HomePage() {
       {heroImages.length > 0 && (
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Reveal direction="up" className="text-center mb-12">
+            <ScrollSlide direction="right" className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
                 Our Space
               </h2>
               <p className="text-lg text-gray-600">
                 Take a peek inside our beautiful barn venue
               </p>
-            </Reveal>
+            </ScrollSlide>
 
             <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {heroImages.slice(0, 6).map((img, i) => (
@@ -165,14 +166,14 @@ export default function HomePage() {
               ))}
             </Stagger>
 
-            <Reveal direction="up" className="text-center mt-12">
+            <ScrollSlide direction="up" className="text-center mt-12">
               <Link
                 href="/gallery"
                 className="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-full transition-all duration-300"
               >
                 View Full Gallery
               </Link>
-            </Reveal>
+            </ScrollSlide>
           </div>
         </section>
       )}
@@ -180,17 +181,17 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="py-20 bg-indigo-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Reveal direction="up">
+          <ScrollSlide direction="left">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
               Ready to Plan Your Event?
             </h2>
-          </Reveal>
-          <Reveal direction="up" delay={0.15}>
+          </ScrollSlide>
+          <ScrollSlide direction="right" delay={0.15}>
             <p className="text-xl text-indigo-200 mb-8">
               Let us help you create an unforgettable experience at All Aspects Barn.
             </p>
-          </Reveal>
-          <Reveal direction="up" delay={0.3}>
+          </ScrollSlide>
+          <ScrollSlide direction="up" delay={0.25}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
@@ -207,7 +208,7 @@ export default function HomePage() {
                 WhatsApp Us
               </a>
             </div>
-          </Reveal>
+          </ScrollSlide>
         </div>
       </section>
     </div>
