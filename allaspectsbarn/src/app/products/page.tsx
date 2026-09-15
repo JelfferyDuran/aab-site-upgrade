@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/lib/data";
 import { motion } from "framer-motion";
+import findsJson from "@/data/finds.json";
+const findsData = findsJson as { src: string; alt: string; category: string }[];
 
 export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -168,7 +170,7 @@ export default function ProductsPage() {
                   <div className="relative aspect-square bg-gray-100">
                     {product.images.length > 0 ? (
                       <Image
-                        src={product.images[0].startsWith("http") ? product.images[0] : `https://images.editor.website${product.images[0]}`}
+                        src={product.images[0].startsWith("http") || product.images[0].startsWith("/") ? product.images[0] : `https://images.editor.website${product.images[0]}`}
                         alt={product.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -224,6 +226,49 @@ export default function ProductsPage() {
           )}
         </div>
       </section>
+
+      {/* From the Shop Floor — the user's own photos of real finds at the barn */}
+      {findsData.length > 0 && (
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              className="text-center mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900" style={{ fontFamily: "var(--font-playfair)" }}>
+                From the Shop Floor
+              </h2>
+              <p className="mt-3 text-gray-500 max-w-2xl mx-auto">
+                Real finds photographed at the barn — come see them in person.
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {findsData.map((img) => (
+                <motion.div
+                  key={img.src}
+                  className="relative aspect-square rounded-xl overflow-hidden shadow-md bg-gray-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  whileHover={{ y: -4, boxShadow: "0 12px 28px rgba(0,0,0,0.15)" }}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

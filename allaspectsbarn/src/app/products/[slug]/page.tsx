@@ -48,7 +48,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-xl bg-gray-100">
                 {images.length > 0 ? (
                   <Image
-                    src={images[0].startsWith("http") ? images[0] : `https://images.editor.website${images[0]}`}
+                    src={images[0].startsWith("http") || images[0].startsWith("/") ? images[0] : `https://images.editor.website${images[0]}`}
                     alt={title}
                     fill
                     className="object-cover"
@@ -133,7 +133,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   <ScrollScale key={i} delay={i * 0.1}>
                     <div className="relative aspect-square rounded-xl overflow-hidden group">
                       <Image
-                        src={img.startsWith("http") ? img : `https://images.editor.website${img}`}
+                        src={img.startsWith("http") || img.startsWith("/") ? img : `https://images.editor.website${img}`}
                         alt={`${title} - image ${i + 2}`}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"

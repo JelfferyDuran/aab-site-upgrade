@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "**.editmysite.com",
+      },
+      {
+        protocol: "https",
         hostname: "**.amazonaws.com",
       },
       {
