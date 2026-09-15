@@ -13,26 +13,28 @@ import {
 interface SwivelItemProps {
   children: ReactNode;
   className?: string;
-  /** +1 = swivels right-first, -1 = left-first. Pass alternating values so
-   *  each item swings opposite its neighbor (counter-crank). */
+  /** +1 = tilts up from the left, -1 = tilts up from the right (use on alternating items) */
   direction?: 1 | -1;
-  /** Peak swivel in degrees. */
-  range?: number;
+  /** peak horizontal tilt (rotateY, deg) — the left/right lean */
+  tilt?: number;
+  /** peak roll (rotateZ, deg) — a touch of weight */
+  roll?: number;
 }
 
-// Same weighted spring as the other swivel components — consistent feel.
-const springSoft = { stiffness: 50, damping: 20, mass: 1.0, restDelta: 0.001 };
+const easeInOutCubic = (t: number) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-function easeInOut(t: number): number {
-  const v = Math.max(0, Math.min(1, t));
-  return v < 0.5 ? 4 * v * v * v : 1 - Math.pow(-2 * v + 2, 3) / 2;
-}
-
+/**
+ * Scroll-driven item that tilts in from the left or right and settles flat at
+ * centre — neighbours given opposite `direction` lean away from each other.
+ * Motion only; headings and buttons outside this wrapper stay stationary.
+ */
 export default function SwivelItem({
   children,
   className = "",
   direction = 1,
-  range = 6,
+  tilt = 11,
+  roll = 3.5,
 }: SwivelItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
@@ -42,22 +44,40 @@ export default function SwivelItem({
     offset: ["start end", "end start"],
   });
 
-  const eased = useTransform(scrollYProgress, easeInOut);
-
-  // Each item has its own scroll-driven swivel — direction flips per item
-  // so neighbors counter-rotate like meshing gears.
-  const rawAngle: MotionValue<number> = useTransform(
-    eased,
-    [0, 1],
-    [range * direction, -range * direction]
+  const eased = useTransform(scrollYProgress, (t) =>
+    easeInOutCubic(Math.max(0, Math.min(1, t)))
   );
-  const angle = useSpring(rawAngle, springSoft);
 
-  const rawY: MotionValue<number> = useTransform(eased, [0, 1], [14, -14]);
-  const y = useSpring(rawY, springSoft);
+  // enters leaning one way, flat as it crosses centre, leans out the other way
+  const rawRotateY: MotionValue<number> = useTransform(
+    eased,
+    [0, 0.5, 1],
+    [tilt * direction, 0, -tilt * direction]
+  );
+  const rawRotate: MotionValue<number> = useTransform(
+    eased,
+    [0, 0.5, 1],
+    [roll * direction, 0, -roll * direction]
+  );
+  const rawY: MotionValue<number> = useTransform(eased, [0, 1], [20, -20]);
+
+  const spring = {
+    stiffness: 50,
+    damping: 20,
+    mass: 1.0,
+    restDelta: 0.001,
+  } as const;
+
+  const rotateY = useSpring(rawRotateY, spring);
+  const rotate = useSpring(rawRotate, spring);
+  const y = useSpring(rawY, spring);
 
   if (reduce) {
-    return <div ref={ref} className={className}>{children}</div>;
+    return (
+      <div ref={ref} className={className}>
+        {children}
+      </div>
+    );
   }
 
   return (
@@ -65,10 +85,11 @@ export default function SwivelItem({
       ref={ref}
       className={className}
       style={{
-        rotate: angle,
+        rotateY,
+        rotate,
         y,
-        perspective: 800,
-        transformOrigin: "center center" as const,
+        transformPerspective: 1000,
+        transformOrigin: "center center",
         willChange: "transform",
       }}
     >

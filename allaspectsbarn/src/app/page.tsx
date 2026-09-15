@@ -3,7 +3,6 @@ import Image from "next/image";
 import { getPageByRoute } from "@/lib/data";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import ScrollSlide from "@/components/scroll";
-import SwivelSection from "@/components/SwivelSection";
 import SwivelItem from "@/components/SwivelItem";
 
 export default function HomePage() {
@@ -108,7 +107,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <SwivelSection intensity={1} className="py-20 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollSlide direction="left" className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -122,7 +121,7 @@ export default function HomePage() {
           <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, i) => (
               <StaggerItem key={i}>
-                <SwivelItem direction={i % 2 === 0 ? 1 : -1} className="h-full">
+                <SwivelItem direction={i % 2 === 0 ? 1 : -1} tilt={8} roll={2.5} className="h-full">
                   <Link
                     href={feature.route}
                     className="block group p-8 bg-gray-50 rounded-2xl hover:bg-indigo-50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 h-full"
@@ -138,11 +137,11 @@ export default function HomePage() {
             ))}
           </Stagger>
         </div>
-      </SwivelSection>
+      </section>
 
       {/* Image Gallery Preview */}
       {heroImages.length > 0 && (
-        <SwivelSection intensity={-1} className="py-20 bg-gray-50">
+        <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollSlide direction="right" className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -156,7 +155,7 @@ export default function HomePage() {
             <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {heroImages.slice(0, 6).map((img, i) => (
                 <StaggerItem key={i}>
-                  <SwivelItem direction={i % 2 === 0 ? 1 : -1} className="h-full">
+                  <SwivelItem direction={i % 2 === 0 ? 1 : -1} tilt={13} roll={4} className="h-full">
                     <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group h-full">
                       <Image
                         src={img.startsWith("http") ? img : `https://images.editor.website${img}`}
@@ -181,11 +180,11 @@ export default function HomePage() {
               </Link>
             </ScrollSlide>
           </div>
-        </SwivelSection>
+        </section>
       )}
 
       {/* CTA Section */}
-      <SwivelSection intensity={1} className="py-20 bg-indigo-900 text-white">
+      <section className="py-20 bg-indigo-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollSlide direction="left">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -216,7 +215,7 @@ export default function HomePage() {
             </div>
           </ScrollSlide>
         </div>
-      </SwivelSection>
+      </section>
     </div>
   );
 }
