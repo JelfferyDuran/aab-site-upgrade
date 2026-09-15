@@ -4,6 +4,7 @@ import { getPageByRoute } from "@/lib/data";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import ScrollSlide from "@/components/scroll";
 import SwivelSection from "@/components/SwivelSection";
+import SwivelItem from "@/components/SwivelItem";
 
 export default function HomePage() {
   const home = getPageByRoute("home");
@@ -121,16 +122,18 @@ export default function HomePage() {
           <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, i) => (
               <StaggerItem key={i}>
-                <Link
-                  href={feature.route}
-                  className="block group p-8 bg-gray-50 rounded-2xl hover:bg-indigo-50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
-                >
-                  <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </Link>
+                <SwivelItem direction={i % 2 === 0 ? 1 : -1} className="h-full">
+                  <Link
+                    href={feature.route}
+                    className="block group p-8 bg-gray-50 rounded-2xl hover:bg-indigo-50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 h-full"
+                  >
+                    <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600">{feature.description}</p>
+                  </Link>
+                </SwivelItem>
               </StaggerItem>
             ))}
           </Stagger>
@@ -153,16 +156,18 @@ export default function HomePage() {
             <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {heroImages.slice(0, 6).map((img, i) => (
                 <StaggerItem key={i}>
-                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group">
-                    <Image
-                      src={img.startsWith("http") ? img : `https://images.editor.website${img}`}
-                      alt={`Venue image ${i + 1}`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+                  <SwivelItem direction={i % 2 === 0 ? 1 : -1} className="h-full">
+                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group h-full">
+                      <Image
+                        src={img.startsWith("http") ? img : `https://images.editor.website${img}`}
+                        alt={`Venue image ${i + 1}`}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </SwivelItem>
                 </StaggerItem>
               ))}
             </Stagger>
