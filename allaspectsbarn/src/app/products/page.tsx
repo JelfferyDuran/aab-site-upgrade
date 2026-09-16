@@ -42,8 +42,18 @@ export default function ProductsPage() {
   return (
     <div className="flex flex-col pt-16 lg:pt-20">
       {/* Hero */}
-      <section className="relative py-20 bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-20 overflow-hidden bg-neutral-950">
+        <Image
+          src="/images/storefront-hero.webp"
+          alt="All Aspects at the Barn"
+          fill
+          priority
+          quality={72}
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/80" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             className="text-5xl sm:text-6xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-playfair)" }}
@@ -54,7 +64,7 @@ export default function ProductsPage() {
             Our Products
           </motion.h1>
           <motion.p
-            className="text-xl text-indigo-200 max-w-3xl mx-auto mb-8"
+            className="text-xl text-white/85 max-w-3xl mx-auto mb-8"
             initial={reduce ? undefined : { opacity: 0, y: 20 }}
             animate={reduce ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}

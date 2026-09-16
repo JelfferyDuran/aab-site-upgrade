@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import ScrollSlide, { ScrollFade } from "@/components/scroll";
-import SwivelCard from "@/components/SwivelCard";
+import { motion, useReducedMotion } from "framer-motion";
+import GalleryCarousel from "@/components/GalleryCarousel";
 import galleryData from "@/data/gallery.json";
 
 interface GalleryImage {
@@ -13,119 +13,108 @@ interface GalleryImage {
   category?: string;
 }
 
-const ALL_CATEGORIES: string[] = ["All", ...Array.from(new Set(galleryData.map((img: GalleryImage) => img.category).filter((c): c is string => Boolean(c))))];
+const ALL_CATEGORIES: string[] = [
+  "All",
+  ...Array.from(new Set(galleryData.map((img: GalleryImage) => img.category).filter((c): c is string => Boolean(c)))),
+];
 
 export default function GalleryPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
   const reduce = useReducedMotion();
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredImages: GalleryImage[] =
     activeCategory === "All"
-      ? galleryData
-      : galleryData.filter((img: GalleryImage) => img.category === activeCategory);
+      ? (galleryData as GalleryImage[])
+      : (galleryData as GalleryImage[]).filter((img) => img.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative py-24 md:py-32 bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-950 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/images/IMG_1280.jpg')] bg-cover bg-center" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollSlide direction="up">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6" style={{ fontFamily: "var(--font-display)" }}>
-              Gallery
-            </h1>
-          </ScrollSlide>
-          <ScrollFade delay={0.2}>
-            <p className="text-lg md:text-xl text-indigo-100 max-w-2xl mx-auto">
-              A peek inside our barn, our finds, and the life we&apos;ve built around repurposed treasures.
-            </p>
-          </ScrollFade>
-        </div>
-      </section>
-
-      {/* Category Filter */}
-      <section className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {ALL_CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeCategory === cat
-                    ? "bg-indigo-900 text-white shadow-lg scale-105"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Swivel Card Gallery Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        {reduce ? (
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-          >
-            {filteredImages.map((img: GalleryImage, i: number) => (
-              <SwivelCard
-                key={`${img.src}-${i}`}
-                src={img.src}
-                alt={img.alt}
-                index={i}
-                total={filteredImages.length}
-                category={img.category}
-              />
-            ))}
-          </div>
-        ) : (
-          <motion.div
-            key={activeCategory}
-            initial={{ opacity: 0, y: 20 }}
+    <div className="flex flex-col pt-16 lg:pt-20">
+      {/* Hero — the barn photo is the attraction; neutral scrim only, zero hue shift */}
+      <section className="relative min-h-[52vh] md:min-h-[60vh] flex items-end overflow-hidden bg-neutral-950">
+        <Image
+          src="/images/storefront-hero.webp"
+          alt="The barn at All Aspects at the Barn"
+          fill
+          priority
+          fetchPriority="high"
+          quality={74}
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/35 to-black/80" />
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 md:pb-14">
+          <motion.h1
+            initial={reduce ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            transition={{ duration: reduce ? 0 : 0.7, ease: "easeOut" }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white"
+            style={{ fontFamily: "var(--font-playfair)" }}
           >
-            {filteredImages.map((img: GalleryImage, i: number) => (
-              <SwivelCard
-                key={`${img.src}-${i}`}
-                src={img.src}
-                alt={img.alt}
-                index={i}
-                total={filteredImages.length}
-                category={img.category}
-              />
-            ))}
-          </motion.div>
-        )}
+            Gallery
+          </motion.h1>
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: reduce ? 0 : 0.7, delay: reduce ? 0 : 0.12, ease: "easeOut" }}
+            className="mt-2 text-base sm:text-lg text-white/85"
+            style={{ fontFamily: "var(--font-cardo)" }}
+          >
+            Life at the barn.
+          </motion.p>
+        </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-20 bg-indigo-900 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <ScrollSlide direction="up">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "var(--font-display)" }}>
-              Want to Visit?
-            </h2>
-          </ScrollSlide>
-          <ScrollFade delay={0.15}>
-            <p className="text-indigo-200 text-lg mb-8">
-              Come see the barn in person. Reach out to plan your visit.
-            </p>
-          </ScrollFade>
-          <ScrollSlide direction="up" delay={0.25}>
+      {/* Filters */}
+      <section className="bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-wrap gap-2 justify-center">
+          {ALL_CATEGORIES.map((category) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => setActiveCategory(category)}
+              aria-pressed={activeCategory === category}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                activeCategory === category
+                  ? "bg-neutral-900 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Contained viewer — every photo lives in one stage, no scroll-per-picture */}
+      <section className="bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+          <GalleryCarousel images={filteredImages} key={activeCategory} />
+        </div>
+      </section>
+
+      {/* Compact invitation */}
+      <section className="py-14 bg-indigo-900 text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ fontFamily: "var(--font-playfair)" }}>
+            Come see it in person
+          </h2>
+          <p className="text-indigo-200 mb-7">
+            1584 S Delaware Road, Mount Bethel, PA &middot; Tue&ndash;Sat 8&ndash;5 &middot; Sun 9&ndash;5 &middot; Mon closed
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:+15705832305"
+              className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-indigo-950 font-semibold rounded-full transition-all duration-300"
+            >
+              (570) 583-2305
+            </a>
             <Link
               href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-white text-indigo-900 rounded-full font-bold text-lg hover:bg-indigo-100 transition-colors shadow-xl hover:shadow-2xl"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-indigo-900 font-semibold rounded-full transition-all duration-300"
             >
-              Get in Touch
+              Contact Us
             </Link>
-          </ScrollSlide>
+          </div>
         </div>
       </section>
     </div>

@@ -5,13 +5,12 @@ const footerLinks = {
   venue: [
     { href: "/about", label: "About Us" },
     { href: "/gallery", label: "Gallery" },
-    { href: "/pavilion", label: "Pavilion" },
+    { href: "/pavilion-party-rental", label: "Pavilion" },
     { href: "/petting-farm", label: "Petting Farm" },
   ],
   services: [
-    { href: "/barn-brew", label: "Barn Brew" },
-    { href: "/events", label: "Events" },
-    { href: "/weddings", label: "Weddings" },
+    { href: "/barn-brew-coffee-bar", label: "Barn Brew" },
+    { href: "/shop", label: "Shop" },
     { href: "/contact", label: "Contact" },
   ],
 };

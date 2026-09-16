@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getAllProductSlugs, getProductBySlug } from "@/lib/data";
-import ScrollSlide, { ScrollFade, ScrollScale } from "@/components/scroll";
+import ScrollSlide, { ScrollFade } from "@/components/scroll";
+import GalleryCarousel from "@/components/GalleryCarousel";
 
 export async function generateStaticParams() {
   return getAllProductSlugs().map((p) => ({ slug: p.slug }));
@@ -126,21 +127,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   More Images
                 </h2>
               </ScrollSlide>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {images.slice(1).map((img, i) => (
-                  <ScrollScale key={i} delay={i * 0.1}>
-                    <div className="relative aspect-square rounded-xl overflow-hidden group">
-                      <Image
-                        src={img.startsWith("http") || img.startsWith("/") ? img : `https://images.editor.website${img}`}
-                        alt={`${title} - image ${i + 2}`}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(max-width: 768px) 50vw, 25vw"
-                      />
-                    </div>
-                  </ScrollScale>
-                ))}
-              </div>
+              <GalleryCarousel
+                images={images.slice(1).map((img, i) => ({
+                  src: img.startsWith("http") || img.startsWith("/") ? img : `https://images.editor.website${img}`,
+                  alt: `${title} — image ${i + 2}`,
+                }))}
+              />
             </div>
           )}
         </div>

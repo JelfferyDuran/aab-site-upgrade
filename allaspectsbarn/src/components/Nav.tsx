@@ -8,8 +8,8 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/barn-brew", label: "Barn Brew" },
-  { href: "/pavilion", label: "Pavilion" },
+  { href: "/barn-brew-coffee-bar", label: "Barn Brew" },
+  { href: "/pavilion-party-rental", label: "Pavilion" },
   { href: "/petting-farm", label: "Petting Farm" },
   { href: "/contact", label: "Contact" },
 ];
