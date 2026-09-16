@@ -100,12 +100,10 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
               Contact Us
             </Link>
             <a
-              href="https://wa.me/12019897108?text=Hi! I have a question about All Aspects Barn."
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:allaspectsrecycled@gmail.com?subject=Question%20about%20All%20Aspects%20at%20the%20Barn"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white font-semibold rounded-full transition-all"
             >
-              WhatsApp
+              Email Us
             </a>
           </div>
         </div>

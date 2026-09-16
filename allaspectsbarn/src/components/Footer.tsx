@@ -73,9 +73,9 @@ export default function Footer() {
               Get in Touch
             </h4>
             <ul className="space-y-3 text-sm text-[var(--color-gray-400)]">
-              <li>📍 123 Barn Lane, Countryside</li>
-              <li>📞 (555) 123-4567</li>
-              <li>✉️ hello@allaspectsbarn.com</li>
+              <li>📍 1584 S Delaware Road, Mount Bethel, PA 18343</li>
+              <li>📞 <a href="tel:+15705832305" className="hover:text-white transition-colors">(570) 583-2305</a></li>
+              <li>✉️ <a href="mailto:allaspectsrecycled@gmail.com" className="hover:text-white transition-colors">allaspectsrecycled@gmail.com</a></li>
             </ul>
           </div>
         </div>

@@ -205,12 +205,10 @@ export default function HomePage() {
                 Get in Touch
               </Link>
               <a
-                href="https://wa.me/12019897108?text=Hi! I'm interested in booking an event at All Aspects Barn."
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:allaspectsrecycled@gmail.com?subject=Event%20inquiry%20%E2%80%94%20All%20Aspects%20at%20the%20Barn"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-indigo-900 font-semibold rounded-full transition-all duration-300"
               >
-                WhatsApp Us
+                Email Us
               </a>
             </div>
           </ScrollSlide>

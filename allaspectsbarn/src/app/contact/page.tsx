@@ -37,9 +37,8 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "var(--font-playfair)" }}>Location</h3>
                 <p className="text-gray-600">
-                  Route 611<br />
-                  Village of Stone Church<br />
-                  Upper Mount Bethel, PA
+                  1584 S Delaware Road<br />
+                  Mount Bethel, PA 18343
                 </p>
               </div>
             </ScrollSlide>
@@ -53,8 +52,8 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "var(--font-playfair)" }}>Phone</h3>
                 <p className="text-gray-600">
-                  <a href="tel:+12019897108" className="text-indigo-600 hover:underline">
-                    (201) 989-7108
+                  <a href="tel:+15705832305" className="text-indigo-600 hover:underline">
+                    (570) 583-2305
                   </a>
                 </p>
               </div>
@@ -69,9 +68,9 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "var(--font-playfair)" }}>Hours</h3>
                 <p className="text-gray-600">
-                  Mon–Fri: 10am – 5pm<br />
-                  Sat: 10am – 3pm<br />
-                  Sun: Closed
+                  Tue–Sat: 8am – 5pm<br />
+                  Sun: 9am – 5pm<br />
+                  Mon: Closed
                 </p>
               </div>
             </ScrollSlide>
