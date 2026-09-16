@@ -8,6 +8,7 @@ import {
   useSpring,
   useVelocity,
   useReducedMotion,
+  useInView,
   type MotionValue,
 } from "framer-motion";
 
@@ -26,9 +27,19 @@ function easeInOut(t: number): number {
   return v < 0.5 ? 4 * v * v * v : 1 - Math.pow(-2 * v + 2, 3) / 2;
 }
 
+/**
+ * Scroll-driven section wrapper that swivels in 3D as the page scrolls.
+ *
+ * Motion hooks (useScroll, useSpring, etc.) are always registered (React hooks
+ * rule), but transforms are only applied to the DOM when the element is within
+ * 300px of the viewport. Before that, a static div is rendered — no spring
+ * animation loops, no style updates. This defers below-fold motion so it never
+ * competes with the LCP paint window.
+ */
 export default function SwivelSection({ children, className = "", intensity = 1 }: SwivelProps) {
   const ref = useRef(null);
   const reduce = useReducedMotion();
+  const inView = useInView(ref, { once: true, margin: "300px 0px" });
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -68,6 +79,11 @@ export default function SwivelSection({ children, className = "", intensity = 1 
   const springY = useSpring(rawY, { stiffness: 45, damping: 20, mass: 1.0 });
 
   if (reduce) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
+
+  // Below the fold: render static div — no motion styles, no springs.
+  if (!inView) {
     return <div ref={ref} className={className}>{children}</div>;
   }
 

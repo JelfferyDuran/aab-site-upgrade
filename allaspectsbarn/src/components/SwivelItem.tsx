@@ -7,6 +7,7 @@ import {
   useTransform,
   useSpring,
   useReducedMotion,
+  useInView,
   type MotionValue,
 } from "framer-motion";
 
@@ -28,6 +29,12 @@ const easeInOutCubic = (t: number) =>
  * Scroll-driven item that tilts in from the left or right and settles flat at
  * centre — neighbours given opposite `direction` lean away from each other.
  * Motion only; headings and buttons outside this wrapper stay stationary.
+ *
+ * The useScroll hooks are always registered (React hooks rule), but the motion
+ * values are only applied to the DOM when the element is within 300px of the
+ * viewport. Before that, a static div is rendered — no springs, no style
+ * updates, no main-thread work. This defers below-fold motion so it never
+ * competes with the LCP paint window.
  */
 export default function SwivelItem({
   children,
@@ -39,6 +46,12 @@ export default function SwivelItem({
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
 
+  // IntersectionObserver — cheap async check, fires ~300px before element
+  // enters the viewport so motion is ready before it's visible.
+  const inView = useInView(ref, { once: true, margin: "300px 0px" });
+
+  // Always call useScroll (hooks rule). Values are computed but only applied
+  // to the DOM when inView is true (see render below).
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -73,6 +86,16 @@ export default function SwivelItem({
   const y = useSpring(rawY, spring);
 
   if (reduce) {
+    return (
+      <div ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
+
+  // Below the fold (or not yet in view): render static div.
+  // No motion styles applied — no reflow, no style calculation, no spring.
+  if (!inView) {
     return (
       <div ref={ref} className={className}>
         {children}
