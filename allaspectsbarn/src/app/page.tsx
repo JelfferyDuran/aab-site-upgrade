@@ -51,11 +51,13 @@ export default function HomePage() {
         {/* Hero Background Image — main storefront photo */}
         <div className="absolute inset-0">
           <Image
-            src="/images/storefront-hero.jpg"
+            src="/images/storefront-hero.webp"
             alt="All Aspects Barn storefront"
             fill
             priority
             loading="eager"
+            fetchPriority="high"
+            quality={65}
             className="object-cover opacity-50"
             sizes="100vw"
           />
