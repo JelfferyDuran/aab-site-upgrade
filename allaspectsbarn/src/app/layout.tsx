@@ -101,6 +101,12 @@ const jsonLd = {
     postalCode: "18343",
     addressCountry: "US",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 40.8852894,
+    longitude: -75.1235791,
+  },
+  openingHours: ["Tu-Sa 08:00-17:00", "Su 09:00-17:00"],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -130,6 +136,10 @@ const jsonLd = {
         name: "Barn Event Venue Rental",
       },
     },
+  ],
+  sameAs: [
+    "https://www.facebook.com/allaspectsrepurposed/",
+    "https://www.linkedin.com/company/all-aspects-at-the-barn/",
   ],
 };
 
