@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { getPageByRoute } from "@/lib/data";
 import ScrollSlide, { ScrollFade, ScrollScale } from "@/components/scroll";
 import { Stagger, StaggerItem } from "@/components/motion";
@@ -10,14 +11,7 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
   const page = getPageByRoute(routePath);
 
   if (!page) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Page Not Found</h1>
-          <Link href="/" className="text-indigo-600 hover:underline">Go Home</Link>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   const { title, body, images, og_description } = page;
@@ -74,7 +68,7 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
                 <StaggerItem key={i}>
                   <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group">
                     <Image
-                      src={img.startsWith("http") ? img : `https://images.editor.website${img}`}
+                      src={img.startsWith("/") ? img : img.replace(/^https?:\/\/images\.editor\.website/i, "")}
                       alt={`${title} - image ${i + 1}`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"

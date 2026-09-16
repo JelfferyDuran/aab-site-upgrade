@@ -25,7 +25,10 @@ const dancing = Dancing_Script({
   weight: ["400", "500", "600", "700"],
 });
 
+const SITE_URL = "https://allaspectsbarn.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "All Aspects Barn — Events, Classes & Unique Finds",
     template: "%s | All Aspects Barn",
@@ -40,24 +43,92 @@ export const metadata: Metadata = {
     "repurposed goods",
     "All Aspects Barn",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "All Aspects Barn — Events, Classes & Unique Finds",
     description:
       "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds.",
-    url: "https://allaspectsbarn.vercel.app",
+    url: SITE_URL,
     siteName: "All Aspects Barn",
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/images/storefront-hero.jpg",
+        width: 1280,
+        height: 960,
+        alt: "All Aspects Barn storefront on Route 611 in Upper Mount Bethel, PA",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "All Aspects Barn — Events, Classes & Unique Finds",
     description:
       "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds.",
+    images: [
+      {
+        url: "/images/storefront-hero.jpg",
+        alt: "All Aspects Barn storefront on Route 611 in Upper Mount Bethel, PA",
+      },
+    ],
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "EventVenue", "Store"],
+  "@id": `${SITE_URL}/#business`,
+  name: "All Aspects Barn",
+  url: SITE_URL,
+  description:
+    "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds in Upper Mount Bethel, PA.",
+  image: `${SITE_URL}/images/storefront-hero.jpg`,
+  telephone: "+1-201-989-7108",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Route 611, Village of Stone Church",
+    addressLocality: "Upper Mount Bethel",
+    addressRegion: "PA",
+    addressCountry: "US",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "10:00",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "10:00",
+      closes: "15:00",
+    },
+  ],
+  makesOffer: [
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Chalk Paint Classes",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Barn Event Venue Rental",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -67,6 +138,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${cardo.variable} ${playfair.variable} ${dancing.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <SiteLayout>{children}</SiteLayout>
       </body>
     </html>
