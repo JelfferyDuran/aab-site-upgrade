@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 interface GalleryImage {
   src: string;
@@ -17,6 +17,8 @@ interface ImageCarouselProps {
 
 export default function ImageCarousel({ images, columns = 3 }: ImageCarouselProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const reduce = useReducedMotion();
+  const frameRef = useRef<HTMLDivElement>(null);
 
   const handlePrev = useCallback(() => {
     setSelectedIndex((prev) =>
@@ -55,10 +57,11 @@ export default function ImageCarousel({ images, columns = 3 }: ImageCarouselProp
         {images.map((img, i) => (
           <motion.div
             key={img.src}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            ref={frameRef}
+            initial={reduce ? undefined : { opacity: 0, y: 30 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: (i % 6) * 0.08 }}
+            transition={reduce ? undefined : { duration: 0.5, delay: (i % 6) * 0.08 }}
             className="group cursor-pointer"
             onClick={() => setSelectedIndex(i)}
           >
@@ -103,85 +106,147 @@ export default function ImageCarousel({ images, columns = 3 }: ImageCarouselProp
       {/* Lightbox Modal */}
       <AnimatePresence>
         {selectedIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[var(--z-modal)] bg-black/95 flex items-center justify-center p-4"
-            onClick={() => setSelectedIndex(null)}
-          >
-            {/* Close button */}
-            <button
+          reduce ? (
+            <div
+              className="fixed inset-0 z-[var(--z-modal)] bg-black/95 flex items-center justify-center p-4"
               onClick={() => setSelectedIndex(null)}
-              className="absolute top-4 right-4 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-              aria-label="Close"
             >
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-
-            {/* Image counter */}
-            <div className="absolute top-4 left-4 text-white/70 text-sm font-medium">
-              {selectedIndex + 1} / {images.length}
+              <button
+                onClick={() => setSelectedIndex(null)}
+                className="absolute top-4 right-4 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                aria-label="Close"
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className="absolute top-4 left-4 text-white/70 text-sm font-medium">
+                {selectedIndex + 1} / {images.length}
+              </div>
+              <div
+                className="relative max-w-[90vw] max-h-[85vh] w-full aspect-[4/3] cursor-default"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image
+                  src={images[selectedIndex].src}
+                  alt={images[selectedIndex].alt}
+                  fill
+                  className="object-contain"
+                  sizes="90vw"
+                  priority
+                />
+              </div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrev();
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                aria-label="Previous"
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                aria-label="Next"
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              {images[selectedIndex].category && (
+                <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm font-medium tracking-wide">
+                  {images[selectedIndex].category}
+                </p>
+              )}
             </div>
-
-            {/* Main image */}
+          ) : (
             <motion.div
-              key={selectedIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="relative max-w-[90vw] max-h-[85vh] w-full aspect-[4/3]"
-              onClick={(e) => e.stopPropagation()}
+              className="fixed inset-0 z-[var(--z-modal)] bg-black/95 flex items-center justify-center p-4"
+              onClick={() => setSelectedIndex(null)}
             >
-              <Image
-                src={images[selectedIndex].src}
-                alt={images[selectedIndex].alt}
-                fill
-                className="object-contain"
-                sizes="90vw"
-                priority
-              />
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedIndex(null)}
+                className="absolute top-4 right-4 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                aria-label="Close"
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Image counter */}
+              <div className="absolute top-4 left-4 text-white/70 text-sm font-medium">
+                {selectedIndex + 1} / {images.length}
+              </div>
+
+              {/* Main image */}
+              <motion.div
+                key={selectedIndex}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="relative max-w-[90vw] max-h-[85vh] w-full aspect-[4/3]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image
+                  src={images[selectedIndex].src}
+                  alt={images[selectedIndex].alt}
+                  fill
+                  className="object-contain"
+                  sizes="90vw"
+                  priority
+                />
+              </motion.div>
+
+              {/* Prev button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrev();
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                aria-label="Previous"
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Next button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                aria-label="Next"
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              {/* Caption */}
+              {images[selectedIndex].category && (
+                <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm font-medium tracking-wide">
+                  {images[selectedIndex].category}
+                </p>
+              )}
             </motion.div>
-
-            {/* Prev button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handlePrev();
-              }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-              aria-label="Previous"
-            >
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            {/* Next button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleNext();
-              }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-              aria-label="Next"
-            >
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-
-            {/* Caption */}
-            {images[selectedIndex].category && (
-              <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm font-medium tracking-wide">
-                {images[selectedIndex].category}
-              </p>
-            )}
-          </motion.div>
+          )
         )}
       </AnimatePresence>
     </>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import ScrollSlide, { ScrollFade } from "@/components/scroll";
 import SwivelCard from "@/components/SwivelCard";
@@ -17,6 +17,7 @@ const ALL_CATEGORIES: string[] = ["All", ...Array.from(new Set(galleryData.map((
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const reduce = useReducedMotion();
 
   const filteredImages: GalleryImage[] =
     activeCategory === "All"
@@ -67,24 +68,41 @@ export default function GalleryPage() {
 
       {/* Swivel Card Gallery Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <motion.div
-          key={activeCategory}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-        >
-          {filteredImages.map((img: GalleryImage, i: number) => (
-            <SwivelCard
-              key={`${img.src}-${i}`}
-              src={img.src}
-              alt={img.alt}
-              index={i}
-              total={filteredImages.length}
-              category={img.category}
-            />
-          ))}
-        </motion.div>
+        {reduce ? (
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
+            {filteredImages.map((img: GalleryImage, i: number) => (
+              <SwivelCard
+                key={`${img.src}-${i}`}
+                src={img.src}
+                alt={img.alt}
+                index={i}
+                total={filteredImages.length}
+                category={img.category}
+              />
+            ))}
+          </div>
+        ) : (
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
+            {filteredImages.map((img: GalleryImage, i: number) => (
+              <SwivelCard
+                key={`${img.src}-${i}`}
+                src={img.src}
+                alt={img.alt}
+                index={i}
+                total={filteredImages.length}
+                category={img.category}
+              />
+            ))}
+          </motion.div>
+        )}
       </section>
 
       {/* Bottom CTA */}

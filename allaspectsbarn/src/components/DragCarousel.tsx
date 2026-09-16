@@ -1,11 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useReducedMotion } from "framer-motion";
 
 export default function DragCarousel({ children }: { children: React.ReactNode }) {
   const ref = useRef(null);
   const { scrollXProgress } = useScroll({ container: ref });
+  const reduce = useReducedMotion();
 
   return (
     <div className="relative overflow-hidden">
@@ -18,7 +19,7 @@ export default function DragCarousel({ children }: { children: React.ReactNode }
       </div>
       <motion.div
         className="absolute bottom-0 left-0 h-1 bg-indigo-500 origin-left"
-        style={{ width: "100%", scaleX: scrollXProgress }}
+        style={{ width: "100%", scaleX: reduce ? 1 : scrollXProgress }}
       />
     </div>
   );

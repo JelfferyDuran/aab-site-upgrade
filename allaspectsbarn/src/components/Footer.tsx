@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NewsletterForm from "@/components/NewsletterForm";
 
 const footerLinks = {
   venue: [
@@ -23,10 +24,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <h3 className="font-display text-3xl mb-4">AAB</h3>
-            <p className="text-[var(--color-gray-400)] text-sm leading-relaxed">
+            <p className="text-[var(--color-gray-400)] text-sm leading-relaxed mb-6">
               All Aspects Barn — where rustic charm meets modern elegance.
               Premium event venue for unforgettable moments.
             </p>
+            <NewsletterForm />
           </div>
 
           {/* Venue Links */}

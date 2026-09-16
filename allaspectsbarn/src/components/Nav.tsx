@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -17,6 +17,7 @@ const navLinks = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -26,8 +27,8 @@ export default function Nav() {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={reduce ? undefined : { y: -100 }}
+      animate={reduce ? undefined : { y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`fixed top-0 left-0 right-0 z-[var(--z-fixed)] transition-all duration-300 ${
         scrolled
@@ -52,9 +53,9 @@ export default function Nav() {
             {navLinks.map((link, i) => (
               <motion.div
                 key={link.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+                initial={reduce ? undefined : { opacity: 0, y: -20 }}
+                animate={reduce ? undefined : { opacity: 1, y: 0 }}
+                transition={{ delay: reduce ? 0 : 0.1 + i * 0.05, duration: 0.4 }}
               >
                 <Link
                   href={link.href}
@@ -110,9 +111,9 @@ export default function Nav() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={reduce ? undefined : { opacity: 0, height: 0 }}
+            animate={reduce ? undefined : { opacity: 1, height: "auto" }}
+            exit={reduce ? undefined : { opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="lg:hidden bg-white border-t border-[var(--color-gray-200)] shadow-lg overflow-hidden"
           >
@@ -120,9 +121,9 @@ export default function Nav() {
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
+                  initial={reduce ? undefined : { opacity: 0, x: -20 }}
+                  animate={reduce ? undefined : { opacity: 1, x: 0 }}
+                  transition={{ delay: reduce ? 0 : i * 0.05 }}
                 >
                   <Link
                     href={link.href}

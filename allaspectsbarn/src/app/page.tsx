@@ -1,3 +1,4 @@
+import Accordion, { AccordionItem } from "@/components/Accordion";
 import Link from "next/link";
 import Image from "next/image";
 import { getPageByRoute } from "@/lib/data";
@@ -184,6 +185,72 @@ export default function HomePage() {
           </div>
         </section>
       )}
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollSlide direction="up" className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-gray-600">
+              Everything you need to know about All Aspects Barn
+            </p>
+          </ScrollSlide>
+
+          <ScrollSlide direction="up" delay={0.1}>
+            <Accordion>
+              <AccordionItem question="What is All Aspects Barn?" defaultOpen={true}>
+                <p>
+                  All Aspects Barn is a multi-faceted destination in New Jersey featuring an antique store, gift shop, home decor store, event venue, petting farm, and our very own Barn Brew coffee shop. We offer unique finds, reclaimed items, refinished furniture, primitives, and unforgettable experiences for the whole family.
+                </p>
+              </AccordionItem>
+
+              <AccordionItem question="Do you host weddings and private events?">
+                <p>
+                  Absolutely! Our elegant barn venue is perfect for weddings, birthday parties, corporate gatherings, and celebrations of all kinds. Contact us to discuss your event details, and our team will help you create an unforgettable experience tailored to your vision.
+                </p>
+              </AccordionItem>
+
+              <AccordionItem question="What can I find in your antique store?">
+                <p>
+                  Our antique store features a curated selection of unique finds including vintage furniture, reclaimed items, refinished primitives, home decor, collectibles, and one-of-a-kind treasures. We&apos;re constantly updating our inventory, so there&apos;s always something new to discover.
+                </p>
+              </AccordionItem>
+
+              <AccordionItem question="Is the petting farm open to the public?">
+                <p>
+                  Yes! Our petting farm is family-friendly and open to visitors of all ages. It&apos;s a wonderful outdoor experience where kids and adults can enjoy animal encounters in a beautiful farm setting. Check our hours of operation and plan your visit today.
+                </p>
+              </AccordionItem>
+
+              <AccordionItem question="What is Barn Brew?">
+                <p>
+                  Barn Brew is our specialty coffee shop located right at the barn. We serve expertly crafted espresso drinks, specialty coffee, and local baked goods. It&apos;s the perfect spot to relax, catch up with friends, or take a break while exploring our venue.
+                </p>
+              </AccordionItem>
+
+              <AccordionItem question="How do I book an event or visit?">
+                <p>
+                  You can reach us through our <Link href="/contact" className="text-indigo-600 hover:text-indigo-800 underline">contact page</Link>, call us directly, or email allaspectsrecycled@gmail.com. For event bookings, we recommend contacting us as early as possible to secure your preferred date.
+                </p>
+              </AccordionItem>
+
+              <AccordionItem question="Do you offer delivery or shipping for antique items?">
+                <p>
+                  We&apos;re happy to discuss delivery options for larger items and can arrange shipping for many of our antique and vintage pieces. Delivery availability depends on your location and the size of the item. Contact us for specific details and pricing.
+                </p>
+              </AccordionItem>
+
+              <AccordionItem question="What are your hours of operation?">
+                <p>
+                  Our hours vary by season and day of the week. We recommend checking our website or calling ahead before your visit. Special events may also affect regular hours, so feel free to reach out if you have any questions about our current schedule.
+                </p>
+              </AccordionItem>
+            </Accordion>
+          </ScrollSlide>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-indigo-900 text-white">

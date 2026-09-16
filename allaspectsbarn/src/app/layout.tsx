@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     "All Aspects Barn",
   ],
   alternates: {
-    canonical: "/",
+    canonical: new URL(SITE_URL),
   },
   openGraph: {
     title: "All Aspects Barn — Events, Classes & Unique Finds",
@@ -74,10 +74,6 @@ export const metadata: Metadata = {
         alt: "All Aspects Barn storefront on Route 611 in Upper Mount Bethel, PA",
       },
     ],
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 

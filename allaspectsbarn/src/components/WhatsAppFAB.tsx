@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const EMAIL_ADDRESS = "allaspectsrecycled@gmail.com";
 const EMAIL_SUBJECT = encodeURIComponent("Event inquiry — All Aspects at the Barn");
 
 export default function WhatsAppFAB() {
   const [visible, setVisible] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 300);
@@ -25,12 +26,12 @@ export default function WhatsAppFAB() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Email All Aspects Barn"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0, opacity: 0 }}
-          whileHover={{ scale: 1.15 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          initial={reduce ? undefined : { scale: 0, opacity: 0 }}
+          animate={reduce ? undefined : { scale: 1, opacity: 1 }}
+          exit={reduce ? undefined : { scale: 0, opacity: 0 }}
+          whileHover={reduce ? undefined : { scale: 1.15 }}
+          whileTap={reduce ? undefined : { scale: 0.95 }}
+          transition={reduce ? undefined : { type: "spring", stiffness: 300, damping: 20 }}
           className="fixed bottom-6 right-6 z-[var(--z-fab)] flex items-center justify-center w-14 h-14 rounded-full bg-[#435298] text-white shadow-lg hover:shadow-xl"
         >
           <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

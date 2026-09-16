@@ -85,6 +85,72 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* ── AAB motion audit (t_973e536c) ──────────────────────────────────────
+     Framer-motion components (SwivelItem, SwivelCard, SwivelSection,
+     ScrollSlide, ScrollFade, ScrollScale, Reveal, Stagger, StaggerItem,
+     Parallax, ImageCarousel) already short-circuit on useReducedMotion()
+     and render a plain <div>. The rules below mute the CSS side that
+     Framer cannot reach: Tailwind transition/hover transforms, background
+     fade overlays, and utility keyframe animations.                           ── */
+  html,
+  body {
+    scroll-behavior: auto !important;
+  }
+
+  /* Kill every CSS transition and animation globally for reduced-motion users */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+
+  /* Hover-driven transforms must not move/rotate/scale when motion is reduced */
+  [class*="hover:scale"],
+  [class*="hover:translate"],
+  [class*="hover:rotate"],
+  [class*="hover:shadow"],
+  [class*="hover:-translate"],
+  .group:hover * {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Image hover zoom inside SwivelCard / ImageCarousel frame cards */
+  [class*="group-hover:scale-"] {
+    transform: none !important;
+  }
+
+  /* Hero/gradient overlay fades must stay put */
+  [class*="bg-black/0"],
+  [class*="bg-white/0"],
+  [class*="opacity-0"],
+  [class*="group-hover:opacity"] {
+    opacity: inherit !important;
+  }
+
+  /* Utility keyframe animations (scroll indicator bounce, etc.) */
+  [class*="animate-"] {
+    animation-name: none !important;
+  }
+}
+
 body {
   background: var(--color-white);
   color: var(--color-gray-900);

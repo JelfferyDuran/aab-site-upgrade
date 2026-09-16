@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import ScrollSlide from "@/components/scroll";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpwdqkrl";
@@ -15,6 +15,7 @@ export default function ContactForm() {
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const reduce = useReducedMotion();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -54,23 +55,34 @@ export default function ContactForm() {
 
         <AnimatePresence mode="wait">
           {status === "sent" ? (
-            <motion.div
-              key="success"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center"
-            >
-              <div className="text-5xl mb-4">✅</div>
-              <h3 className="text-2xl font-bold text-green-800 mb-2">Message Sent!</h3>
-              <p className="text-green-700">We&apos;ll get back to you within 24 hours.</p>
-            </motion.div>
+            reduce ? (
+              <div
+                key="success"
+                className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center"
+              >
+                <div className="text-5xl mb-4">✅</div>
+                <h3 className="text-2xl font-bold text-green-800 mb-2">Message Sent!</h3>
+                <p className="text-green-700">We&apos;ll get back to you within 24 hours.</p>
+              </div>
+            ) : (
+              <motion.div
+                key="success"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center"
+              >
+                <div className="text-5xl mb-4">✅</div>
+                <h3 className="text-2xl font-bold text-green-800 mb-2">Message Sent!</h3>
+                <p className="text-green-700">We&apos;ll get back to you within 24 hours.</p>
+              </motion.div>
+            )
           ) : (
             <motion.form
               key="form"
               onSubmit={handleSubmit}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={reduce ? undefined : { opacity: 0 }}
+              animate={reduce ? undefined : { opacity: 1 }}
               className="space-y-6"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -143,25 +155,36 @@ export default function ContactForm() {
               </div>
 
               {status === "error" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-center"
-                >
-                  Something went wrong. Please try again or email us directly.
-                </motion.div>
+                reduce ? (
+                  <div
+                    className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-center"
+                  >
+                    Something went wrong. Please try again or email us directly.
+                  </div>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-center"
+                  >
+                    Something went wrong. Please try again or email us directly.
+                  </motion.div>
+                )
               )}
 
               <motion.button
                 type="submit"
                 disabled={status === "sending"}
+                whileHover={reduce ? undefined : { scale: status === "sending" ? 1 : 1.02 }}
+                whileTap={reduce ? undefined : { scale: status === "sending" ? 1 : 0.98 }}
                 className="w-full px-8 py-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-xl"
-                whileHover={{ scale: status === "sending" ? 1 : 1.02 }}
-                whileTap={{ scale: status === "sending" ? 1 : 0.98 }}
               >
                 {status === "sending" ? (
                   <span className="inline-flex items-center gap-2">
-                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                    <svg
+                      className={reduce ? "h-5 w-5" : "animate-spin h-5 w-5"}
+                      viewBox="0 0 24 24"
+                    >
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                     </svg>

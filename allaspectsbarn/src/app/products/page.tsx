@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/lib/data";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import findsJson from "@/data/finds.json";
 const findsData = findsJson as { src: string; alt: string; category: string }[];
 
@@ -12,6 +12,7 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 30;
+  const reduce = useReducedMotion();
 
   const filteredProducts = useMemo(() => {
     if (!searchQuery.trim()) return products;
@@ -46,16 +47,16 @@ export default function ProductsPage() {
           <motion.h1
             className="text-5xl sm:text-6xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-playfair)" }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={reduce ? undefined : { opacity: 0, y: 30 }}
+            animate={reduce ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             Our Products
           </motion.h1>
           <motion.p
             className="text-xl text-indigo-200 max-w-3xl mx-auto mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={reduce ? undefined : { opacity: 0, y: 20 }}
+            animate={reduce ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             Browse {products.length.toLocaleString()} unique finds — from vintage furniture to handcrafted goods.
@@ -64,8 +65,8 @@ export default function ProductsPage() {
           {/* Search */}
           <motion.div
             className="max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={reduce ? undefined : { opacity: 0, y: 20 }}
+            animate={reduce ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="relative">
@@ -96,8 +97,8 @@ export default function ProductsPage() {
             {searchQuery && (
               <motion.p
                 className="mt-3 text-indigo-200"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={reduce ? undefined : { opacity: 0 }}
+                animate={reduce ? undefined : { opacity: 1 }}
               >
                 {filteredProducts.length} result{filteredProducts.length !== 1 ? "s" : ""} for &quot;{searchQuery}&quot;
               </motion.p>
@@ -112,8 +113,8 @@ export default function ProductsPage() {
           {/* Category Quick Filters */}
           <motion.div
             className="flex flex-wrap gap-2 mb-8 justify-center"
-            initial="hidden"
-            animate="visible"
+            initial={reduce ? undefined : "hidden"}
+            animate={reduce ? undefined : "visible"}
             variants={{
               hidden: {},
               visible: {
@@ -133,8 +134,8 @@ export default function ProductsPage() {
                   hidden: { opacity: 0, scale: 0.8 },
                   visible: { opacity: 1, scale: 1 }
                 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={reduce ? undefined : { scale: 1.05 }}
+                whileTap={reduce ? undefined : { scale: 0.95 }}
               >
                 {cat} <span className="text-gray-400">({count})</span>
               </motion.button>
@@ -144,8 +145,8 @@ export default function ProductsPage() {
           {/* Grid */}
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-            initial="hidden"
-            animate="visible"
+            initial={reduce ? undefined : "hidden"}
+            animate={reduce ? undefined : "visible"}
             variants={{
               hidden: {},
               visible: {
@@ -160,7 +161,7 @@ export default function ProductsPage() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
+                whileHover={reduce ? undefined : { y: -5, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 <Link
@@ -201,8 +202,8 @@ export default function ProductsPage() {
           {totalPages > 1 && (
             <motion.div
               className="mt-12 flex justify-center gap-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={reduce ? undefined : { opacity: 0 }}
+              animate={reduce ? undefined : { opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
               <button
@@ -233,8 +234,8 @@ export default function ProductsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-10"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={reduce ? undefined : { opacity: 0, y: 20 }}
+              whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
@@ -250,11 +251,11 @@ export default function ProductsPage() {
                 <motion.div
                   key={img.src}
                   className="relative aspect-square rounded-xl overflow-hidden shadow-md bg-gray-100"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={reduce ? undefined : { opacity: 0, y: 20 }}
+                  whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  whileHover={{ y: -4, boxShadow: "0 12px 28px rgba(0,0,0,0.15)" }}
+                  whileHover={reduce ? undefined : { y: -4, boxShadow: "0 12px 28px rgba(0,0,0,0.15)" }}
                 >
                   <Image
                     src={img.src}
