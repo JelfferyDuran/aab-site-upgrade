@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
+import GlassPanel from "@/components/GlassPanel";
 import Link from "next/link";
 import { products } from "@/lib/data";
 import { motion, useReducedMotion } from "framer-motion";
@@ -44,18 +45,19 @@ export default function ProductsPage() {
       {/* Hero */}
       <section className="relative py-20 overflow-hidden bg-neutral-950">
         <Image
-          src="/images/storefront-hero.webp"
-          alt="All Aspects at the Barn"
+          src="/images/barn-hero-sunset.webp"
+          alt="The shop at All Aspects at the Barn glowing at sunset"
           fill
           priority
-          quality={72}
+          quality={78}
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <GlassPanel className="mx-auto max-w-3xl px-6 py-9 sm:px-12 sm:py-12">
           <motion.h1
-            className="text-5xl sm:text-6xl font-bold text-white mb-4"
+            className="text-4xl sm:text-5xl font-bold text-stone-900 mb-4"
             style={{ fontFamily: "var(--font-playfair)" }}
             initial={reduce ? undefined : { opacity: 0, y: 30 }}
             animate={reduce ? undefined : { opacity: 1, y: 0 }}
@@ -64,13 +66,14 @@ export default function ProductsPage() {
             Our Products
           </motion.h1>
           <motion.p
-            className="text-xl text-white/85 max-w-3xl mx-auto mb-8"
+            className="text-lg sm:text-xl text-stone-700 max-w-2xl mx-auto"
             initial={reduce ? undefined : { opacity: 0, y: 20 }}
             animate={reduce ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             Browse {products.length.toLocaleString()} unique finds — from vintage furniture to handcrafted goods.
           </motion.p>
+          </GlassPanel>
 
           {/* Search */}
           <motion.div

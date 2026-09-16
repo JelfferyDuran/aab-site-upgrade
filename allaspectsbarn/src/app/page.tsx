@@ -5,6 +5,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import ScrollSlide from "@/components/scroll";
 import SwivelItem from "@/components/SwivelItem";
 import GalleryCarousel from "@/components/GalleryCarousel";
+import GlassPanel from "@/components/GlassPanel";
 import galleryData from "@/data/gallery.json";
 
 const HOME_GALLERY = (galleryData as { src: string; alt: string; category?: string }[]).slice(0, 8);
@@ -43,51 +44,55 @@ export default function HomePage() {
       <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-neutral-950">
         <div className="absolute inset-0">
           <Image
-            src="/images/storefront-hero.webp"
-            alt="The barn at All Aspects at the Barn"
+            src="/images/barn-hero-sunset.webp"
+            alt="The shop at All Aspects at the Barn glowing at sunset"
             fill
             priority
             loading="eager"
             fetchPriority="high"
-            quality={72}
+            quality={78}
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/75" />
+          {/* Light neutral scrim only — the card below carries the contrast. */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/5 to-black/50" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Reveal direction="up" duration={0.8}>
-            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold text-white mb-6 tracking-tight"
-                style={{ fontFamily: "var(--font-playfair)" }}>
-              All Aspects<br />
-              <span className="text-amber-400">at the Barn</span>
-            </h1>
-          </Reveal>
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Light glass card: gives the top info contrast against the photo. */}
+          <GlassPanel className="px-6 py-10 sm:px-12 sm:py-14">
+            <Reveal direction="up" duration={0.8}>
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-stone-900 mb-5 tracking-tight"
+                  style={{ fontFamily: "var(--font-playfair)" }}>
+                All Aspects<br />
+                <span className="text-amber-700">at the Barn</span>
+              </h1>
+            </Reveal>
 
-          <Reveal direction="up" delay={0.2} duration={0.8}>
-            <p className="text-base sm:text-xl text-white/90 uppercase tracking-[0.18em] max-w-3xl mx-auto mb-8"
-               style={{ fontFamily: "var(--font-cardo)" }}>
-              Antiques &middot; Events &middot; Petting Farm &middot; Barn Brew
-            </p>
-          </Reveal>
+            <Reveal direction="up" delay={0.2} duration={0.8}>
+              <p className="text-sm sm:text-lg text-stone-700 uppercase tracking-[0.18em] max-w-2xl mx-auto mb-8"
+                 style={{ fontFamily: "var(--font-cardo)" }}>
+                Antiques &middot; Events &middot; Petting Farm &middot; Barn Brew
+              </p>
+            </Reveal>
 
-          <Reveal direction="up" delay={0.4} duration={0.8}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/gallery"
-                className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-indigo-950 font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                Explore Our Venue
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-indigo-900 font-semibold rounded-full transition-all duration-300"
-              >
-                Book an Event
-              </Link>
-            </div>
-          </Reveal>
+            <Reveal direction="up" delay={0.4} duration={0.8}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/gallery"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-stone-900 font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+                >
+                  Explore Our Venue
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-semibold rounded-full transition-all duration-300"
+                >
+                  Book an Event
+                </Link>
+              </div>
+            </Reveal>
+          </GlassPanel>
         </div>
 
         {/* Scroll indicator */}

@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/images/storefront-hero.jpg",
+        url: "/images/barn-hero-sunset.jpg",
         width: 1280,
         height: 960,
         alt: "All Aspects Barn storefront on Route 611 in Upper Mount Bethel, PA",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
       "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds.",
     images: [
       {
-        url: "/images/storefront-hero.jpg",
+        url: "/images/barn-hero-sunset.jpg",
         alt: "All Aspects Barn storefront on Route 611 in Upper Mount Bethel, PA",
       },
     ],
@@ -85,7 +85,7 @@ const jsonLd = {
   url: SITE_URL,
   description:
     "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds in Mount Bethel, PA.",
-  image: `${SITE_URL}/images/storefront-hero.jpg`,
+  image: `${SITE_URL}/images/barn-hero-sunset.jpg`,
   telephone: "+1-570-583-2305",
   email: "allaspectsrecycled@gmail.com",
   priceRange: "$$",

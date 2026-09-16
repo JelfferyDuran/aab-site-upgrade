@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import GlassPanel from "@/components/GlassPanel";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import GalleryCarousel from "@/components/GalleryCarousel";
@@ -32,35 +33,37 @@ export default function GalleryPage() {
       {/* Hero — the barn photo is the attraction; neutral scrim only, zero hue shift */}
       <section className="relative min-h-[52vh] md:min-h-[60vh] flex items-end overflow-hidden bg-neutral-950">
         <Image
-          src="/images/storefront-hero.webp"
-          alt="The barn at All Aspects at the Barn"
+          src="/images/barn-hero-sunset.webp"
+          alt="The shop at All Aspects at the Barn glowing at sunset"
           fill
           priority
           fetchPriority="high"
-          quality={74}
+          quality={78}
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/35 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/15 to-black/60" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 md:pb-14">
-          <motion.h1
-            initial={reduce ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduce ? 0 : 0.7, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            Gallery
-          </motion.h1>
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduce ? 0 : 0.7, delay: reduce ? 0 : 0.12, ease: "easeOut" }}
-            className="mt-2 text-base sm:text-lg text-white/85"
-            style={{ fontFamily: "var(--font-cardo)" }}
-          >
-            Life at the barn.
-          </motion.p>
+          <GlassPanel className="inline-block px-6 py-5 sm:px-9 sm:py-7">
+            <motion.h1
+              initial={reduce ? false : { opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduce ? 0 : 0.7, ease: "easeOut" }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-stone-900"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Gallery
+            </motion.h1>
+            <motion.p
+              initial={reduce ? false : { opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduce ? 0 : 0.7, delay: reduce ? 0 : 0.12, ease: "easeOut" }}
+              className="mt-2 text-base sm:text-lg text-stone-700"
+              style={{ fontFamily: "var(--font-cardo)" }}
+            >
+              Life at the barn.
+            </motion.p>
+          </GlassPanel>
         </div>
       </section>
 
