@@ -3,6 +3,7 @@ import { Cardo, Playfair_Display, Dancing_Script } from "next/font/google";
 import "./tokens.css";
 import "./globals.css";
 import SiteLayout from "@/components/SiteLayout";
+import { SITE_URL } from "@/lib/site";
 
 const cardo = Cardo({
   variable: "--font-cardo",
@@ -24,8 +25,6 @@ const dancing = Dancing_Script({
   display: "swap",
   weight: ["400", "500", "600", "700"],
 });
-
-const SITE_URL = "https://allaspectsbarn.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
