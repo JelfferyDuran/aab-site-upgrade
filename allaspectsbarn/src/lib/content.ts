@@ -10,7 +10,7 @@ export type ContentPage = {
   sections: string[];
 };
 
-const pages = pagesData as ContentPage[];
+export const pages = pagesData as ContentPage[];
 
 function normalizeRoute(route: string): string {
   return route.trim().replace(/^\/+|\/+$/g, "");
