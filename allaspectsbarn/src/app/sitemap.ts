@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import products from "@/data/products.json";
 import pages from "@/data/pages.json";
-
-const SITE_URL = "https://allaspectsbarn.vercel.app";
+import { SITE_URL } from "@/lib/site";
 
 /** Static app-router routes that are real pages (not catch-all fallbacks). */
 const STATIC_ROUTES = [
