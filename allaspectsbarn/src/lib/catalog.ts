@@ -33,7 +33,7 @@ function clampInteger(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, Math.trunc(value)));
 }
 
-function isRoutableSlug(slug: string): boolean {
+function isRoutableSlug(slug: string | undefined): slug is string {
   return Boolean(slug && slug !== "undefined" && slug !== "null");
 }
 
