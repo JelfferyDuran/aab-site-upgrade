@@ -205,3 +205,43 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary-400);
 }
+
+/* ── AAB Nav + layout animations (replaces framer-motion in Nav.tsx) ─────────
+   The root layout previously imported framer-motion via Nav / NewsletterForm /
+   WhatsAppFAB, which pulled the motion library into the LCP-critical shared
+   chunk. These are now plain CSS so that bundle can code-split out.           */
+@keyframes aabNavSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes aabNavLinkFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.nav-enter {
+  animation: aabNavSlideDown 0.6s ease-out both;
+}
+.nav-stagger {
+  animation: aabNavLinkFade 0.4s ease-out both;
+}
+/* Mobile menu height reveal (kept simple: no JS animation lib needed) */
+.aab-mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.aab-mobile-menu[data-open="true"] {
+  max-height: 640px;
+}

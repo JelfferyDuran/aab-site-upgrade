@@ -195,7 +195,7 @@ export default function GalleryCarousel({ images, variant = "stage", autoPlayMs 
                     className="object-contain"
                     sizes={isStrip ? "(max-width: 768px) 100vw, 900px" : "(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 1080px"}
                     quality={80}
-                    priority={i === 0}
+                    priority={variant === "stage" && i === 0}
                   />
                 ) : (
                   <div className="absolute inset-0 bg-neutral-950" />
