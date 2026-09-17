@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import Accordion, { AccordionItem } from "@/components/Accordion";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { Reveal } from "@/components/motion";
 import ScrollSlide from "@/components/scroll";
-import SwivelItem from "@/components/SwivelItem";
+import OfferShowcase from "@/components/OfferShowcase";
 import GalleryCarousel from "@/components/GalleryCarousel";
 import GlassPanel from "@/components/GlassPanel";
 import galleryData from "@/data/gallery.json";
@@ -11,33 +11,6 @@ import galleryData from "@/data/gallery.json";
 const HOME_GALLERY = (galleryData as { src: string; alt: string; category?: string }[]).slice(0, 8);
 
 export default function HomePage() {
-  const features = [
-    {
-      title: "Antique Store",
-      description: "Reclaimed finds & refinished furniture.",
-      icon: "🏺",
-      route: "/about",
-    },
-    {
-      title: "Event Venue",
-      description: "Barn weddings & celebrations.",
-      icon: "🎉",
-      route: "/pavilion-party-rental",
-    },
-    {
-      title: "Petting Farm",
-      description: "Animal encounters for all ages.",
-      icon: "🐐",
-      route: "/petting-farm",
-    },
-    {
-      title: "Barn Brew",
-      description: "Espresso & local baked goods.",
-      icon: "☕",
-      route: "/barn-brew-coffee-bar",
-    },
-  ];
-
   return (
     <div className="flex flex-col">
       {/* Hero — the barn photograph is the attraction. Neutral scrim only: no hue shift. */}
@@ -105,35 +78,8 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollSlide direction="left" className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: "var(--font-playfair)" }}>
-              What We Offer
-            </h2>
-          </ScrollSlide>
-
-          <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, i) => (
-              <StaggerItem key={i}>
-                <SwivelItem direction={i % 2 === 0 ? 1 : -1} tilt={8} roll={2.5} className="h-full">
-                  <Link
-                    href={feature.route}
-                    className="block group p-8 bg-gray-50 rounded-2xl hover:bg-indigo-50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 h-full"
-                  >
-                    <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600">{feature.description}</p>
-                  </Link>
-                </SwivelItem>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
+      {/* What We Offer — real cropped photographs, layered cards, one row on desktop */}
+      <OfferShowcase />
 
       {/* Gallery Preview — contained viewer so nobody scrolls picture-by-picture */}
       <section className="py-20 bg-gray-50">
