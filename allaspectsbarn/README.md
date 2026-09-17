@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# All Aspects at the Barn — Active Website
 
-## Getting Started
+This directory is the **canonical production application** for the All Aspects at the Barn rebuild.
 
-First, run the development server:
+> Do not treat the old root-level static HTML/CSS prototype as the active site. New product, design, SEO, accessibility, conversion, and performance work belongs here unless a task explicitly says otherwise.
+
+## Stack
+
+- Next.js App Router
+- React 19 + TypeScript
+- Tailwind CSS 4
+- `next/image` + `next/font`
+- Framer Motion / GSAP only where the interaction justifies the client cost
+- Static generation for the large imported catalog
+- Vercel deployment
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Verification workflow
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Use the lightest check that matches the change:
 
-## Learn More
+```bash
+# Fast feedback for most code edits
+npm run check:quick
 
-To learn more about Next.js, take a look at the following resources:
+# Formatting + typecheck + lint
+npm run check
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Full production verification before deploy / merge of routing or data changes
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The production build generates thousands of static pages, so **do not run `npm run build` after every small visual edit**. This is intentional: quick checks keep agent iteration fast, while the full build remains the deploy gate.
 
-## Deploy on Vercel
+## Source of truth
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `src/app/` — routes, metadata, global styling
+- `src/components/` — shared UI and interaction systems
+- `src/data/products.json` — imported catalog data (~1 MB source JSON)
+- `src/data/pages.json` — imported page/content data
+- `src/data/gallery.json` / `finds.json` — curated site imagery
+- `src/lib/data.ts` — typed data access helpers
+- `public/images/` — local site/product media used by the app
+- `.metrics/` — Lighthouse/performance diagnostics and analysis scripts
+- `next.config.ts` — redirects and image host policy
+- `vercel.json` — deployment/security headers
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Brand / content guardrails
+
+- Primary brand color: `#435298` indigo.
+- Keep the site photo-forward; the barn and real inventory should carry the visual story.
+- Do not fabricate business facts, event claims, hours, inventory, reviews, awards, or services.
+- Prefer extracted/verified AAB content and real AAB imagery.
+- Do not copy expressive assets, copy, or implementation from the Lone Mustang inspiration template.
+- Product imagery is retail evidence: do not generatively alter product appearance.
+- Honor `prefers-reduced-motion` for non-essential motion.
+
+## Performance rules
+
+1. Keep above-the-fold shared components light.
+2. Avoid adding Framer Motion or GSAP to root/shared UI when CSS can do the job.
+3. Use `next/image` with correct `sizes`; reserve `priority` for true LCP/critical images.
+4. Lazy-load below-fold interaction and imagery.
+5. Do not ship the full product dataset to the browser unless the feature truly requires it.
+6. Measure before/after meaningful performance changes using `.metrics/`.
+
+### Current highest-value performance target
+
+`src/app/products/page.tsx` is a client component that imports the complete product dataset and filters/paginates it in the browser. The source catalog JSON is roughly 1 MB before bundling. The next catalog performance pass should keep initial rendering server/static-first and load only a compact search index (or search data on demand) for client search.
+
+## Current product priorities
+
+See [`NEXT.md`](./NEXT.md) for the execution queue. In general, prioritize:
+
+1. Catalog payload/search architecture.
+2. Conversion-path QA (contact, event inquiry, newsletter, product discovery).
+3. Mobile polish and real-device testing.
+4. Custom-domain cutover/canonical metadata when the new site replaces the existing live site.
+5. Consolidation of overlapping motion/carousel implementations.
+
+## Deployment note
+
+The app metadata currently uses the Vercel deployment URL as its canonical base. When `allaspectsbarn.com` is cut over to this application, update the canonical/site URL configuration in the same release so sitemap, Open Graph, JSON-LD, and canonical links all agree.
+
+## Agent handoff rule
+
+Before changing implementation, read this README, `../HANDOFF.md`, and the nearest code involved. After a meaningful architecture, deployment, content-source, or performance change, update the handoff/queue so the next agent does not have to rediscover the decision.
