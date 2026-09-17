@@ -82,7 +82,7 @@ export default function HomePage() {
       <OfferShowcase />
 
       {/* Gallery Preview — contained viewer so nobody scrolls picture-by-picture */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 aab-band-warm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollSlide direction="right" className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -104,7 +104,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 aab-band-warm-light">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollSlide direction="up" className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: "var(--font-playfair)" }}>

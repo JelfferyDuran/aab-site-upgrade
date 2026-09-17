@@ -68,7 +68,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Filters */}
-      <section className="bg-white border-b border-gray-200">
+      <section className="aab-glass-warm border-b border-[rgb(246_232_214)]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-wrap gap-2 justify-center">
           {ALL_CATEGORIES.map((category) => (
             <button
@@ -79,7 +79,7 @@ export default function GalleryPage() {
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                 activeCategory === category
                   ? "bg-neutral-900 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  : "bg-[rgb(249_240_226)] text-stone-700 hover:bg-[rgb(245_232_214)]"
               }`}
             >
               {category}
@@ -89,7 +89,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Contained viewer — every photo lives in one stage, no scroll-per-picture */}
-      <section className="bg-gray-50">
+      <section className="aab-band-warm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
           <GalleryCarousel images={filteredImages} key={activeCategory} />
         </div>

@@ -57,7 +57,7 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
 
       {/* Content */}
       <ScrollFade delay={0.15}>
-        <section className="py-16 bg-white">
+        <section className="py-16 aab-band-warm-light">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {body && (
               <div className="prose prose-lg prose-indigo mx-auto">
@@ -76,7 +76,7 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
 
       {/* Image Gallery — one contained viewer instead of a scroll-through grid */}
       {carouselImages.length > 0 && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 aab-band-warm">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollSlide direction="left" className="text-center mb-10">
               <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -90,7 +90,7 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
       )}
 
       {/* CTA */}
-      <ScrollSlide direction="up" className="py-16 bg-gray-50">
+      <ScrollSlide direction="up" className="py-16 aab-band-warm">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
             Visit Us

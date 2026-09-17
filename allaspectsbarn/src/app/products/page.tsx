@@ -121,7 +121,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 aab-band-warm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Quick Filters */}
           <motion.div
@@ -142,7 +142,7 @@ export default function ProductsPage() {
                   setSearchQuery(cat);
                   setCurrentPage(1);
                 }}
-                className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-indigo-500 hover:text-indigo-600 transition-all"
+                className="px-4 py-2 bg-[rgb(255_250_243)] border border-[rgb(243_228_206)] rounded-full text-sm font-medium text-stone-700 hover:border-[rgb(224_146_60)] hover:text-[rgb(176_105_30)] transition-all"
                 variants={{
                   hidden: { opacity: 0, scale: 0.8 },
                   visible: { opacity: 1, scale: 1 }
@@ -179,9 +179,9 @@ export default function ProductsPage() {
               >
                 <Link
                   href={`/products/${product.slug}`}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-md block"
+                  className="group aab-card-warm rounded-2xl overflow-hidden block"
                 >
-                  <div className="relative aspect-square bg-gray-100">
+                  <div className="relative aspect-square bg-[rgb(249_240_226)]">
                     {product.images.length > 0 ? (
                       <Image
                         src={product.images[0].startsWith("http") || product.images[0].startsWith("/") ? product.images[0] : `https://images.editor.website${product.images[0]}`}
@@ -243,7 +243,7 @@ export default function ProductsPage() {
 
       {/* From the Shop Floor — the user's own photos of real finds at the barn */}
       {findsData.length > 0 && (
-        <section className="py-16 bg-white border-t border-gray-100">
+        <section className="py-16 aab-band-warm-light border-t border-[rgb(246_232_214)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-10"
@@ -263,7 +263,7 @@ export default function ProductsPage() {
               {findsData.map((img) => (
                 <motion.div
                   key={img.src}
-                  className="relative aspect-square rounded-xl overflow-hidden shadow-md bg-gray-100"
+                  className="relative aspect-square rounded-xl overflow-hidden shadow-md bg-[rgb(249_240_226)]"
                   initial={reduce ? undefined : { opacity: 0, y: 20 }}
                   whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                   viewport={{ once: true }}

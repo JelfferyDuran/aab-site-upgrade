@@ -28,7 +28,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   return (
     <div className="flex flex-col pt-16 lg:pt-20">
       {/* Breadcrumb */}
-      <div className="bg-gray-50 py-4">
+      <div className="aab-band-warm py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-sm">
             <Link href="/" className="text-indigo-600 hover:underline">Home</Link>
@@ -41,12 +41,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* Product Detail */}
-      <section className="py-16 bg-white">
+      <section className="py-16 aab-band-warm-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Image */}
             <ScrollSlide direction="left" duration={0.8}>
-              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-xl bg-gray-100">
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-xl bg-[rgb(249_240_226)]">
                 {images.length > 0 ? (
                   <Image
                     src={images[0].startsWith("http") || images[0].startsWith("/") ? images[0] : `https://images.editor.website${images[0]}`}

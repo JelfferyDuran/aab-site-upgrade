@@ -19,9 +19,9 @@ export default function TermsPage() {
       </section>
 
       {/* Content */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 aab-band-warm">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-md p-8">
+          <div className="aab-card-warm rounded-2xl shadow-md p-8">
             <p className="text-gray-700 mb-4">
               These Terms of Service govern your use of allaspectsbarn.com. Please
               read them carefully.

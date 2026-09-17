@@ -66,9 +66,9 @@ export default function ImageCarousel({ images, columns = 3 }: ImageCarouselProp
             onClick={() => setSelectedIndex(i)}
           >
             {/* Frame Card */}
-            <div className="relative bg-white p-3 pb-8 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:rotate-1">
+            <div className="aab-card-warm relative p-3 pb-8 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:rotate-1">
               {/* Inner frame border */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+              <div className="relative aspect-[4/3] overflow-hidden bg-[rgb(249_240_226)]">
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -84,7 +84,7 @@ export default function ImageCarousel({ images, columns = 3 }: ImageCarouselProp
                     whileHover={{ opacity: 1, scale: 1 }}
                     className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   >
-                    <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                    <div className="w-14 h-14 rounded-full bg-[rgb(255_248_238/0.92)] flex items-center justify-center shadow-lg">
                       <svg className="w-6 h-6 text-indigo-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                       </svg>

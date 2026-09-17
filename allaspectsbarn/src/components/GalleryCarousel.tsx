@@ -220,7 +220,7 @@ export default function GalleryCarousel({ images, variant = "stage", autoPlayMs 
                 type="button"
                 onClick={() => go(-1)}
                 aria-label="Previous photo"
-                className="absolute left-3 top-1/2 z-[4] -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-white/85 text-neutral-900 backdrop-blur transition hover:bg-white hover:scale-105"
+                className="absolute left-3 top-1/2 z-[4] -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-[rgb(255_248_238/0.9)] text-stone-900 backdrop-blur transition hover:bg-[rgb(255_243_227)] hover:scale-105"
               >
                 <Icon d={ARROW_LEFT} className="h-5 w-5" />
               </button>
@@ -228,7 +228,7 @@ export default function GalleryCarousel({ images, variant = "stage", autoPlayMs 
                 type="button"
                 onClick={() => go(1)}
                 aria-label="Next photo"
-                className="absolute right-3 top-1/2 z-[4] -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-white/85 text-neutral-900 backdrop-blur transition hover:bg-white hover:scale-105"
+                className="absolute right-3 top-1/2 z-[4] -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-[rgb(255_248_238/0.9)] text-stone-900 backdrop-blur transition hover:bg-[rgb(255_243_227)] hover:scale-105"
               >
                 <Icon d={ARROW_RIGHT} className="h-5 w-5" />
               </button>

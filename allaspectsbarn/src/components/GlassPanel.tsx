@@ -11,7 +11,7 @@ export default function GlassPanel({
 }) {
   return (
     <div
-      className={`rounded-3xl border border-white/60 bg-white/55 backdrop-blur-xl backdrop-saturate-150 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.55)] ${className}`}
+      className={`aab-glass-warm rounded-3xl border backdrop-blur-2xl backdrop-saturate-150 ${className}`}
     >
       {children}
     </div>
