@@ -3,6 +3,18 @@
 Batch driver: grade every photo under a directory tree, preserving file paths.
 Backs originals up outside the repo first; keeps the original when the graded
 result is bigger than the budget allows. Non-generative (PIL/numpy only).
+
+POLICY — non-generative only, site imagery only:
+  This grader must NEVER touch product/catalogue photos. It is applied to
+  site/gallery imagery only (e.g. public/images, public/gallery, workshop
+  assets). The directory public/products holds the live product catalogue
+  (1,047 photos, ~117 MB); grading it shifts product colour away from reality
+  - a retail-accuracy liability. If --dir resolves to, or under, a
+  'public/products' path segment, the script exits non-zero with ZERO files
+  written.
+
+  Additionally, any run targeting more than 200 files requires an explicit
+  --force-scope flag, so a wide-scope pass can never happen silently again.
 """
 import argparse
 import io
@@ -17,6 +29,26 @@ from PIL import Image, ImageOps
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import photo_grade as pg  # noqa: E402
+
+# --- scope guard constants ---
+SCOPE_FILE_LIMIT = 200
+
+
+def _is_products_scope(root: Path) -> bool:
+    """True if *root* resolves to, or sits under, a 'public/products' segment.
+
+    Normalises the path to an absolute, resolved form and checks (case-
+    insensitively) whether any two consecutive path components are 'public'
+    followed by 'products'. This catches --dir values like
+    'public/products', './public/products', an absolute path, or any
+    subdirectory beneath public/products.
+    """
+    resolved = root.resolve()
+    parts = [p.lower() for p in resolved.parts]
+    for i in range(len(parts) - 1):
+        if parts[i] == "public" and parts[i + 1] == "products":
+            return True
+    return False
 
 
 def save_png(rgb, path: Path, alpha=None, compress_level=9) -> int:
@@ -52,17 +84,44 @@ def main():
     ap.add_argument("--dir", required=True)
     ap.add_argument("--preset", default="gallery")
     ap.add_argument("--backup", required=True)
-    ap.add_argument("--manifest", required=True)
+    ap.add_argument("--manifest", default=None,
+                    help="optional JSON manifest output path")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--min-edge", type=int, default=900, help="upscale images smaller than this")
     ap.add_argument("--to-edge", type=int, default=1400)
     ap.add_argument("--allow-growth", type=float, default=1.0, help="accept result up to N x original bytes")
     ap.add_argument("--skip-prefix", default="barn-hero-sunset")
+    ap.add_argument("--force-scope", action="store_true", default=False,
+                    help="override the %d-file scope limit (NOT the products guard)"
+                    % SCOPE_FILE_LIMIT)
     args = ap.parse_args()
 
     root = Path(args.dir)
     backup_root = Path(args.backup) / root.name       # keep runs for different dirs separate
+
+    # --- guard: refuse public/products ---
+    if _is_products_scope(root):
+        print(
+            "REFUSED: --dir '%s' resolves to or under a 'public/products' "
+            "segment. Product catalogue photos must never be graded "
+            "(retail-accuracy policy). No files written." % args.dir,
+            file=sys.stderr,
+            flush=True,
+        )
+        sys.exit(1)
+
     files = sorted(p for p in root.rglob("*") if p.suffix.lower() in {".jpg", ".jpeg", ".png"} and p.is_file())
+
+    # --- guard: wide scope needs --force-scope ---
+    if len(files) > SCOPE_FILE_LIMIT and not args.force_scope:
+        print(
+            "REFUSED: --dir '%s' contains %d image files, which exceeds the "
+            "%d-file limit. Re-run with --force-scope to proceed. No files written."
+            % (args.dir, len(files), SCOPE_FILE_LIMIT),
+            file=sys.stderr,
+            flush=True,
+        )
+        sys.exit(1)
 
     todo = []
     for f in files:
@@ -128,7 +187,8 @@ def main():
         "seconds": round(time.time() - t0, 1),
         "rows": rows,
     }
-    Path(args.manifest).write_text(json.dumps(m, indent=1))
+    if args.manifest:
+        Path(args.manifest).write_text(json.dumps(m, indent=1))
     print(f"\nDONE processed={m['processed']} changed={m['changed']} kept={m['kept']} errors={m['errors']}")
     print(f"     {m['bytes_before']/1e6:.1f} MB -> {m['bytes_after']/1e6:.1f} MB "
           f"(-{100*(1-m['bytes_after']/max(m['bytes_before'],1)):.1f}%)  in {m['seconds']}s")
