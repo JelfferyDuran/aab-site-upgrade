@@ -17,6 +17,8 @@ const STATIC_ROUTES = [
   "/wedding-venue",
   "/workshops",
   "/products",
+  "/privacy",
+  "/terms",
 ];
 
 /** Catch-all routes served from pages.json — deduped, excludes junk GUID routes. */
