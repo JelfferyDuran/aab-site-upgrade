@@ -49,7 +49,7 @@ export default function GalleryPage() {
               initial={reduce ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reduce ? 0 : 0.7, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-stone-900"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               Gallery
@@ -58,7 +58,7 @@ export default function GalleryPage() {
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reduce ? 0 : 0.7, delay: reduce ? 0 : 0.12, ease: "easeOut" }}
-              className="mt-2 text-base sm:text-lg text-stone-700"
+              className="mt-2 text-base sm:text-lg text-gray-700"
               style={{ fontFamily: "var(--font-cardo)" }}
             >
               Life at the barn.
@@ -68,7 +68,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Filters */}
-      <section className="aab-glass-warm border-b border-[rgb(246_232_214)]">
+      <section className="aab-glass-warm border-b aab-line-warm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-wrap gap-2 justify-center">
           {ALL_CATEGORIES.map((category) => (
             <button
@@ -78,8 +78,8 @@ export default function GalleryPage() {
               aria-pressed={activeCategory === category}
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                 activeCategory === category
-                  ? "bg-neutral-900 text-white"
-                  : "bg-[rgb(249_240_226)] text-stone-700 hover:bg-[rgb(245_232_214)]"
+                  ? "aab-chip-active"
+                  : "aab-chip-idle"
               }`}
             >
               {category}
@@ -113,7 +113,7 @@ export default function GalleryPage() {
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-indigo-900 font-semibold rounded-full transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-[#0f1238] font-semibold rounded-full transition-all duration-300"
             >
               Contact Us
             </Link>

@@ -2,7 +2,7 @@ import ContactForm from "@/components/ContactForm";
 import ScrollSlide, { ScrollFade } from "@/components/scroll";
 
 export const metadata = {
-  title: "Contact | All Aspects Barn",
+  title: "Contact",
   description: "Get in touch for events, classes, and product inquiries.",
 };
 

@@ -4,6 +4,66 @@ import { notFound } from "next/navigation";
 import { getPageByRoute } from "@/lib/data";
 import ScrollSlide, { ScrollFade, ScrollScale } from "@/components/scroll";
 import GalleryCarousel from "@/components/GalleryCarousel";
+import type { Metadata } from "next";
+
+/* Per-route SEO. pages.json carries real og_title/og_description for some of the
+   original pages; these fallbacks cover the ones it left blank, so no route
+   inherits the site-wide default title. Titles omit the brand on purpose: the
+   layout's title template appends "| All Aspects Barn" exactly once. */
+const PAGE_SEO: Record<string, { title: string; description: string }> = {
+  about: {
+    title: "About",
+    description:
+      "All Aspects at the Barn is an antique, vintage and repurposed goods shop on Route 611 in Upper Mount Bethel, PA — with classes, a coffee bar and a petting farm.",
+  },
+  "petting-farm": {
+    title: "Petting Farm",
+    description:
+      "Feed and meet the animals at the All Aspects at the Barn petting farm on Route 611 in Upper Mount Bethel, PA. Open Tue–Sat 8–5, Sun 9–5 (closed Monday).",
+  },
+  "wedding-venue": {
+    title: "Wedding Venue",
+    description:
+      "A rustic barn and covered pavilion in Upper Mount Bethel, PA for weddings, receptions and private events. Call (570) 583-2305 for availability.",
+  },
+  workshops: {
+    title: "Workshops",
+    description:
+      "Hands-on chalk paint and furniture workshops at All Aspects at the Barn in Upper Mount Bethel, PA. See what is coming up and get in touch to join.",
+  },
+  "pavilion-party-rental": {
+    title: "Pavilion Party Rental",
+    description:
+      "Rent the covered pavilion at All Aspects at the Barn for birthday parties and family gatherings in Upper Mount Bethel, PA. Call (570) 583-2305.",
+  },
+  shop: {
+    title: "Shop",
+    description:
+      "Shop Wise Owl Paint Company, Dixie Belle Paint Company and ClingOn brushes while being inspired by tutorial videos & gallery.",
+  },
+};
+
+export async function generateMetadata({ params }: { params: Promise<{ route: string[] }> }): Promise<Metadata> {
+  const { route } = await params;
+  const routePath = route ? route.join("/") : "";
+  const page = getPageByRoute(routePath);
+  const fallback = PAGE_SEO[routePath];
+  const title =
+    fallback?.title ||
+    (page?.og_title ? page.og_title.split("|")[0].trim() : "") ||
+    page?.title ||
+    "All Aspects at the Barn";
+  const description =
+    page?.og_description ||
+    fallback?.description ||
+    "All Aspects at the Barn — antique and repurposed finds, classes, coffee bar and petting farm on Route 611 in Upper Mount Bethel, PA.";
+  return {
+    title,
+    description,
+    alternates: { canonical: `/${routePath}` },
+    openGraph: { title, description, type: "website" },
+  };
+}
 
 export default async function InteriorPage({ params }: { params: Promise<{ route: string[] }> }) {
   const { route } = await params;

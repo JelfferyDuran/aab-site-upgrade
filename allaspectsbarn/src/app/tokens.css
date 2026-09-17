@@ -26,7 +26,7 @@
   --color-gray-200: #e5e7eb;
   --color-gray-300: #d1d5db;
   --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
+  --color-gray-500: #575f6b;
   --color-gray-600: #4b5563;
   --color-gray-700: #374151;
   --color-gray-800: #1f2937;
@@ -38,6 +38,13 @@
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #3b82f6;
+
+  /* ── Theme surfaces (light = default) ── */
+  --aab-page: #ffffff;
+  --aab-footer-bg: #111827;
+  --aab-disabled-bg: #374151;
+  --aab-cream: rgb(249 240 226);
+  --aab-toggle-ring: rgb(246 232 214);
 
   /* ── Typography ── */
   --font-sans: var(--font-cardo);
@@ -115,18 +122,50 @@
   --z-fab: 600;
 }
 
-/* ── Dark Mode Overrides ── */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary-50: #0f1238;
-    --color-primary-100: #1c2250;
-    --color-primary-200: #293268;
-    --color-primary-300: #364280;
-    --color-primary-400: #435298;
-    --color-primary-500: #5a6bb8;
-    --color-primary-600: #7383cf;
-    --color-primary-700: #96a2db;
-    --color-primary-800: #b9c1e7;
-    --color-primary-900: #dce0f3;
-  }
+/* ── Dark theme (explicit, user-controlled) ──────────────────────────────
+   Applied by [data-theme="dark"] on <html>. It is deliberately NOT wired to
+   prefers-color-scheme: the old @media block flipped only the indigo scale, so
+   any visitor on a dark-preference OS got a half-inverted palette (light tints
+   turned navy while every surface and every neutral stayed white). Theme is now
+   an explicit choice, set before first paint by the boot script in layout.tsx.
+
+   The neutral scale is overridden here, not in components: every grey utility
+   in the codebase resolves through var(--color-gray-*), so flipping the scale
+   re-inks the whole site — headings, body copy, borders and bands — in one
+   place. --color-white is left alone on purpose: text-white sits on indigo
+   buttons and photo overlays and must stay white in both themes.            */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Brand tints invert (light washes -> deep navy) to keep indigo identity
+     against a dark page without touching the solid brand indigo itself. */
+  --color-primary-50: #0f1238;
+  --color-primary-100: #1c2250;
+  --color-primary-200: #293268;
+  --color-primary-300: #96a2db;
+  --color-primary-400: #7383cf;
+  --color-primary-500: #5a6bb8;
+  --color-primary-600: #7383cf;
+  --color-primary-700: #96a2db;
+  --color-primary-800: #b9c1e7;
+  --color-primary-900: #dce0f3;
+
+  /* Neutrals: 50 = darkest surface, 900 = lightest ink. */
+  --color-gray-50: #1d1813;
+  --color-gray-100: #241d17;
+  --color-gray-200: #3a2f26;
+  --color-gray-300: #4d3f32;
+  --color-gray-400: #a8987f;
+  --color-gray-500: #b3a189;
+  --color-gray-600: #c4b39a;
+  --color-gray-700: #d9cab3;
+  --color-gray-800: #ecdfca;
+  --color-gray-900: #f8f1e6;
+
+  /* Warm-charcoal surfaces. */
+  --aab-page: #17130f;
+  --aab-footer-bg: #100d0a;
+  --aab-disabled-bg: #55432f;
+  --aab-cream: rgb(42 34 25);
+  --aab-toggle-ring: rgb(90 70 50);
 }

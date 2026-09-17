@@ -66,7 +66,7 @@ export default function NewsletterForm() {
           disabled={buttonDisabled}
           className={`aaf-btn px-5 py-2.5 text-white font-semibold rounded-xl transition-all text-sm whitespace-nowrap ${
             buttonDisabled
-              ? "bg-[var(--color-gray-700)] cursor-not-allowed"
+              ? "bg-[var(--aab-disabled-bg)] cursor-not-allowed"
               : "bg-[var(--color-primary-400)] hover:bg-[var(--color-primary-300)]"
           }`}
         >

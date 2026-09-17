@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Privacy Policy | All Aspects Barn",
+  title: "Privacy Policy",
   description: "All Aspects at the Barn privacy policy: what information we collect and how we use it.",
 };
 

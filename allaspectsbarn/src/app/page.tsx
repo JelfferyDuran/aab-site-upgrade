@@ -35,7 +35,7 @@ export default function HomePage() {
           {/* Light glass card: gives the top info contrast against the photo. */}
           <GlassPanel className="px-6 py-10 sm:px-12 sm:py-14">
             <Reveal direction="up" duration={0.8}>
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-stone-900 mb-5 tracking-tight"
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-5 tracking-tight"
                   style={{ fontFamily: "var(--font-playfair)" }}>
                 All Aspects<br />
                 <span className="text-amber-700">at the Barn</span>
@@ -43,7 +43,7 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal direction="up" delay={0.2} duration={0.8}>
-              <p className="text-sm sm:text-lg text-stone-700 uppercase tracking-[0.18em] max-w-2xl mx-auto mb-8"
+              <p className="text-sm sm:text-lg text-gray-700 uppercase tracking-[0.18em] max-w-2xl mx-auto mb-8"
                  style={{ fontFamily: "var(--font-cardo)" }}>
                 Antiques &middot; Events &middot; Petting Farm &middot; Barn Brew
               </p>
@@ -59,7 +59,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-semibold rounded-full transition-all duration-300"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-900 text-gray-900 hover:bg-stone-900 hover:text-white font-semibold rounded-full transition-all duration-300"
                 >
                   Book an Event
                 </Link>
@@ -184,7 +184,7 @@ export default function HomePage() {
               </Link>
               <a
                 href="mailto:allaspectsrecycled@gmail.com?subject=Event%20inquiry%20%E2%80%94%20All%20Aspects%20at%20the%20Barn"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-indigo-900 font-semibold rounded-full transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-[#0f1238] font-semibold rounded-full transition-all duration-300"
               >
                 Email Us
               </a>

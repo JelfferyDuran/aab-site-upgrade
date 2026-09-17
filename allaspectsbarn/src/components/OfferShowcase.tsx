@@ -178,9 +178,9 @@ export default function OfferShowcase() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-14 text-center sm:mb-16">
           <p className="font-display text-2xl text-amber-700/90">wander in</p>
-          <h2 className="mt-1 font-serif text-4xl text-stone-900 sm:text-5xl">What We Offer</h2>
+          <h2 className="mt-1 font-serif text-4xl text-gray-900 sm:text-5xl">What We Offer</h2>
           <div aria-hidden="true" className="mx-auto mt-4 h-px w-24 bg-gradient-to-r from-transparent via-stone-400/70 to-transparent" />
-          <p className="mx-auto mt-4 max-w-xl text-stone-600">Four corners under one roof, on the Delaware Road in Mount Bethel.</p>
+          <p className="mx-auto mt-4 max-w-xl text-gray-600">Four corners under one roof, on the Delaware Road in Mount Bethel.</p>
         </div>
 
         <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:pb-12">

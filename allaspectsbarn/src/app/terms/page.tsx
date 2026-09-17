@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Terms of Service | All Aspects Barn",
+  title: "Terms of Service",
   description: "Terms of service for visiting and using allaspectsbarn.com.",
 };
 

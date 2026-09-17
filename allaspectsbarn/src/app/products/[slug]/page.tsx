@@ -46,7 +46,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Image */}
             <ScrollSlide direction="left" duration={0.8}>
-              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-xl bg-[rgb(249_240_226)]">
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-xl bg-[var(--aab-cream)]">
                 {images.length > 0 ? (
                   <Image
                     src={images[0].startsWith("http") || images[0].startsWith("/") ? images[0] : `https://images.editor.website${images[0]}`}
@@ -146,7 +146,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const product = getProductBySlug(slug);
   if (!product) return { title: "Product Not Found" };
   return {
-    title: `${product.title} | All Aspects Barn`,
-    description: product.body?.slice(0, 160) || "Shop unique finds at All Aspects Barn.",
-  };
-}
+      title: product.title,
+      description:
+        product.body?.trim().slice(0, 160) ||
+        `${product.title} — a unique find available at All Aspects at the Barn, Route 611, Upper Mount Bethel, PA. Browse 2,700+ vintage, antique and repurposed goods.`,
+      alternates: { canonical: `/products/${slug}` },
+    };
+  }

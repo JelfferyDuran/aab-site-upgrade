@@ -68,7 +68,7 @@ export default function ImageCarousel({ images, columns = 3 }: ImageCarouselProp
             {/* Frame Card */}
             <div className="aab-card-warm relative p-3 pb-8 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:rotate-1">
               {/* Inner frame border */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-[rgb(249_240_226)]">
+              <div className="relative aspect-[4/3] overflow-hidden bg-[var(--aab-cream)]">
                 <Image
                   src={img.src}
                   alt={img.alt}

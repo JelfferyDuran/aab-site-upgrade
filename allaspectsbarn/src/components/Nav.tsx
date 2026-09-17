@@ -109,6 +109,35 @@ export default function Nav() {
   const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const panelRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
+  /* Theme -----------------------------------------------------------------
+     layout.tsx writes data-theme on <html> before first paint, so the icon is
+     chosen by CSS (see .aab-icon-sun / .aab-icon-moon in globals.css). This
+     state exists only to keep the accessible label and the drawer row text in
+     sync, which is why it starts at "light" and syncs in an effect after
+     hydration rather than being read during render. */
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    if (document.documentElement.getAttribute("data-theme") === "dark") {
+      setTheme("dark");
+    }
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    const root = document.documentElement;
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    root.style.colorScheme = next;
+    try {
+      localStorage.setItem("aab-theme", next);
+    } catch {
+      /* storage blocked (private mode): the choice simply does not persist */
+    }
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", next === "dark" ? "#17130f" : "#fdfaf5");
+    setTheme(next);
+  }, []);
+
   const isActive = useCallback(
     (href: string) =>
       href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/"),
@@ -206,10 +235,10 @@ export default function Nav() {
   };
 
   const scrolledClass = scrolled
-    ? "aab-glass-warm-strong backdrop-blur-2xl backdrop-saturate-150 border-b border-[rgb(250_231_203/0.8)] shadow-[0_10px_30px_-18px_rgba(120,72,20,0.35)]"
+    ? "aab-glass-warm-strong backdrop-blur-2xl backdrop-saturate-150 border-b aab-line-glass shadow-[0_10px_30px_-18px_rgba(120,72,20,0.35)]"
     : "bg-transparent";
   const linkColor = scrolled ? "text-[var(--color-gray-700)]" : "text-white/90";
-  const linkHover = scrolled ? "hover:text-[var(--color-primary)]" : "hover:text-white";
+  const linkHover = scrolled ? "hover:aab-nav-active" : "hover:text-white";
 
   return (
     <nav
@@ -224,7 +253,7 @@ export default function Nav() {
           <Link
             href="/"
             className={`font-display text-2xl lg:text-3xl tracking-tight transition-colors ${
-              scrolled || mobileOpen ? "text-[var(--color-primary)]" : "text-white"
+              scrolled || mobileOpen ? "aab-nav-active" : "text-white"
             }`}
             style={{ fontFamily: "var(--font-display)" }}
           >
@@ -260,7 +289,7 @@ export default function Nav() {
                       }
                     }}
                     className={`group inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium tracking-wide uppercase transition-colors ${
-                      sectionActive || isOpen ? "text-[var(--color-primary)]" : linkColor
+                      sectionActive || isOpen ? "aab-nav-active" : linkColor
                     } ${sectionActive || isOpen ? "" : linkHover}`}
                   >
                     <span className="relative">
@@ -320,7 +349,7 @@ export default function Nav() {
                                   aria-current={on ? "page" : undefined}
                                   onClick={() => closeMenu()}
                                   className={`group/row relative flex flex-col gap-0.5 rounded-xl py-2.5 pl-4 pr-3 transition-colors ${
-                                    on ? "bg-[rgb(255_231_200/0.9)]" : "hover:bg-[rgb(255_240_219/0.85)]"
+                                    on ? "aab-active-warm" : "aab-hover-warm"
                                   }`}
                                 >
                                   <span
@@ -377,7 +406,7 @@ export default function Nav() {
                           </span>
                           <span className="flex flex-1 flex-col gap-0.5 p-3">
                             <span
-                              className="text-[13px] leading-none text-[var(--color-primary)]"
+                              className="text-[13px] leading-none aab-nav-active"
                               style={{ fontFamily: "var(--font-display)" }}
                             >
                               {menu.feature.kicker}
@@ -385,7 +414,7 @@ export default function Nav() {
                             <span className="text-[12.5px] font-semibold text-[var(--color-gray-900)]">
                               {menu.feature.title}
                             </span>
-                            <span className="mt-auto inline-flex items-center gap-1 pt-1.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[var(--color-gray-600)] transition-colors group-hover/feat:text-[var(--color-primary)]">
+                            <span className="mt-auto inline-flex items-center gap-1 pt-1.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[var(--color-gray-600)] transition-colors group-hover/feat:aab-nav-active">
                               {menu.feature.cta}
                               <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-3 w-3">
                                 <path
@@ -409,13 +438,53 @@ export default function Nav() {
             <Link
               href={ABOUT.href}
               className={`nav-stagger rounded-full px-3 py-2 text-sm font-medium uppercase tracking-wide transition-colors ${
-                isActive(ABOUT.href) ? "text-[var(--color-primary)]" : linkColor
+                isActive(ABOUT.href) ? "aab-nav-active" : linkColor
               } ${linkHover}`}
               style={{ animationDelay: "0.25s" }}
             >
               {ABOUT.label}
             </Link>
 
+            <button
+              type="button"
+              data-theme-toggle
+              onClick={toggleTheme}
+              aria-pressed={theme === "dark"}
+              aria-label={theme === "dark" ? "Switch to light contrast" : "Switch to dark contrast"}
+              title={theme === "dark" ? "Light mode" : "Dark mode"}
+              className={`aab-theme-toggle nav-stagger ml-2 grid h-9 w-9 place-items-center rounded-full ring-1 backdrop-blur-sm transition-all ${
+                scrolled
+                  ? "text-[var(--color-gray-700)] ring-[var(--aab-toggle-ring)] aab-hover-warm"
+                  : "text-white ring-[rgb(255_226_190/0.5)] hover:bg-[rgb(255_232_205/0.28)]"
+              }`}
+              style={{ animationDelay: "0.28s" }}
+            >
+              <svg
+                aria-hidden="true"
+                className="aab-icon-moon h-[18px] w-[18px]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" />
+              </svg>
+              <svg
+                aria-hidden="true"
+                className="aab-icon-sun h-[18px] w-[18px]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" />
+              </svg>
+            </button>
             <Link
               href="/contact"
               className={`nav-stagger ml-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] ring-1 backdrop-blur-sm transition-all ${
@@ -468,13 +537,13 @@ export default function Nav() {
           mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="aab-glass-warm-strong max-h-[78vh] overflow-y-auto border-t border-[rgb(250_231_203/0.8)] px-3 pb-4 pt-2 backdrop-blur-2xl backdrop-saturate-150">
+        <div className="aab-glass-warm-strong max-h-[78vh] overflow-y-auto border-t aab-line-glass px-3 pb-4 pt-2 backdrop-blur-2xl backdrop-saturate-150">
           <Link
             href="/"
             onClick={() => setMobileOpen(false)}
             aria-current={isActive("/") ? "page" : undefined}
-            className={`relative block rounded-xl px-3 py-2.5 font-medium transition-colors hover:bg-[rgb(255_240_219/0.85)] ${
-              isActive("/") ? "bg-[rgb(255_231_200/0.9)] text-[var(--color-primary)]" : "text-[var(--color-gray-700)]"
+            className={`relative block rounded-xl px-3 py-2.5 font-medium transition-colors aab-hover-warm ${
+              isActive("/") ? "aab-active-warm aab-nav-active" : "text-[var(--color-gray-700)]"
             }`}
           >
             {isActive("/") && (
@@ -487,19 +556,19 @@ export default function Nav() {
             const groupOpen = mobileGroup === menu.id;
             const sectionActive = menu.items.some((it) => isActive(it.href));
             return (
-              <div key={menu.id} className="border-b border-[rgb(246_232_214)]">
+              <div key={menu.id} className="border-b aab-line-warm">
                 <button
                   type="button"
                   data-nav-group={menu.id}
                   onClick={() => setMobileGroup(groupOpen ? null : menu.id)}
                   aria-expanded={groupOpen}
                   aria-controls={`nav-mobile-${menu.id}`}
-                  className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left font-medium transition-colors hover:bg-[rgb(255_240_219/0.85)]"
+                  className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left font-medium transition-colors aab-hover-warm"
                 >
                   <span
                     className={
                       sectionActive
-                        ? "text-[var(--color-primary)]"
+                        ? "aab-nav-active"
                         : "text-[var(--color-gray-700)]"
                     }
                   >
@@ -527,7 +596,7 @@ export default function Nav() {
                   data-open={groupOpen}
                   className="aab-submenu"
                 >
-                  <div className="ml-3 mb-1 border-l border-[rgb(240_224_203)] pl-2">
+                  <div className="ml-3 mb-1 border-l aab-line-soft pl-2">
                     {menu.items.map((it) => (
                       <Link
                         key={it.href}
@@ -535,7 +604,7 @@ export default function Nav() {
                         onClick={() => setMobileOpen(false)}
                         aria-current={isActive(it.href) ? "page" : undefined}
                         className={`relative block rounded-lg px-3 py-2 transition-colors ${
-                          isActive(it.href) ? "bg-[rgb(255_231_200/0.9)]" : "hover:bg-[rgb(255_240_219/0.85)]"
+                          isActive(it.href) ? "aab-active-warm" : "aab-hover-warm"
                         }`}
                       >
                         {isActive(it.href) && (
@@ -544,7 +613,7 @@ export default function Nav() {
                         <span
                           className={`block text-sm font-medium ${
                             isActive(it.href)
-                              ? "text-[var(--color-primary)]"
+                              ? "aab-nav-active"
                               : "text-[var(--color-gray-700)]"
                           }`}
                         >
@@ -564,10 +633,48 @@ export default function Nav() {
           <Link
             href={ABOUT.href}
             onClick={() => setMobileOpen(false)}
-            className="block rounded-xl px-3 py-2.5 font-medium text-[var(--color-gray-700)] transition-colors hover:bg-[rgb(255_240_219/0.85)]"
+            className="block rounded-xl px-3 py-2.5 font-medium text-[var(--color-gray-700)] transition-colors aab-hover-warm"
           >
             {ABOUT.label}
           </Link>
+
+          <button
+            type="button"
+            data-theme-toggle
+            onClick={toggleTheme}
+            aria-pressed={theme === "dark"}
+            aria-label={theme === "dark" ? "Switch to light contrast" : "Switch to dark contrast"}
+            className="aab-theme-toggle mt-2 flex w-full items-center justify-between rounded-xl px-3 py-2.5 font-medium text-[var(--color-gray-700)] aab-hover-warm transition-colors"
+          >
+            <span>{theme === "dark" ? "Light contrast" : "Dark contrast"}</span>
+            <span className="grid h-8 w-8 place-items-center rounded-full ring-1 ring-[var(--aab-toggle-ring)]">
+              <svg
+                aria-hidden="true"
+                className="aab-icon-moon h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" />
+              </svg>
+              <svg
+                aria-hidden="true"
+                className="aab-icon-sun h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" />
+              </svg>
+            </span>
+          </button>
 
           <Link
             href="/contact"

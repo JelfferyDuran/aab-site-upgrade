@@ -27,6 +27,16 @@ const dancing = Dancing_Script({
 
 const SITE_URL = "https://allaspectsbarn.vercel.app";
 
+/* Runs before first paint: restores the saved theme so a dark-mode visitor
+   never sees a white flash, and so the toggle icon is already correct in the
+   first frame. Theme is an explicit choice — it is NOT inherited from the OS.
+   Kept inline rather than a module so it cannot be deferred. */
+const THEME_BOOT =
+  '(function(){try{var d=document.documentElement;var t=localStorage.getItem("aab-theme");' +
+  'if(t!=="dark"&&t!=="light"){t="light";}d.setAttribute("data-theme",t);' +
+  'd.style.colorScheme=t;var m=document.querySelector(\'meta[name="theme-color"]\');' +
+  'if(m){m.setAttribute("content",t==="dark"?"#17130f":"#fdfaf5");}}catch(e){}})();';
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -143,8 +153,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      data-theme="light"
+      suppressHydrationWarning
       className={`${cardo.variable} ${playfair.variable} ${dancing.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
+        <meta name="theme-color" content="#fdfaf5" />
+      </head>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
