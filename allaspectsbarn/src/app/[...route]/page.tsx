@@ -1,31 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPageByRoute } from "@/lib/data";
-import ScrollSlide, { ScrollFade, ScrollScale } from "@/components/scroll";
 import GalleryCarousel from "@/components/GalleryCarousel";
+import ScrollSlide, { ScrollFade, ScrollScale } from "@/components/scroll";
+import { getPageByRoute } from "@/lib/content";
+import { SITE } from "@/lib/site";
 
 export default async function InteriorPage({ params }: { params: Promise<{ route: string[] }> }) {
   const { route } = await params;
-  const routePath = route ? route.join('/') : '';
+  const routePath = route ? route.join("/") : "";
   const page = getPageByRoute(routePath);
 
-  if (!page) {
-    notFound();
-  }
+  if (!page) notFound();
 
   const { title, body, images, og_description } = page;
 
-  // Same path normalisation the old image grid used (migrated local assets).
   const normalized = images.map((img) =>
-    img.startsWith("/") ? img : img.replace(/^https?:\/\/images\.editor\.website/i, "")
+    img.startsWith("/") ? img : img.replace(/^https?:\/\/images\.editor\.website/i, ""),
   );
   const carouselImages = normalized.map((src, i) => ({ src, alt: `${title} — photo ${i + 1}` }));
   const heroSrc = normalized[0] ?? "";
 
   return (
     <div className="flex flex-col pt-16 lg:pt-20">
-      {/* Hero — the page's own photograph carries it; neutral scrim, no hue shift */}
       <ScrollScale delay={0.1}>
         <section className={`relative py-24 md:py-28 overflow-hidden ${heroSrc ? "bg-neutral-950" : "bg-neutral-900"}`}>
           {heroSrc && (
@@ -55,17 +52,14 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
         </section>
       </ScrollScale>
 
-      {/* Content */}
       <ScrollFade delay={0.15}>
         <section className="py-16 aab-band-warm-light">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {body && (
               <div className="prose prose-lg prose-indigo mx-auto">
-                {body.split('\n').filter(Boolean).map((paragraph, i) => (
+                {body.split("\n").filter(Boolean).map((paragraph, i) => (
                   <ScrollSlide key={i} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.05}>
-                    <p className="text-gray-700 leading-relaxed mb-6">
-                      {paragraph}
-                    </p>
+                    <p className="text-gray-700 leading-relaxed mb-6">{paragraph}</p>
                   </ScrollSlide>
                 ))}
               </div>
@@ -74,7 +68,6 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
         </section>
       </ScrollFade>
 
-      {/* Image Gallery — one contained viewer instead of a scroll-through grid */}
       {carouselImages.length > 0 && (
         <section className="py-16 aab-band-warm">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,13 +76,11 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
                 Gallery
               </h2>
             </ScrollSlide>
-
             <GalleryCarousel images={carouselImages} />
           </div>
         </section>
       )}
 
-      {/* CTA */}
       <ScrollSlide direction="up" className="py-16 aab-band-warm">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -106,7 +97,7 @@ export default async function InteriorPage({ params }: { params: Promise<{ route
               Contact Us
             </Link>
             <a
-              href="mailto:allaspectsrecycled@gmail.com?subject=Question%20about%20All%20Aspects%20at%20the%20Barn"
+              href={`mailto:${SITE.email}?subject=Question%20about%20All%20Aspects%20at%20the%20Barn`}
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white font-semibold rounded-full transition-all"
             >
               Email Us
