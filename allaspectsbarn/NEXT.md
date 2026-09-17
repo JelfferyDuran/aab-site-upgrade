@@ -2,21 +2,32 @@
 
 _Last refreshed: 2026-09-17_
 
-This is the short execution queue for the active Next.js application. Keep it prioritized. Move finished items into the handoff rather than letting this become a giant backlog.
+This is the short execution queue for the canonical `allaspectsbarn/` application. Keep it prioritized; finished architecture work belongs in the handoff/README, not in an endless backlog.
 
-## P0 — Ship confidence
+## Foundation completed in current PR
 
-### 1. Catalog payload / search architecture
+- Canonical Next.js app documented; stale root prototype demoted to legacy reference.
+- Stable site/business configuration centralized.
+- Contact/newsletter endpoint configuration centralized.
+- Product catalog split behind `src/lib/catalog.ts`.
+- Page content split behind `src/lib/content.ts`.
+- `/products` changed from full-catalog Client Component to server-first render + compact interactive island.
+- Product search/pagination moved behind `/api/products` with bounded paging/query inputs.
+- Product detail routes + sitemap use the same catalog service.
+- Invalid/duplicate imported product slugs are excluded from generated route params.
+- Fast imported-data validation added.
+- GitHub Actions verification/build gate added with Next build cache.
+- Turbopack made the default local dev bundler; stable production build remains the deploy gate.
+- Global application error recovery added.
+- Architecture rules documented for future coding agents.
 
-**Problem:** `/products` is a client component importing the complete catalog (`src/data/products.json`, ~1 MB source JSON) plus Framer Motion. Only 30 product cards are rendered per page, but the browser receives far more data than the first view requires.
+## P0 — Verification + conversion confidence
 
-**Target:**
-- Keep the first catalog render server/static-first.
-- Do not include full product bodies/images for all products in the initial browser bundle.
-- Use a compact search document (`id`, `slug`, `title`, minimal searchable text) loaded on demand, or a server/search endpoint if deployment architecture allows it.
-- Preserve current product URLs and SEO.
-- Preserve fast client search UX.
-- Measure catalog JS/payload before and after.
+### 1. Get the foundation PR fully green
+
+- GitHub Actions: content validation → TypeScript → ESLint → stable production build.
+- Vercel preview should be treated separately from code verification when account build-rate limits block deployment.
+- Do not merge around a real type/build failure; fix it.
 
 ### 2. Conversion-path QA
 
@@ -26,7 +37,7 @@ Verify on mobile and desktop:
 - Contact form success/error states.
 - Newsletter success/error states.
 - Phone/email links.
-- Product search → product detail → contact/visit path.
+- Product search → pagination → product detail → inquiry/visit path.
 - Footer privacy/terms links.
 
 No dead buttons, placeholder URLs, or silent fake-success states.
@@ -34,25 +45,37 @@ No dead buttons, placeholder URLs, or silent fake-success states.
 ### 3. Deployment/canonical readiness
 
 Before custom-domain cutover:
-- Decide final production host (`allaspectsbarn.com`).
-- Change metadata base/canonical, JSON-LD URL, sitemap host, OG host, and robots sitemap in the same release.
-- Verify redirects from the old site.
+- Set `NEXT_PUBLIC_SITE_URL=https://allaspectsbarn.com` in production.
+- Verify canonical metadata, JSON-LD, sitemap, robots and OG URLs on the deployed site.
+- Verify old-site redirects and important historical URLs.
 - Verify public access without Vercel protection/SSO.
-- Confirm the current Square site is not removed until the replacement passes smoke tests.
+- Keep the existing live site available until replacement smoke tests pass.
 
 ## P1 — Quality / performance
 
-### 4. Consolidate motion systems
+### 4. Add browser E2E tests
 
-Current code has several motion abstractions plus Framer Motion and GSAP. Keep effects that materially improve the experience, but reduce overlapping primitives.
+Once the current production build is green, add a small Playwright suite for the routes that matter most:
+- `/`
+- `/products`
+- one representative product detail
+- `/contact`
+- `/gallery`
+
+Cover navigation, product search/pagination, contact form validation, and critical mobile behavior. Keep this a separate dependency/lockfile change.
+
+### 5. Consolidate motion systems
+
+Current code still has multiple motion abstractions plus Framer Motion and GSAP.
 
 Goal:
-- One preferred reveal/entrance system.
-- One preferred carousel implementation per use case.
-- No shared/root animation dependency where CSS is sufficient.
-- Maintain reduced-motion behavior.
+- one preferred entrance/reveal system
+- one preferred carousel implementation per use case
+- no root/shared animation runtime where CSS is sufficient
+- reduced-motion parity
+- preserve effects that genuinely improve the barn experience
 
-### 5. Mobile polish pass
+### 6. Mobile polish pass
 
 Test at least:
 - 360×800
@@ -61,47 +84,42 @@ Test at least:
 - 430×932
 - tablet portrait
 
-Focus on:
-- nav/dropdown fit and tap targets
-- hero information density
-- gallery controls
-- FAQ spacing
-- product search/filter/pagination
-- footer/newsletter layout
-- long product titles
+Focus on nav/dropdowns, hero density, gallery controls, FAQ spacing, product search/pagination, footer/newsletter, forms, and long product titles.
 
-### 6. Image budget
+### 7. Image budget
 
-- Keep hero/LCP images aggressively optimized.
+- Keep hero/LCP media aggressively optimized.
 - Audit oversized originals in `public/`.
 - Avoid `priority` below the fold.
-- Confirm `sizes` matches actual layout widths.
+- Confirm `sizes` against real rendered widths.
 - Prefer WebP/AVIF derivatives for site imagery while preserving retail-accurate product imagery.
 
-## P2 — Experience upgrades
+## P2 — Future-proof upgrades
 
-### 7. Product discovery that feels intentional
+### 8. Product discovery that reflects real inventory
 
-The current quick filters derive a “category” from the first word of the product title. Replace this with real facets only if the underlying source supports them; otherwise use curated discovery groups instead of pretending first words are categories.
+Do not derive categories from the first word of a title. Only add facets backed by real source data; otherwise use curated groups such as featured finds/recent finds.
 
-Possible safe improvements:
-- Recently added / featured finds
-- furniture / decor / gifts / paint only when source classification is verified
-- “Visit the barn to see current inventory” messaging for fast-changing stock
+### 9. Next.js major upgrade — separate change
 
-### 8. Social proof / local trust
+Evaluate Next 16 only after the current stack has a green production build and browser smoke tests. Do not combine a major framework upgrade with a redesign or data migration.
 
-Only add claims that can be verified. Prefer:
-- real press mentions
-- real customer reviews from an approved source
-- real event photos
-- real years in business / location details
+After upgrade, evaluate:
+- framework migration requirements/deprecations
+- typed routes
+- updated Turbopack production behavior
+- Next.js agent/MCP tooling
+- bundle/build differences
 
-Do not invent star ratings, awards, attendance counts, or testimonials.
+### 10. Replace JSON source without replacing the app
 
-### 9. Analytics + conversion measurement
+If inventory eventually moves to a CMS/database/search service, preserve the existing `catalog.ts` contract where practical. UI routes should not need to know which backend supplies products.
 
-Once the owner chooses analytics tooling, track only useful events:
+The same rule applies to `content.ts` for editorial pages.
+
+### 11. Analytics + useful measurement
+
+Once tooling is chosen, track only meaningful events:
 - event inquiry started/submitted
 - newsletter submitted
 - product search used
@@ -109,11 +127,13 @@ Once the owner chooses analytics tooling, track only useful events:
 - phone/email CTA
 - gallery engagement
 
-Keep the implementation lightweight and privacy-conscious.
+Keep it lightweight and privacy-conscious.
 
 ## Working rules
 
 - Canonical app: `allaspectsbarn/`.
+- Server Components by default; smallest possible client boundary.
 - Use `npm run check:quick` during iteration.
-- Use `npm run build` as a pre-deploy/full routing-data gate, not after every visual edit.
-- Update this file when priorities change.
+- Use `npm run build` for routing/data/deploy confidence.
+- Keep framework upgrades separate from product/design changes.
+- Update this file when the execution order materially changes.
