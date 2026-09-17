@@ -5,7 +5,7 @@ const CACHE_CONTROL = "public, s-maxage=300, stale-while-revalidate=3600";
 
 export function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  const query = searchParams.get("q") || "";
+  const query = (searchParams.get("q") || "").slice(0, 120);
   const page = Number(searchParams.get("page") || "1");
   const perPage = Number(searchParams.get("limit") || "30");
 
