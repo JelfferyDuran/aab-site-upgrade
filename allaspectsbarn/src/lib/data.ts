@@ -8,6 +8,7 @@ export {
   getContentPageCount,
   getContentRoutes,
   getPageByRoute,
+  pages,
 } from "@/lib/content";
 export type { ContentPage as Page } from "@/lib/content";
 
@@ -16,5 +17,9 @@ export {
   getCatalogPage,
   getProductBySlug,
   getProductCount,
+  getProductsPage,
+  getTotalProductPages,
+  products,
+  searchProducts,
 } from "@/lib/catalog";
 export type { CatalogPage, Product, ProductCard } from "@/lib/catalog";
