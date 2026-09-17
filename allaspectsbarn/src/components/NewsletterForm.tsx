@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpwdqkrl";
+import { FORMSPREE_ENDPOINT } from "@/lib/forms";
 
 /**
  * Footer newsletter form. Uses CSS transitions only — no framer-motion — so the
