@@ -56,6 +56,7 @@ export default function ProductExplorer({ initialPage }: ProductExplorerProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const didMountRef = useRef(false);
 
   const loadPage = useCallback(async (nextPage: number, nextQuery: string) => {
     abortRef.current?.abort();
@@ -90,14 +91,17 @@ export default function ProductExplorer({ initialPage }: ProductExplorerProps) {
   }, [initialPage.perPage]);
 
   useEffect(() => {
-    if (query === initialPage.query && catalog === initialPage) return;
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
 
     const timer = window.setTimeout(() => {
       void loadPage(1, query);
     }, 250);
 
     return () => window.clearTimeout(timer);
-  }, [query, initialPage, catalog, loadPage]);
+  }, [query, loadPage]);
 
   useEffect(() => {
     return () => abortRef.current?.abort();
