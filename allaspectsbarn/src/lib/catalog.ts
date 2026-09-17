@@ -33,6 +33,10 @@ function clampInteger(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, Math.trunc(value)));
 }
 
+function isRoutableSlug(slug: string): boolean {
+  return Boolean(slug && slug !== "undefined" && slug !== "null");
+}
+
 function normalizeImageSource(src: string | undefined): string | null {
   if (!src) return null;
   if (src.startsWith("http") || src.startsWith("/")) return src;
@@ -62,9 +66,17 @@ export function getProductBySlug(slug: string): Product | undefined {
 }
 
 export function getAllProductSlugs(): { slug: string }[] {
-  return products
-    .filter((product) => product.slug && product.slug !== "undefined" && product.slug !== "null")
-    .map((product) => ({ slug: product.slug }));
+  const seen = new Set<string>();
+  const slugs: { slug: string }[] = [];
+
+  for (const product of products) {
+    const slug = product.slug?.trim();
+    if (!isRoutableSlug(slug) || seen.has(slug)) continue;
+    seen.add(slug);
+    slugs.push({ slug });
+  }
+
+  return slugs;
 }
 
 export function getCatalogPage(options: {
@@ -72,7 +84,7 @@ export function getCatalogPage(options: {
   page?: number;
   perPage?: number;
 } = {}): CatalogPage {
-  const query = (options.query || "").trim();
+  const query = (options.query || "").trim().slice(0, 120);
   const normalizedQuery = query.toLocaleLowerCase();
   const perPage = clampInteger(options.perPage ?? DEFAULT_PER_PAGE, 1, MAX_PER_PAGE);
 
