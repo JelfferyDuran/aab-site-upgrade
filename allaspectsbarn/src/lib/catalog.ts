@@ -24,7 +24,7 @@ export type CatalogPage = {
   query: string;
 };
 
-const products = productsData as Product[];
+export const products = productsData as Product[];
 const DEFAULT_PER_PAGE = 30;
 const MAX_PER_PAGE = 60;
 
@@ -79,23 +79,37 @@ export function getAllProductSlugs(): { slug: string }[] {
   return slugs;
 }
 
+export function searchProducts(query: string): Product[] {
+  const normalizedQuery = query.trim().slice(0, 120).toLocaleLowerCase();
+  if (!normalizedQuery) return products;
+
+  return products.filter((product) => {
+    const title = product.title.toLocaleLowerCase();
+    const body = (product.body || "").toLocaleLowerCase();
+    return title.includes(normalizedQuery) || body.includes(normalizedQuery);
+  });
+}
+
+export function getProductsPage(page: number, perPage = 24): Product[] {
+  const safePerPage = clampInteger(perPage, 1, MAX_PER_PAGE);
+  const safePage = clampInteger(page, 1, Math.max(1, Math.ceil(products.length / safePerPage)));
+  const start = (safePage - 1) * safePerPage;
+  return products.slice(start, start + safePerPage);
+}
+
+export function getTotalProductPages(perPage = 24): number {
+  const safePerPage = clampInteger(perPage, 1, MAX_PER_PAGE);
+  return Math.ceil(products.length / safePerPage);
+}
+
 export function getCatalogPage(options: {
   query?: string;
   page?: number;
   perPage?: number;
 } = {}): CatalogPage {
   const query = (options.query || "").trim().slice(0, 120);
-  const normalizedQuery = query.toLocaleLowerCase();
   const perPage = clampInteger(options.perPage ?? DEFAULT_PER_PAGE, 1, MAX_PER_PAGE);
-
-  const matches = normalizedQuery
-    ? products.filter((product) => {
-        const title = product.title.toLocaleLowerCase();
-        const body = (product.body || "").toLocaleLowerCase();
-        return title.includes(normalizedQuery) || body.includes(normalizedQuery);
-      })
-    : products;
-
+  const matches = searchProducts(query);
   const total = matches.length;
   const totalPages = Math.max(1, Math.ceil(total / perPage));
   const page = clampInteger(options.page ?? 1, 1, totalPages);
