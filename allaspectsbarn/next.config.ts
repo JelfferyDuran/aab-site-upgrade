@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
+
   // Legacy short URLs that were linked site-wide; never let them 404 again.
   async redirects() {
     return [
@@ -10,6 +12,7 @@ const nextConfig: NextConfig = {
       { source: "/weddings", destination: "/pavilion-party-rental", permanent: true },
     ];
   },
+
   images: {
     remotePatterns: [
       {

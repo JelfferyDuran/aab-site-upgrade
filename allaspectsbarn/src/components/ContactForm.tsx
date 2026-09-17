@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import ScrollSlide from "@/components/scroll";
-
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpwdqkrl";
+import { FORMSPREE_ENDPOINT } from "@/lib/forms";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({

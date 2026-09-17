@@ -1,5 +1,6 @@
 import Link from "next/link";
 import NewsletterForm from "@/components/NewsletterForm";
+import { SITE } from "@/lib/site";
 
 const footerLinks = {
   venue: [
@@ -20,7 +21,6 @@ export default function Footer() {
     <footer className="bg-[var(--color-gray-900)] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
           <div className="lg:col-span-1">
             <h3 className="font-display text-3xl mb-4">AAB</h3>
             <p className="text-[var(--color-gray-400)] text-sm leading-relaxed mb-6">
@@ -30,7 +30,6 @@ export default function Footer() {
             <NewsletterForm />
           </div>
 
-          {/* Venue Links */}
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-[var(--color-primary-300)]">
               Venue
@@ -49,7 +48,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services Links */}
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-[var(--color-primary-300)]">
               Services
@@ -68,23 +66,34 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-[var(--color-primary-300)]">
               Get in Touch
             </h4>
             <ul className="space-y-3 text-sm text-[var(--color-gray-400)]">
-              <li>📍 1584 S Delaware Road, Mount Bethel, PA 18343</li>
-              <li>📞 <a href="tel:+15705832305" className="hover:text-white transition-colors">(570) 583-2305</a></li>
-              <li>✉️ <a href="mailto:allaspectsrecycled@gmail.com" className="hover:text-white transition-colors">allaspectsrecycled@gmail.com</a></li>
+              <li>📍 {SITE.address.display}</li>
+              <li>
+                📞{" "}
+                <a href={SITE.phone.href} className="hover:text-white transition-colors">
+                  {SITE.phone.display}
+                </a>
+              </li>
+              <li>
+                ✉️{" "}
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {SITE.email}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-[var(--color-gray-800)] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[var(--color-gray-500)]">
-            © {new Date().getFullYear()} All Aspects Barn. All rights reserved.
+            © {new Date().getFullYear()} {SITE.shortName}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link

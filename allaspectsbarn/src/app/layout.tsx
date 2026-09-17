@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Cardo, Playfair_Display, Dancing_Script } from "next/font/google";
+import { Cardo, Dancing_Script, Playfair_Display } from "next/font/google";
+import SiteLayout from "@/components/SiteLayout";
+import { SITE, SITE_URL } from "@/lib/site";
 import "./tokens.css";
 import "./globals.css";
-import SiteLayout from "@/components/SiteLayout";
 
 const cardo = Cardo({
   variable: "--font-cardo",
@@ -25,53 +26,55 @@ const dancing = Dancing_Script({
   weight: ["400", "500", "600", "700"],
 });
 
-const SITE_URL = "https://allaspectsbarn.vercel.app";
+const META_TITLE = `${SITE.shortName} — Events, Classes & Unique Finds`;
+const META_DESCRIPTION =
+  `${SITE.shortName} — premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds. Located on Route 611, Upper Mount Bethel, PA.`;
+const SHARE_DESCRIPTION =
+  "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds.";
+const HERO_IMAGE = "/images/barn-hero-sunset.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "All Aspects Barn — Events, Classes & Unique Finds",
-    template: "%s | All Aspects Barn",
+    default: META_TITLE,
+    template: `%s | ${SITE.shortName}`,
   },
-  description:
-    "All Aspects Barn — premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds. Located on Route 611, Upper Mount Bethel, PA.",
+  description: META_DESCRIPTION,
   keywords: [
     "barn events",
     "wedding venue",
     "chalk paint classes",
     "vintage furniture",
     "repurposed goods",
-    "All Aspects Barn",
+    SITE.shortName,
   ],
   alternates: {
     canonical: new URL(SITE_URL),
   },
   openGraph: {
-    title: "All Aspects Barn — Events, Classes & Unique Finds",
-    description:
-      "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds.",
+    title: META_TITLE,
+    description: SHARE_DESCRIPTION,
     url: SITE_URL,
-    siteName: "All Aspects Barn",
+    siteName: SITE.shortName,
     type: "website",
     locale: "en_US",
     images: [
       {
-        url: "/images/barn-hero-sunset.jpg",
+        url: HERO_IMAGE,
         width: 1280,
         height: 960,
-        alt: "All Aspects Barn storefront on Route 611 in Upper Mount Bethel, PA",
+        alt: `${SITE.shortName} storefront on Route 611 in Upper Mount Bethel, PA`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "All Aspects Barn — Events, Classes & Unique Finds",
-    description:
-      "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds.",
+    title: META_TITLE,
+    description: SHARE_DESCRIPTION,
     images: [
       {
-        url: "/images/barn-hero-sunset.jpg",
-        alt: "All Aspects Barn storefront on Route 611 in Upper Mount Bethel, PA",
+        url: HERO_IMAGE,
+        alt: `${SITE.shortName} storefront on Route 611 in Upper Mount Bethel, PA`,
       },
     ],
   },
@@ -81,28 +84,28 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "EventVenue", "Store"],
   "@id": `${SITE_URL}/#business`,
-  name: "All Aspects at the Barn",
+  name: SITE.name,
   url: SITE_URL,
   description:
     "Premium event venue, chalk paint classes, and 2,700+ unique vintage & repurposed finds in Mount Bethel, PA.",
-  image: `${SITE_URL}/images/barn-hero-sunset.jpg`,
-  telephone: "+1-570-583-2305",
-  email: "allaspectsrecycled@gmail.com",
+  image: `${SITE_URL}${HERO_IMAGE}`,
+  telephone: SITE.phone.e164,
+  email: SITE.email,
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "1584 S Delaware Road",
-    addressLocality: "Mount Bethel",
-    addressRegion: "PA",
-    postalCode: "18343",
-    addressCountry: "US",
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.locality,
+    addressRegion: SITE.address.region,
+    postalCode: SITE.address.postalCode,
+    addressCountry: SITE.address.country,
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 40.8852894,
-    longitude: -75.1235791,
+    latitude: SITE.geo.latitude,
+    longitude: SITE.geo.longitude,
   },
-  openingHours: ["Tu-Sa 08:00-17:00", "Su 09:00-17:00"],
+  openingHours: [...SITE.hours.schema],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -133,10 +136,7 @@ const jsonLd = {
       },
     },
   ],
-  sameAs: [
-    "https://www.facebook.com/allaspectsrepurposed/",
-    "https://www.linkedin.com/company/all-aspects-at-the-barn/",
-  ],
+  sameAs: Object.values(SITE.social),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
