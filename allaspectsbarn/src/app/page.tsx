@@ -184,7 +184,7 @@ export default function HomePage() {
               </Link>
               <a
                 href="mailto:allaspectsrecycled@gmail.com?subject=Event%20inquiry%20%E2%80%94%20All%20Aspects%20at%20the%20Barn"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-[#0f1238] font-semibold rounded-full transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-[var(--color-primary-900)] font-semibold rounded-full transition-all duration-300"
               >
                 Email Us
               </a>

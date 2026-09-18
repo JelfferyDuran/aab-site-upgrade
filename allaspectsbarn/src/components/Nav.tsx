@@ -134,7 +134,7 @@ export default function Nav() {
       /* storage blocked (private mode): the choice simply does not persist */
     }
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", next === "dark" ? "#17130f" : "#fdfaf5");
+    if (meta) meta.setAttribute("content", next === "dark" ? "#14181f" : "#fbf7f0");
     setTheme(next);
   }, []);
 
@@ -489,7 +489,7 @@ export default function Nav() {
               href="/contact"
               className={`nav-stagger ml-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] ring-1 backdrop-blur-sm transition-all ${
                 scrolled
-                  ? "bg-[var(--color-primary)] text-white ring-[var(--color-primary)] hover:bg-[var(--color-primary-dark)]"
+                  ? "bg-[var(--aab-apricot)] text-[var(--aab-apricot-ink)] ring-[var(--aab-apricot)] hover:bg-[var(--aab-apricot-dark)]"
                   : "bg-[rgb(255_232_205/0.18)] text-white ring-[rgb(255_226_190/0.5)] hover:bg-[rgb(255_232_205/0.32)]"
               }`}
               style={{ animationDelay: "0.3s" }}
@@ -679,7 +679,7 @@ export default function Nav() {
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-2 block rounded-full bg-[var(--color-primary)] px-4 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[var(--color-primary-dark)]"
+            className="mt-2 block rounded-full bg-[var(--aab-apricot)] px-4 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--aab-apricot-ink)] transition-colors hover:bg-[var(--aab-apricot-dark)]"
           >
             Contact
           </Link>

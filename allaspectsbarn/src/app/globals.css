@@ -35,6 +35,47 @@
   --color-error: var(--color-error);
   --color-info: var(--color-info);
 
+  /* ── Palette remap: Apricot Avalanche ──
+     The design system was authored against Tailwind's stock indigo / amber /
+     stone scales. Those three names are redefined to the barn palette here, so
+     every existing usage re-tints from one place instead of a class-by-class
+     rewrite. Fixed hexes on purpose: bg-indigo-900 is the hero/CTA background
+     and must stay deep in BOTH themes, so it must not follow the per-theme
+     primary scale. */
+  --color-indigo-50: #f1f3f6;
+  --color-indigo-100: #e2e7ed;
+  --color-indigo-200: #c4cdd8;
+  --color-indigo-300: #a6b3c4;
+  --color-indigo-400: #8899b0;
+  --color-indigo-500: #6b7a8f;
+  --color-indigo-600: #5a687a;
+  --color-indigo-700: #4e5c6e;
+  --color-indigo-800: #3b4756;
+  --color-indigo-900: #2a323d;
+  --color-indigo-950: #1b212b;
+
+  --color-amber-50: #fdf7ee;
+  --color-amber-100: #fdebd7;
+  --color-amber-200: #fbd6ae;
+  --color-amber-300: #f7c331; /* Citrus */
+  --color-amber-400: #fba35a;
+  --color-amber-500: #f7882f; /* Apricot */
+  --color-amber-600: #e5761c;
+  --color-amber-700: #9e5210;
+  --color-amber-800: #7a3f0c;
+  --color-amber-900: #5a2e09;
+
+  --color-stone-50: #faf7f1;
+  --color-stone-100: #f4efe7;
+  --color-stone-200: #e7dfd2;
+  --color-stone-300: #d2c8b8;
+  --color-stone-400: #9aa3ae;
+  --color-stone-500: #6b7480;
+  --color-stone-600: #565f6b;
+  --color-stone-700: #414955;
+  --color-stone-800: #333a45;
+  --color-stone-900: #2b2118;
+
   /* Fonts */
   --font-sans: var(--font-cardo);
   --font-serif: var(--font-playfair);
@@ -299,21 +340,21 @@ body {
   max-height: 420px;
 }
 
-/* ── AAB warm glass + warm cards ─────────────────────────────────────────────
-   The barn is a warm place: reclaimed oak, amber barn lights, sunset over the
-   paddock. Neutral white/grey frosted panels read cold against that, so every
-   glass surface is warmed with an ivory base + an amber wash, and shadows are
-   cast with warm brown instead of neutral black. The indigo brand accent is
-   untouched — only the surfaces under it changed temperature.                  */
+/* ── AAB apricot glass + apple-core cards ────────────────────────────────────
+   Blueberry #6B7A8F · Apricot #F7882F · Citrus #F7C331 · Apple Core #DCC7AA.
+   Every glass surface sits on an Apple Core base washed with Apricot and edged
+   with Citrus, and shadows are cast in deep apricot instead of neutral black —
+   that is what makes the panels read as lit rather than frosted grey. Body
+   text on every surface resolves through the blueberry ink scale.             */
 .aab-glass-warm {
-  background-color: rgb(255 243 226 / 0.62);
+  background-color: rgb(252 243 232 / 0.62);
   background-image:
-    radial-gradient(120% 120% at 0% 0%, rgb(255 199 138 / 0.52) 0%, rgb(255 199 138 / 0) 60%),
-    linear-gradient(158deg, rgb(255 241 220 / 0.68) 0%, rgb(255 228 196 / 0.42) 55%, rgb(240 205 164 / 0.34) 100%);
-  border-color: rgb(255 224 186 / 0.78);
+    radial-gradient(120% 120% at 0% 0%, rgb(247 136 47 / 0.40) 0%, rgb(247 136 47 / 0) 60%),
+    linear-gradient(158deg, rgb(253 246 236 / 0.70) 0%, rgb(247 232 213 / 0.46) 55%, rgb(220 199 170 / 0.38) 100%);
+  border-color: rgb(247 195 49 / 0.50);
   box-shadow:
-    inset 0 1px 0 rgb(255 250 242 / 0.85),
-    0 24px 60px -22px rgba(120, 72, 20, 0.42);
+    inset 0 1px 0 rgb(255 251 244 / 0.85),
+    0 24px 60px -22px rgba(158, 82, 16, 0.34);
   /* The blur/saturation itself must come from Tailwind's backdrop-blur-* +
      backdrop-saturate-* utilities on the element. A hand-written standard
      backdrop-filter here gets rewritten to the -webkit- alias by the CSS
@@ -323,26 +364,27 @@ body {
 /* Deeper warm glass: scrolled nav bar + mobile drawer (needs to hold legibility
    over both the dark hero and the light content bands). */
 .aab-glass-warm-strong {
-  background-color: rgb(255 242 224 / 0.82);
-  background-image: linear-gradient(180deg, rgb(255 247 234 / 0.86) 0%, rgb(252 228 197 / 0.72) 100%);
-  border-color: rgb(250 224 188 / 0.85);
+  background-color: rgb(252 245 235 / 0.84);
+  background-image: linear-gradient(180deg, rgb(254 249 242 / 0.88) 0%, rgb(245 232 214 / 0.74) 100%);
+  border-color: rgb(240 214 178 / 0.85);
 }
 
 /* Solid cards that used to be cold white on grey → warm ivory. */
 .aab-card-warm {
-  background-color: rgb(255 246 233);
-  background-image: linear-gradient(160deg, rgb(255 249 240) 0%, rgb(255 242 226) 60%, rgb(253 236 214) 100%);
-  border-color: rgb(243 222 190);
-  box-shadow: 0 18px 44px -26px rgba(120, 72, 20, 0.4);
+  background-color: rgb(253 247 238);
+  background-image: linear-gradient(160deg, rgb(254 251 246) 0%, rgb(250 241 228) 60%, rgb(240 226 205) 100%);
+  border-color: rgb(230 214 191);
+  box-shadow: 0 18px 44px -26px rgba(158, 82, 16, 0.32);
 }
 
 /* Section bands: the old grey-50 band and the flat white band, warmed. */
 .aab-band-warm {
-  background: linear-gradient(180deg, rgb(251 240 224) 0%, rgb(247 232 211) 100%);
+  /* Apple Core band — the palette's signature surface. */
+  background: linear-gradient(180deg, rgb(240 226 205) 0%, rgb(232 215 191) 100%);
 }
 
 .aab-band-warm-light {
-  background: linear-gradient(180deg, rgb(255 250 240) 0%, rgb(254 243 228) 100%);
+  background: linear-gradient(180deg, rgb(252 247 240) 0%, rgb(245 237 226) 100%);
 }
 
 /* Cards keep their border even when a utility zeroes it out. */
@@ -390,66 +432,66 @@ body {
 /* ── Nav warm row helpers (were one-off arbitrary Tailwind values, which
       cannot be re-tinted per theme from a single place) ── */
 .aab-hover-warm:hover {
-  background-color: rgb(255 240 219 / 0.85);
+  background-color: rgb(252 238 221 / 0.88);
 }
 [data-theme="dark"] .aab-hover-warm:hover {
-  background-color: rgb(58 45 34 / 0.95);
+  background-color: rgb(44 52 63 / 0.95);
 }
 .aab-active-warm {
-  background-color: rgb(255 231 200 / 0.9);
+  background-color: rgb(251 231 203 / 0.92);
 }
 [data-theme="dark"] .aab-active-warm {
-  background-color: rgb(52 40 32 / 0.95);
+  background-color: rgb(52 60 72 / 0.95);
 }
 .aab-line-glass {
-  border-color: rgb(250 231 203 / 0.8);
+  border-color: rgb(232 219 199 / 0.85);
 }
 [data-theme="dark"] .aab-line-glass {
-  border-color: rgb(96 74 52 / 0.85);
+  border-color: rgb(64 74 88 / 0.85);
 }
 .aab-line-warm {
-  border-color: rgb(246 232 214);
+  border-color: rgb(233 221 203);
 }
 [data-theme="dark"] .aab-line-warm {
-  border-color: rgb(62 50 38);
+  border-color: rgb(50 58 69);
 }
 .aab-line-soft {
-  border-color: rgb(240 224 203);
+  border-color: rgb(230 219 202);
 }
 [data-theme="dark"] .aab-line-soft {
-  border-color: rgb(62 50 38);
+  border-color: rgb(50 58 69);
 }
 
 /* ── Warm glass + warm cards, dark variant ──
-   Same construction as the light values (ivory base -> ember-lit oak, amber
-   wash, warm-brown shadow) so the barn reads as lit at dusk rather than as a
-   generic grey dark mode. */
+   Same construction as the light values (charcoal base -> apricot wash ->
+   citrus edge) so the barn reads as lit at dusk rather than as a generic grey
+   dark mode. */
 [data-theme="dark"] .aab-glass-warm {
-  background-color: rgb(44 35 26 / 0.66);
+  background-color: rgb(32 38 47 / 0.66);
   background-image:
-    radial-gradient(120% 120% at 0% 0%, rgb(255 168 88 / 0.16) 0%, rgb(255 168 88 / 0) 60%),
-    linear-gradient(158deg, rgb(58 46 34 / 0.72) 0%, rgb(40 32 24 / 0.6) 55%, rgb(30 24 18 / 0.5) 100%);
-  border-color: rgb(126 96 62 / 0.42);
+    radial-gradient(120% 120% at 0% 0%, rgb(247 136 47 / 0.18) 0%, rgb(247 136 47 / 0) 60%),
+    linear-gradient(158deg, rgb(40 48 59 / 0.72) 0%, rgb(30 36 45 / 0.6) 55%, rgb(23 27 34 / 0.5) 100%);
+  border-color: rgb(84 96 112 / 0.42);
   box-shadow:
-    inset 0 1px 0 rgb(255 206 152 / 0.12),
+    inset 0 1px 0 rgb(242 177 113 / 0.14),
     0 24px 60px -22px rgba(0, 0, 0, 0.72);
 }
 [data-theme="dark"] .aab-glass-warm-strong {
-  background-color: rgb(34 27 20 / 0.9);
-  background-image: linear-gradient(180deg, rgb(46 37 27 / 0.94) 0%, rgb(30 24 18 / 0.86) 100%);
-  border-color: rgb(120 92 60 / 0.5);
+  background-color: rgb(26 31 39 / 0.9);
+  background-image: linear-gradient(180deg, rgb(34 41 51 / 0.94) 0%, rgb(23 27 34 / 0.86) 100%);
+  border-color: rgb(78 90 106 / 0.5);
 }
 [data-theme="dark"] .aab-card-warm {
-  background-color: rgb(33 26 19);
-  background-image: linear-gradient(160deg, rgb(42 34 25) 0%, rgb(34 27 20) 60%, rgb(28 22 17) 100%);
-  border-color: rgb(84 64 44);
+  background-color: rgb(26 31 39);
+  background-image: linear-gradient(160deg, rgb(33 40 50) 0%, rgb(26 31 39) 60%, rgb(21 25 32) 100%);
+  border-color: rgb(58 68 82);
   box-shadow: 0 18px 44px -26px rgba(0, 0, 0, 0.8);
 }
 [data-theme="dark"] .aab-band-warm {
-  background: linear-gradient(180deg, rgb(30 24 18) 0%, rgb(25 20 15) 100%);
+  background: linear-gradient(180deg, rgb(23 27 34) 0%, rgb(19 23 29) 100%);
 }
 [data-theme="dark"] .aab-band-warm-light {
-  background: linear-gradient(180deg, rgb(23 19 15) 0%, rgb(29 23 17) 100%);
+  background: linear-gradient(180deg, rgb(20 24 31) 0%, rgb(26 31 39) 100%);
 }
 
 /* ── Fixed-hex utilities that do not run through the neutral scale ──
@@ -457,7 +499,7 @@ body {
    intentionally sit on amber or cream keep their own contrast. */
 [data-theme="dark"] .text-indigo-600,
 [data-theme="dark"] .text-indigo-700 {
-  color: #aab5ea;
+  color: #a6b3c4;
 }
 [data-theme="dark"] .text-green-700,
 [data-theme="dark"] .text-green-800 {
@@ -465,34 +507,34 @@ body {
 }
 /* ── Chips + nav active label ── */
 .aab-chip-idle {
-  background-color: rgb(250 243 232);
+  background-color: rgb(251 245 236);
   color: var(--color-gray-700);
-  border-color: rgb(243 228 206);
+  border-color: rgb(233 222 205);
 }
 .aab-chip-idle:hover {
-  border-color: rgb(224 146 60);
-  color: rgb(176 105 30);
+  border-color: var(--aab-apricot);
+  color: var(--aab-apricot-deep);
 }
 [data-theme="dark"] .aab-chip-idle {
-  background-color: rgb(38 31 23);
+  background-color: rgb(32 38 47);
   color: var(--color-gray-600);
-  border-color: rgb(78 60 42);
+  border-color: rgb(58 68 82);
 }
 [data-theme="dark"] .aab-chip-idle:hover {
-  border-color: rgb(224 146 60);
-  color: rgb(233 168 96);
+  border-color: var(--aab-apricot);
+  color: var(--aab-apricot-300);
 }
 .aab-chip-active {
-  background-color: #171717;
+  background-color: #232a34;
   color: #ffffff;
 }
 [data-theme="dark"] .aab-chip-active {
-  background-color: rgb(248 241 230);
-  color: #17130f;
+  background-color: var(--aab-citrus);
+  color: var(--aab-apricot-ink);
 }
 .aab-nav-active {
-  color: var(--color-primary);
+  color: var(--aab-apricot-deep);
 }
 [data-theme="dark"] .aab-nav-active {
-  color: #aab5ea;
+  color: var(--aab-apricot-300);
 }

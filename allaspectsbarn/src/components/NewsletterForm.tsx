@@ -49,7 +49,7 @@ export default function NewsletterForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <label className="block text-sm font-medium text-[var(--color-gray-400)]">
+      <label className="block text-sm font-medium text-[var(--aab-footer-ink)]">
         Join our newsletter
       </label>
       <div className="flex gap-2">
@@ -59,15 +59,15 @@ export default function NewsletterForm() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="your@email.com"
           required
-          className="flex-1 px-4 py-2.5 border-2 border-[var(--color-gray-700)] rounded-xl text-white placeholder-[var(--color-gray-500)] bg-transparent focus:border-[var(--color-primary-400)] focus:outline-none transition-colors text-sm"
+          className="flex-1 px-4 py-2.5 border-2 border-[var(--aab-footer-input)] rounded-xl text-white placeholder-[var(--aab-footer-muted)] bg-transparent focus:border-[var(--aab-apricot)] focus:outline-none transition-colors text-sm"
         />
         <button
           type="submit"
           disabled={buttonDisabled}
-          className={`aaf-btn px-5 py-2.5 text-white font-semibold rounded-xl transition-all text-sm whitespace-nowrap ${
+          className={`aaf-btn px-5 py-2.5 font-semibold rounded-xl transition-all text-sm whitespace-nowrap ${
             buttonDisabled
               ? "bg-[var(--aab-disabled-bg)] cursor-not-allowed"
-              : "bg-[var(--color-primary-400)] hover:bg-[var(--color-primary-300)]"
+              : "bg-[var(--aab-apricot)] text-[var(--aab-apricot-ink)] hover:bg-[var(--aab-apricot-dark)]"
           }`}
         >
           {status === "sending" ? "..." : "Subscribe"}

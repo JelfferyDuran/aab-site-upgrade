@@ -35,7 +35,7 @@ const THEME_BOOT =
   '(function(){try{var d=document.documentElement;var t=localStorage.getItem("aab-theme");' +
   'if(t!=="dark"&&t!=="light"){t="light";}d.setAttribute("data-theme",t);' +
   'd.style.colorScheme=t;var m=document.querySelector(\'meta[name="theme-color"]\');' +
-  'if(m){m.setAttribute("content",t==="dark"?"#17130f":"#fdfaf5");}}catch(e){}})();';
+  'if(m){m.setAttribute("content",t==="dark"?"#14181f":"#fbf7f0");}}catch(e){}})();';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -159,7 +159,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
-        <meta name="theme-color" content="#fdfaf5" />
+        <meta name="theme-color" content="#fbf7f0" />
       </head>
       <body className="min-h-full flex flex-col">
         <script

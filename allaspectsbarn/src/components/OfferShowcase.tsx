@@ -115,12 +115,12 @@ function OfferCard({ offer, i, parallax }: { offer: Offer; i: number; parallax: 
             <div
               aria-hidden="true"
               className="absolute inset-0 opacity-80 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-60"
-              style={{ background: "radial-gradient(125% 95% at 12% 112%, rgba(67,82,152,0.55) 0%, rgba(67,82,152,0) 62%)" }}
+              style={{ background: "radial-gradient(125% 95% at 12% 112%, rgba(107,122,143,0.55) 0%, rgba(107,122,143,0) 62%)" }}
             />
             <div
               aria-hidden="true"
               className="absolute inset-0 opacity-70 mix-blend-screen"
-              style={{ background: "radial-gradient(80% 62% at 88% -8%, rgba(245,158,11,0.4) 0%, rgba(245,158,11,0) 70%)" }}
+              style={{ background: "radial-gradient(80% 62% at 88% -8%, rgba(247,136,47,0.45) 0%, rgba(247,136,47,0) 70%)" }}
             />
             <div aria-hidden="true" className="absolute inset-0 opacity-[0.10] mix-blend-overlay" style={{ backgroundImage: GRAIN }} />
             <div aria-hidden="true" className="absolute inset-0 rounded-[1.6rem] ring-1 ring-inset ring-white/15" />
@@ -163,14 +163,14 @@ export default function OfferShowcase() {
   }, [reduce]);
 
   return (
-    <section id="what-we-offer" className="relative overflow-hidden bg-[#faf7f2] py-20 sm:py-24">
+    <section id="what-we-offer" className="relative overflow-hidden bg-[var(--aab-applecore-pale)] py-20 sm:py-24">
       {/* Section layers — warm light, a breath of brand indigo, faint paper grain. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-60"
         style={{
           background:
-            "radial-gradient(120% 80% at 50% -12%, #ffffff 0%, rgba(255,255,255,0) 58%), radial-gradient(72% 52% at 8% 104%, rgba(67,82,152,0.10) 0%, rgba(67,82,152,0) 72%), radial-gradient(62% 44% at 94% 6%, rgba(245,158,11,0.13) 0%, rgba(245,158,11,0) 72%)",
+            "radial-gradient(120% 80% at 50% -12%, #ffffff 0%, rgba(255,255,255,0) 58%), radial-gradient(72% 52% at 8% 104%, rgba(107,122,143,0.12) 0%, rgba(107,122,143,0) 72%), radial-gradient(62% 44% at 94% 6%, rgba(247,136,47,0.14) 0%, rgba(247,136,47,0) 72%)",
         }}
       />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.05]" style={{ backgroundImage: GRAIN }} />

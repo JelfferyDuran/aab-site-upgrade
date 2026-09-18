@@ -1,36 +1,62 @@
 /* ═══════════════════════════════════════════════════════════
-   AAB Design Tokens — Indigo Design System
-   Brand: All Aspects Barn
+   AAB Design Tokens — "Apricot Avalanche"
+   Brand: All Aspects at the Barn
+   Blueberry #6B7A8F · Apricot #F7882F · Citrus #F7C331 · Apple Core #DCC7AA
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Brand Colors ── */
-  --color-primary: #435298;
-  --color-primary-light: #5a6bb8;
-  --color-primary-dark: #2f3d78;
-  --color-primary-50: #eef0f9;
-  --color-primary-100: #dce0f3;
-  --color-primary-200: #b9c1e7;
-  --color-primary-300: #96a2db;
-  --color-primary-400: #7383cf;
-  --color-primary-500: #435298;
-  --color-primary-600: #364280;
-  --color-primary-700: #293268;
-  --color-primary-800: #1c2250;
-  --color-primary-900: #0f1238;
+  /* ── Brand: Blueberry — the "quiet, trustworthy" ink scale ──
+     The deep end carries white text on solid buttons (6.8:1); the mid tone is
+     the palette Blueberry itself and is used for accents and display type. */
+  --color-primary: #4e5c6e;
+  --color-primary-light: #6b7a8f;
+  --color-primary-dark: #3b4756;
+  --color-primary-50: #f1f3f6;
+  --color-primary-100: #e2e7ed;
+  --color-primary-200: #c4cdd8;
+  --color-primary-300: #a6b3c4;
+  --color-primary-400: #8899b0;
+  --color-primary-500: #6b7a8f;
+  --color-primary-600: #5a687a;
+  --color-primary-700: #4e5c6e;
+  --color-primary-800: #3b4756;
+  --color-primary-900: #2a323d;
 
-  /* ── Neutrals ── */
+  /* ── Accents ──
+     Apricot is the action colour. It is a bright orange: white on it is only
+     2.9:1, so apricot surfaces ALWAYS take --aab-apricot-ink (6.5:1). */
+  --aab-apricot: #f7882f;
+  --aab-apricot-dark: #d96f17;
+  --aab-apricot-deep: #9e5210;
+  --aab-apricot-100: #fdebd7;
+  --aab-apricot-200: #fbd6ae;
+  --aab-apricot-300: #f2b171;
+  --aab-apricot-ink: #2b2118;
+
+  /* Citrus: highlight bars, active states, tertiary accents. */
+  --aab-citrus: #f7c331;
+  --aab-citrus-100: #fdf4d9;
+  --aab-citrus-deep: #8a6a0b;
+
+  /* Apple Core: the warm surface family — bands, cards, glass bases. */
+  --aab-applecore: #dcc7aa;
+  --aab-applecore-light: #ede0ca;
+  --aab-applecore-pale: #f7f0e4;
+
+  /* ── Neutrals ──
+     50-300 run warm because they sit on Apple Core surfaces. 400 and up are
+     blueberry-cool ink, and every tone used for text is >=4.5:1 on the page. */
   --color-white: #ffffff;
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #575f6b;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
+  --color-gray-50: #faf7f1;
+  --color-gray-100: #f4efe7;
+  --color-gray-200: #e7dfd2;
+  --color-gray-300: #d2c8b8;
+  --color-gray-400: #636c78;
+  --color-gray-500: #4f5865;
+  --color-gray-600: #414955;
+  --color-gray-700: #333a45;
+  --color-gray-800: #232a34;
+  --color-gray-900: #151a21;
   --color-black: #000000;
 
   /* ── Semantic Colors ── */
@@ -40,11 +66,20 @@
   --color-info: #3b82f6;
 
   /* ── Theme surfaces (light = default) ── */
-  --aab-page: #ffffff;
-  --aab-footer-bg: #111827;
-  --aab-disabled-bg: #374151;
-  --aab-cream: rgb(249 240 226);
-  --aab-toggle-ring: rgb(246 232 214);
+  --aab-page: #fbf7f0;
+  --aab-cream: #ede0ca;
+  --aab-toggle-ring: #e2d6c1;
+  --aab-disabled-bg: #6b7280;
+
+  /* ── Footer ink ──
+     The footer is dark in BOTH themes, so it does not use the neutral scale
+     (which flips per theme) — it has its own fixed ink set. */
+  --aab-footer-bg: #1b212b;
+  --aab-footer-ink: #c6cdd7;
+  --aab-footer-muted: #9aa3ae;
+  --aab-footer-head: #f2b171;
+  --aab-footer-line: #333b47;
+  --aab-footer-input: #3b4450;
 
   /* ── Typography ── */
   --font-sans: var(--font-cardo);
@@ -122,50 +157,67 @@
   --z-fab: 600;
 }
 
-/* ── Dark theme (explicit, user-controlled) ──────────────────────────────
-   Applied by [data-theme="dark"] on <html>. It is deliberately NOT wired to
-   prefers-color-scheme: the old @media block flipped only the indigo scale, so
-   any visitor on a dark-preference OS got a half-inverted palette (light tints
-   turned navy while every surface and every neutral stayed white). Theme is now
-   an explicit choice, set before first paint by the boot script in layout.tsx.
+/* ── Dark theme (explicit, user-controlled) ──────────────────────
+   Applied by [data-theme="dark"] on <html>. Deliberately NOT wired to
+   prefers-color-scheme: theme is an explicit choice, set before first paint by
+   the boot script in layout.tsx. Surfaces become blueberry charcoal and the
+   accents stay apricot / citrus, so the barn reads as lit at dusk rather than
+   as a generic grey dark mode.
 
-   The neutral scale is overridden here, not in components: every grey utility
-   in the codebase resolves through var(--color-gray-*), so flipping the scale
-   re-inks the whole site — headings, body copy, borders and bands — in one
-   place. --color-white is left alone on purpose: text-white sits on indigo
-   buttons and photo overlays and must stay white in both themes.            */
+   Dark ink flips: the neutral scale is overridden here rather than in
+   components, so every grey utility in the codebase re-inks from one place.
+   --color-white is left alone on purpose: text-white sits on photo overlays
+   and must stay white in both themes.                                       */
 [data-theme="dark"] {
   color-scheme: dark;
 
-  /* Brand tints invert (light washes -> deep navy) to keep indigo identity
-     against a dark page without touching the solid brand indigo itself. */
-  --color-primary-50: #0f1238;
-  --color-primary-100: #1c2250;
-  --color-primary-200: #293268;
-  --color-primary-300: #96a2db;
-  --color-primary-400: #7383cf;
-  --color-primary-500: #5a6bb8;
-  --color-primary-600: #7383cf;
-  --color-primary-700: #96a2db;
-  --color-primary-800: #b9c1e7;
-  --color-primary-900: #dce0f3;
+  /* Brand tints invert (light washes -> deep blueberry) while the accent ink
+     gets lighter, so links and accent text stay legible on a dark page. */
+  --color-primary: #a6b3c4;
+  --color-primary-light: #c4cdd8;
+  --color-primary-dark: #8899b0;
+  --color-primary-50: #151a21;
+  --color-primary-100: #232a34;
+  --color-primary-200: #333a45;
+  --color-primary-300: #a6b3c4;
+  --color-primary-400: #8899b0;
+  --color-primary-500: #6b7a8f;
+  --color-primary-600: #8899b0;
+  --color-primary-700: #a6b3c4;
+  --color-primary-800: #c4cdd8;
+  --color-primary-900: #e2e7ed;
+
+  /* Apricot and citrus stay vivid (7.3:1 / 9.7:1 on the dark page); only the
+     "deep" variants flip, since those are used as text colours. */
+  --aab-apricot-deep: #f2b171;
+  --aab-citrus-deep: #f7c331;
 
   /* Neutrals: 50 = darkest surface, 900 = lightest ink. */
-  --color-gray-50: #1d1813;
-  --color-gray-100: #241d17;
-  --color-gray-200: #3a2f26;
-  --color-gray-300: #4d3f32;
-  --color-gray-400: #a8987f;
-  --color-gray-500: #b3a189;
-  --color-gray-600: #c4b39a;
-  --color-gray-700: #d9cab3;
-  --color-gray-800: #ecdfca;
-  --color-gray-900: #f8f1e6;
+  --color-gray-50: #14181f;
+  --color-gray-100: #1b212b;
+  --color-gray-200: #2a323d;
+  --color-gray-300: #3b4450;
+  --color-gray-400: #9ba6b2;
+  --color-gray-500: #b4bec9;
+  --color-gray-600: #c7cfd8;
+  --color-gray-700: #dce1e7;
+  --color-gray-800: #edf0f3;
+  --color-gray-900: #f7f9fb;
 
-  /* Warm-charcoal surfaces. */
-  --aab-page: #17130f;
-  --aab-footer-bg: #100d0a;
-  --aab-disabled-bg: #55432f;
-  --aab-cream: rgb(42 34 25);
-  --aab-toggle-ring: rgb(90 70 50);
+  /* Blueberry-charcoal surfaces. */
+  --aab-page: #14181f;
+  --aab-cream: #232a34;
+  --aab-toggle-ring: #3b4450;
+  --aab-disabled-bg: #3b4450;
+
+  /* Footer keeps its own ink set (it is dark in both themes). */
+  --aab-footer-bg: #0e1117;
+
+  /* Apple Core surfaces are used as section BASES, so they must flip too:
+     leaving them light in dark mode made any section painted with
+     --aab-applecore-pale render cream under light ink. The palette's warmth
+     lives in the apricot / citrus washes drawn on top, not the base. */
+  --aab-applecore: #3b4450;
+  --aab-applecore-light: #2a323d;
+  --aab-applecore-pale: #1b212b;
 }
