@@ -32,7 +32,7 @@ export default function Footer() {
 
           {/* Venue Links */}
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-[var(--aab-footer-head)]">
+            <h4 className="aab-label mb-4 text-[var(--aab-footer-head)]">
               Venue
             </h4>
             <ul className="space-y-3">
@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Services Links */}
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-[var(--aab-footer-head)]">
+            <h4 className="aab-label mb-4 text-[var(--aab-footer-head)]">
               Services
             </h4>
             <ul className="space-y-3">
@@ -70,7 +70,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider mb-4 text-[var(--aab-footer-head)]">
+            <h4 className="aab-label mb-4 text-[var(--aab-footer-head)]">
               Get in Touch
             </h4>
             <ul className="space-y-3 text-sm text-[var(--aab-footer-ink)]">

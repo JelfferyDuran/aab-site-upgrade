@@ -94,7 +94,7 @@ export default function ImageCarousel({ images, columns = 3 }: ImageCarouselProp
               </div>
               {/* Caption area (like a photo label) */}
               {img.category && (
-                <p className="mt-2 text-center text-xs text-gray-500 font-medium tracking-wide uppercase">
+                <p className="aab-label mt-2 text-center text-gray-500">
                   {img.category}
                 </p>
               )}

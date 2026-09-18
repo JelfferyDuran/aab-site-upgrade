@@ -221,3 +221,38 @@
   --aab-applecore-light: #2a323d;
   --aab-applecore-pale: #1b212b;
 }
+
+/* ═══ Figma-informed polish scale ═══════════════════════════════════════════
+   Tracking and geometry are structural decisions, not decoration: display text
+   compresses so large serif stops reading loose, small uppercase labels open
+   up so they stay legible, and every radius comes from one scale so the
+   geometry reads deliberate rather than accidental. Nothing here is a new
+   colour — these all point at existing Apricot Avalanche tokens.            */
+:root {
+  --aab-track-display: -0.03em;
+  --aab-track-heading: -0.02em;
+  --aab-track-label: 0.16em;
+  --aab-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+  --radius-pill: 50px;
+
+  /* Focus + depth. The ring is the primary containment device: a 1px halo is
+     crisper than a border and never turns muddy over the Apple Core bands. */
+  --aab-focus: var(--aab-apricot);
+  --aab-ring: 0 0 0 1px rgb(233 221 203);
+  --aab-ring-soft: 0 0 0 1px rgb(230 214 191);
+  --aab-ring-strong: 0 0 0 1px rgba(158, 82, 16, 0.30);
+  --aab-btn-ghost-line: rgb(43 33 24 / 0.55);
+  --aab-btn-ghost-fill: #2b2118;
+  --aab-btn-ghost-fill-ink: #fbf7f0;
+}
+
+[data-theme="dark"] {
+  --aab-focus: var(--aab-citrus);
+  --aab-ring: 0 0 0 1px rgb(50 58 69);
+  --aab-ring-soft: 0 0 0 1px rgb(50 58 69);
+  --aab-ring-strong: 0 0 0 1px rgba(247, 195, 49, 0.32);
+  --aab-btn-ghost-line: rgb(240 226 205 / 0.55);
+  --aab-btn-ghost-fill: var(--aab-citrus);
+  --aab-btn-ghost-fill-ink: #2b2118;
+}

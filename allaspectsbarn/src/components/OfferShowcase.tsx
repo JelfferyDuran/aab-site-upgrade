@@ -135,7 +135,7 @@ function OfferCard({ offer, i, parallax }: { offer: Offer; i: number; parallax: 
               </div>
               <h3 className="mt-2 font-serif text-2xl text-white drop-shadow-[0_2px_12px_rgba(12,10,9,0.65)]">{offer.title}</h3>
               <p className="mt-1 max-w-[30ch] text-sm leading-snug text-white/85">{offer.copy}</p>
-              <span className="mt-3.5 inline-flex items-center gap-2 rounded-full bg-white/[0.14] px-3.5 py-1.5 text-[0.66rem] font-medium uppercase tracking-[0.2em] text-white ring-1 ring-inset ring-white/25 backdrop-blur-sm transition-colors duration-300 group-hover:bg-amber-200 group-hover:text-stone-900 group-hover:ring-amber-200/70">
+              <span className="aab-label mt-3.5 inline-flex items-center gap-2 rounded-full bg-white/[0.14] px-3.5 py-1.5 text-white ring-1 ring-inset ring-white/25 backdrop-blur-sm transition-colors duration-300 group-hover:bg-amber-200 group-hover:text-stone-900 group-hover:ring-amber-200/70">
                 Visit
                 <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5">
                   <path d="M4 10.75h9.19l-3.22 3.22 1.06 1.06L16.56 10l-4.53-4.53-1.06 1.06 3.22 3.22H4v1z" />

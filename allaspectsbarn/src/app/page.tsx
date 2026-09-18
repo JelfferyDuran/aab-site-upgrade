@@ -43,8 +43,7 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal direction="up" delay={0.2} duration={0.8}>
-              <p className="text-sm sm:text-lg text-gray-700 uppercase tracking-[0.18em] max-w-2xl mx-auto mb-8"
-                 style={{ fontFamily: "var(--font-cardo)" }}>
+              <p className="aab-label-lg text-gray-700 max-w-2xl mx-auto mb-8">
                 Antiques &middot; Events &middot; Petting Farm &middot; Barn Brew
               </p>
             </Reveal>
@@ -53,13 +52,13 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/gallery"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-stone-900 font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="aab-btn aab-btn-accent"
                 >
                   Explore Our Venue
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-900 text-gray-900 hover:bg-stone-900 hover:text-white font-semibold rounded-full transition-all duration-300"
+                  className="aab-btn aab-btn-ghost"
                 >
                   Book an Event
                 </Link>
@@ -82,7 +81,7 @@ export default function HomePage() {
       <OfferShowcase />
 
       {/* Gallery Preview — contained viewer so nobody scrolls picture-by-picture */}
-      <section className="py-20 aab-band-warm">
+      <section className="aab-section aab-band-warm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollSlide direction="right" className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -95,7 +94,7 @@ export default function HomePage() {
           <ScrollSlide direction="up" className="text-center mt-10">
             <Link
               href="/gallery"
-              className="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-full transition-all duration-300"
+              className="aab-btn aab-btn-accent"
             >
               View Full Gallery
             </Link>
@@ -104,7 +103,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 aab-band-warm-light">
+      <section className="aab-section aab-band-warm-light">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollSlide direction="up" className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -167,7 +166,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-indigo-900 text-white">
+      <section className="aab-section bg-indigo-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollSlide direction="left">
             <h2 className="text-4xl font-bold mb-8" style={{ fontFamily: "var(--font-playfair)" }}>

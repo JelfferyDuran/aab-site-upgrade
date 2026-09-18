@@ -538,3 +538,202 @@ body {
 [data-theme="dark"] .aab-nav-active {
   color: var(--aab-apricot-300);
 }
+
+/* ═══ Figma-informed polish layer ══════════════════════════════════════════
+   Structural refinements borrowed from Figma's design system — variable
+   tracking precision, mono signpost labels, pill + circle geometry, dashed
+   focus rings, ring-shadow depth — re-toned into Apricot Avalanche so the
+   barn keeps its warmth. Appended last on purpose: unlayered rules here win
+   over Tailwind utilities at equal specificity, which is what lets the
+   tracking and geometry apply consistently without class-by-class rewrites. */
+
+/* 1 ── Typographic precision.
+   Hierarchy comes from tracking and optical rhythm rather than dramatic size
+   jumps. Playfair is a high-contrast serif, so above ~3rem its default
+   tracking reads loose and the letterforms drift apart; display compresses
+   and kerning is switched on explicitly rather than left to the UA. */
+h1,
+h2,
+h3 {
+  letter-spacing: var(--aab-track-heading);
+  font-kerning: normal;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+h1 {
+  letter-spacing: var(--aab-track-display);
+  line-height: 1.06;
+}
+
+h2 {
+  line-height: 1.12;
+}
+
+h3 {
+  line-height: 1.22;
+}
+
+/* Crate-stencil label: uppercase, wide-tracked, monospaced. This is the
+   signpost voice that sits above or beneath a heading — it reads like a
+   hand-stamped tag on a shelf, which is exactly the shop's own language. */
+.aab-label {
+  font-family: var(--aab-font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: var(--aab-track-label);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.aab-label-lg {
+  font-family: var(--aab-font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: var(--aab-track-label);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The hero signpost needs more presence than a shelf label, so it steps up on
+   wider screens. Declared inside the class rather than as a Tailwind `sm:`
+   utility because unlayered rules outrank @layer utilities — a `sm:` utility
+   here would be dead code that silently never applies. */
+@media (min-width: 640px) {
+  .aab-label-lg {
+    font-size: 0.9375rem;
+    letter-spacing: 0.2em;
+  }
+}
+
+/* 2 ── Dashed focus ring.
+   Figma's signature accessibility pattern — it references the editor's
+   selection handles. It also suits a hand-made shop far better than a chrome
+   outline, and it is strictly more visible than the solid ring it replaces. */
+:focus-visible {
+  outline: 2px dashed var(--aab-focus);
+  outline-offset: 3px;
+}
+
+[data-theme="dark"] :focus-visible {
+  outline-color: var(--aab-citrus);
+}
+
+/* On an apricot surface an apricot ring would vanish — flip it to ink. */
+.aab-btn-accent:focus-visible,
+.aab-on-accent:focus-visible {
+  outline-color: var(--aab-apricot-ink);
+}
+
+/* 3 ── Pill + circle geometry.
+   Every interactive element is a pill (50px) or a circle (50%). No sharp
+   corners anywhere, and no button-shaped rectangles. */
+.aab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-pill);
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  text-align: center;
+  transition:
+    transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 220ms ease,
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.aab-btn:hover {
+  transform: translateY(-1px);
+}
+
+.aab-btn:active {
+  transform: translateY(0);
+}
+
+/* Primary CTA. Ink on apricot is 6.5:1 — white would only be 2.9:1. */
+.aab-btn-accent {
+  background-color: var(--aab-apricot);
+  color: var(--aab-apricot-ink);
+  box-shadow: var(--aab-ring-strong), 0 12px 26px -14px rgba(158, 82, 16, 0.55);
+}
+
+.aab-btn-accent:hover {
+  background-color: var(--aab-apricot-dark);
+  box-shadow: var(--aab-ring-strong), 0 18px 34px -16px rgba(158, 82, 16, 0.62);
+}
+
+/* Secondary CTA: outline that fills solid on hover. */
+.aab-btn-ghost {
+  background-color: transparent;
+  color: var(--color-gray-900);
+  border: 2px solid var(--aab-btn-ghost-line);
+}
+
+.aab-btn-ghost:hover {
+  background-color: var(--aab-btn-ghost-fill);
+  border-color: var(--aab-btn-ghost-fill);
+  color: var(--aab-btn-ghost-fill-ink);
+}
+
+/* 4 ── Ring-shadow depth.
+   Containment comes from a 1px ring and lift from a warm whisper. Heavy
+   neutral drop shadows turn muddy on the Apple Core bands, so they are not
+   used for containment anywhere. */
+/* .aab-ring / .aab-ring-lift / .aab-btn-circle were dropped here: the ring is
+   already delivered by the card and glass rules below, so standalone helpers
+   had no consumer. Kept the layer honest rather than shipping dead CSS. */
+
+/* Cards and glass gain the crisp ring without losing their warm glow: the
+   ring does the containment, the whisper does the lift. */
+.aab-card-warm,
+.aab-glass-warm {
+  box-shadow: var(--aab-ring-soft), 0 18px 44px -26px rgba(158, 82, 16, 0.34);
+}
+
+.aab-glass-warm {
+  box-shadow:
+    var(--aab-ring-soft),
+    inset 0 1px 0 rgb(255 251 244 / 0.85),
+    0 24px 60px -22px rgba(158, 82, 16, 0.34);
+}
+
+/* Cards respond to hover with the ring only — no layout shift, no jump. */
+.aab-card-warm {
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a.aab-card-warm:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* 5 ── Editorial pacing.
+   Sections breathe like exhibits in a gallery: each one gets its own room
+   instead of running together. */
+.aab-section {
+  padding-block: clamp(4rem, 7vw, 6.5rem);
+}
+
+/* ── Ring in dark theme ──
+   The theme-scoped `.aab-glass-warm` / `.aab-card-warm` overrides earlier in
+   this file carry specificity (0,2,0); the appended light rules above only
+   carry (0,1,0), so the dark theme silently dropped the ring. Re-declared
+   here at matching specificity, keeping each surface's existing dark glow
+   untouched and only adding the 1px halo. */
+[data-theme="dark"] .aab-card-warm {
+  box-shadow: var(--aab-ring-soft), 0 18px 44px -26px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .aab-glass-warm {
+  box-shadow:
+    var(--aab-ring-soft),
+    rgb(242 177 113 / 0.14) 0 1px 0 0 inset,
+    rgba(0, 0, 0, 0.72) 0 24px 60px -22px;
+}
