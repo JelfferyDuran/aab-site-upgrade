@@ -33,6 +33,11 @@ function clampInteger(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, Math.trunc(value)));
 }
 
+function isRoutableProduct(product: Product): boolean {
+  const slug = product.slug?.trim();
+  return Boolean(slug && slug !== "undefined" && slug !== "null");
+}
+
 function normalizeImageSource(src: string | undefined): string | null {
   if (!src) return null;
   if (src.startsWith("http") || src.startsWith("/")) return src;
@@ -53,15 +58,17 @@ function toCard(product: Product): ProductCard {
   };
 }
 
+const routableProducts = products.filter(isRoutableProduct);
+
 export function getProductCount(): number {
-  return products.length;
+  return routableProducts.length;
 }
 
 export function searchProducts(query: string): Product[] {
   const normalizedQuery = query.trim().slice(0, 120).toLocaleLowerCase();
-  if (!normalizedQuery) return products;
+  if (!normalizedQuery) return routableProducts;
 
-  return products.filter((product) => {
+  return routableProducts.filter((product) => {
     const title = product.title.toLocaleLowerCase();
     const body = (product.body || "").toLocaleLowerCase();
     return title.includes(normalizedQuery) || body.includes(normalizedQuery);
