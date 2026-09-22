@@ -42,3 +42,12 @@ template-ranch/
 index.html                         ← patched conversion baseline (single-page)
 images/  vercel.json  package.json
 ```
+
+
+## 2026-09-21 — Cinematic hero motion pass
+- The home hero is now **video-first with a static-photo fallback**. `index.html` expects `media/aab-hero-parallax.mp4`.
+- Generated hero treatment: short seamless 2.5D/parallax push from the approved golden-hour exterior image. No audio; designed for `autoplay muted loop playsinline`.
+- `styles.css` handles cover-cropping, a lighter legibility wash, mobile reframing, and a no-motion fallback.
+- `script.js` suppresses the legacy WebGL ember layer whenever the real video is present, keeps a gentler scroll-depth drift, hides a failed video cleanly, and pauses/removes autoplay under `prefers-reduced-motion`.
+- **Media handoff:** add the generated MP4 at `media/aab-hero-parallax.mp4`, or replace that source with an ImageKit CDN URL. The current photo at `images/IMG_1415.jpg` remains the poster/fallback so the page does not break if the video is not yet deployed.
+- Preferred production delivery: keep the high-quality source in ImageKit and request an appropriately sized web rendition; do not commit large source masters to this repo.
