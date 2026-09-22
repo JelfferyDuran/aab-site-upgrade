@@ -1,6 +1,6 @@
 # HANDOFF.md — State of the AAB Rebuild
 
-_Last updated: 2026-09-11. This repo carries the complete scraped + analyzed source for the All Aspects at the Barn rebuild._
+_Last updated: 2026-09-22. This repo carries the complete scraped + analyzed source for the All Aspects at the Barn rebuild._
 
 ## Mission (short)
 Recreate the visual system of the **Lone Mustang Ranch** Framer template ($49, Paulina Pixi) as a clean hand-built static site for **All Aspects at the Barn**, filled with AAB's own real content/brand, strengthened, **recreated not plagiarized** — and ship it live (it currently 404s). See `GOAL.md` and `CLAUDE.md` for full specs.
@@ -44,10 +44,13 @@ images/  vercel.json  package.json
 ```
 
 
-## 2026-09-21 — Cinematic hero motion pass
-- The home hero is now **video-first with a static-photo fallback**. `index.html` expects `media/aab-hero-parallax.mp4`.
-- Generated hero treatment: short seamless 2.5D/parallax push from the approved golden-hour exterior image. No audio; designed for `autoplay muted loop playsinline`.
-- `styles.css` handles cover-cropping, a lighter legibility wash, mobile reframing, and a no-motion fallback.
-- `script.js` suppresses the legacy WebGL ember layer whenever the real video is present, keeps a gentler scroll-depth drift, hides a failed video cleanly, and pauses/removes autoplay under `prefers-reduced-motion`.
-- **Media handoff:** add the generated MP4 at `media/aab-hero-parallax.mp4`, or replace that source with an ImageKit CDN URL. The current photo at `images/IMG_1415.jpg` remains the poster/fallback so the page does not break if the video is not yet deployed.
-- Preferred production delivery: keep the high-quality source in ImageKit and request an appropriately sized web rendition; do not commit large source masters to this repo.
+## 2026-09-22 — Cinematic hero motion pass — LIVE
+- The home hero is now **video-first with a static-photo fallback** and serves both modern WebM and universal MP4 sources.
+- Live assets are committed at `media/aab-hero-parallax.webm` (~867 KB) and `media/aab-hero-parallax.mp4` (~1.2 MB). They are 960×540, 24 fps, 10-second seamless loops with a slow cinematic push/drift and no audio.
+- `index.html` uses `autoplay muted loop playsinline`, `preload="metadata"`, and the existing barn photo as a poster/fallback.
+- `styles.css` handles full-bleed cover cropping, a restrained legibility wash, mobile reframing, and reduced-motion fallback.
+- `script.js` suppresses the legacy WebGL ember layer when video is active, keeps a subtle scroll-depth drift, falls back cleanly on video load failure, and pauses motion under `prefers-reduced-motion`.
+- A reproducible renderer lives at `scripts/generate-hero-video.sh`; `.github/workflows/build-hero-video.yml` regenerates and publishes the web assets from `images/IMG_1415.jpg` when the source or renderer changes.
+- GitHub Pages successfully deployed commit `fbf8fa53ba155a0f61d60369785e37cf5d467a24` to `https://jelfferyduran.github.io/aab-site-upgrade/`.
+- ImageKit is now an optional future CDN optimization rather than a launch blocker. The current assets are small enough to ship directly with the static site.
+- Current Vercel connector visibility shows no projects under the connected Kingdom Noel team, so **GitHub Pages is the verified public deployment path in this handoff**; do not claim the Vercel deployment is verified until the project becomes visible again.
