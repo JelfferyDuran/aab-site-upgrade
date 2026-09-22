@@ -136,12 +136,34 @@ document.addEventListener("DOMContentLoaded", function() {
       /* ===================== PHASE 6 — Hero embers + drift (vanilla WebGL, zero deps) ===================== */
       (function () {
         'use strict';
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         var hero = document.querySelector('.hero');
         var panel = document.querySelector('.hero-content');
         var bg = document.querySelector('.hero-bg');
+        var video = hero ? hero.querySelector('.hero-video') : null;
+        var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (!hero || !panel) return;
+
+        if (reduceMotion) {
+          if (video) {
+            video.pause();
+            video.removeAttribute('autoplay');
+          }
+          return;
+        }
+
+        /* The video is progressive enhancement: if the asset/CDN is unavailable,
+           hide it and expose the existing hero background image underneath. */
+        if (video) {
+          var source = video.querySelector('source');
+          var fallbackToPhoto = function () { video.hidden = true; };
+          video.addEventListener('error', fallbackToPhoto, { once: true });
+          if (source) source.addEventListener('error', fallbackToPhoto, { once: true });
+          var playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(function () { /* poster/fallback remains visible */ });
+          }
+        }
 
         /* Keep the ember layer above the photo and below the copy, no matter the pre-existing CSS */
         if (getComputedStyle(panel).position === 'static') panel.style.position = 'relative';
@@ -151,8 +173,12 @@ document.addEventListener("DOMContentLoaded", function() {
         var cv = document.createElement('canvas');
         var gl = null;
         try {
-          gl = cv.getContext('webgl', { alpha: true, antialias: false, depth: false, stencil: false }) ||
-               cv.getContext('experimental-webgl');
+          /* Keep the new photographic hero clean. The legacy ember canvas only
+             runs when no video enhancement is present. */
+          if (!video) {
+            gl = cv.getContext('webgl', { alpha: true, antialias: false, depth: false, stencil: false }) ||
+                 cv.getContext('experimental-webgl');
+          }
         } catch (err) { gl = null; }
 
         if (!gl || !window.WebGLRenderingContext) {
@@ -283,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var top = hero.offsetTop || 0;
             var hp = hero.offsetHeight || 1;
             var p = Math.max(0, Math.min(1, (y - top) / hp));
-            if (bg) bg.style.transform = 'translate3d(0,' + (p * 40).toFixed(1) + 'px,0)';
+            if (bg) bg.style.transform = 'translate3d(0,' + (p * 24).toFixed(1) + 'px,0) scale(1.035)';
           });
         }
         window.addEventListener('scroll', onScroll, { passive: true });
