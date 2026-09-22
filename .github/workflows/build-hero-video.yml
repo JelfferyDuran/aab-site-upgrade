@@ -44,4 +44,7 @@ jobs:
             exit 0
           fi
           git commit -m "feat: render cinematic hero video assets"
-          git push
+          # Other site edits may land while ffmpeg renders. Rebase the generated
+          # asset commit onto the latest main so the automation never overwrites work.
+          git pull --rebase origin main
+          git push origin HEAD:main
