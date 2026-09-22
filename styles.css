@@ -1142,3 +1142,63 @@ body.nav-open { overflow: hidden; }
   .video-wall { grid-template-columns: repeat(2, 1fr); }
   .pillar-image { height: 180px; }
 }
+
+
+/* ============================================================
+   PHASE 8 — Cinematic hero motion
+   Video-first hero with a photographic fallback.
+   ============================================================ */
+.hero-bg {
+  overflow: hidden;
+  background-image: url('images/IMG_1415.jpg');
+  background-size: cover;
+  background-position: center center;
+  transform: translate3d(0, 0, 0) scale(1.035);
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: -2%;
+  z-index: 0;
+  width: 104%;
+  height: 104%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  pointer-events: none;
+  filter: saturate(1.03) contrast(1.02);
+  transform: translateZ(0);
+}
+
+.hero-video[hidden] { display: none !important; }
+
+.hero-bg::after {
+  z-index: 1;
+  background:
+    linear-gradient(180deg,
+      rgba(34,30,26,.50) 0%,
+      rgba(34,30,26,.20) 43%,
+      rgba(34,30,26,.34) 64%,
+      rgba(34,30,26,.67) 100%);
+}
+
+.hero-content { z-index: 3; }
+
+@media (max-width: 700px) {
+  .hero-video {
+    inset: -1.5% -16%;
+    width: 132%;
+    height: 103%;
+    object-position: 54% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { display: none !important; }
+  .hero-bg {
+    transform: none !important;
+    background-image: url('images/IMG_1415.jpg');
+  }
+}
