@@ -31,8 +31,7 @@ jobs:
 
       - name: Render seamless hero loop
         run: |
-          chmod +x scripts/generate-hero-video.sh
-          scripts/generate-hero-video.sh images/IMG_1415.jpg media
+          bash scripts/generate-hero-video.sh images/IMG_1415.jpg media
 
       - name: Commit generated web assets
         run: |
