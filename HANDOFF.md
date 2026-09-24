@@ -1,5 +1,16 @@
 # HANDOFF.md — State of the AAB Rebuild
 
+## ⚠️ Canonical production moved
+
+**Do not deploy this repository to the `allaspectsbarn` Vercel project.**
+
+The canonical production codebase is now:
+`JelfferyDuran/allaspectsbarn-site` → `main` → Vercel project `allaspectsbarn`.
+
+This repository remains useful as a prototype/research/media source, including the
+cinematic hero experiments. Port useful work into the canonical Next.js repo through
+a reviewed change; do not switch production hosting back to this static codebase.
+
 _Last updated: 2026-09-22. This repo carries the complete scraped + analyzed source for the All Aspects at the Barn rebuild._
 
 ## Mission (short)
