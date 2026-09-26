@@ -4,6 +4,8 @@
 
 **Do not deploy this repository to the `allaspectsbarn` Vercel project.**
 
+Git auto-deploys are disabled in this repo through `vercel.json` (`git.deploymentEnabled: false`) as a safety brake while the Vercel project is being reconnected to the canonical Next.js repo.
+
 The canonical production codebase is now:
 `JelfferyDuran/allaspectsbarn-site` → `main` → Vercel project `allaspectsbarn`.
 
